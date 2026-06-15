@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terapeut — Tryggman</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem}
+.t-card{background:var(--white);padding:2rem;position:relative;transition:box-shadow 0.25s;border-top:3px solid transparent}
+.t-card:hover{box-shadow:0 8px 32px rgba(28,43,53,0.1)}
+.t-card.featured{border-top-color:var(--teal)}
+.t-tag{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.t-avatar{width:60px;height:60px;border-radius:50%;background:var(--slate);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1.3rem;color:rgba(255,255,255,0.25)}
+.t-name{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--slate);margin-bottom:0.2rem}
+.t-title{font-size:0.78rem;color:var(--text-muted);margin-bottom:1rem}
+.t-specs{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem}
+.t-spec{font-size:0.7rem;background:var(--sand);padding:0.18rem 0.55rem;color:var(--text-muted)}
+.t-bio{font-size:0.85rem;color:var(--text-muted);line-height:1.75;margin-bottom:1.3rem;font-weight:300}
+.t-price{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--teal);margin-bottom:1rem}
+.t-price span{font-size:0.82rem;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-weight:300}
+
+.booking-box{background:var(--white);padding:2.5rem;border-top:3px solid var(--slate);margin-top:1rem}
+.booking-box h3{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--slate);margin-bottom:0.4rem}
+.booking-box>p{font-size:0.88rem;color:var(--text-muted);margin-bottom:2rem}
+.booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.booking-grid .full{grid-column:1/-1}
+.booking-note{font-size:0.78rem;color:var(--text-muted);background:var(--sand);padding:0.8rem 1rem;border-left:2px solid var(--teal);line-height:1.6}
+
+.how-it-works{background:var(--sand);padding:5rem 8%}
+.hiw-inner{max-width:900px;margin:0 auto}
+.hiw-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem}
+.hiw-step{text-align:center;padding:1.5rem 1rem}
+.hiw-num{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--teal);margin-bottom:0.6rem}
+.hiw-label{font-size:0.88rem;font-weight:500;color:var(--slate);margin-bottom:0.4rem}
+.hiw-desc{font-size:0.8rem;color:var(--text-muted);line-height:1.65;font-weight:300}
+
+@media(max-width:900px){.t-grid{grid-template-columns:1fr}.booking-grid{grid-template-columns:1fr}.hiw-steps{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.hiw-steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Tryggman</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Hem</a></li>
+    <li><a href="om-oss.html">Om oss</a></li>
+    <li><a href="chat.html">AI-Chat</a></li>
+    <li><a href="terapeut.html" class="active">Terapeut</a></li>
+    <li><a href="berattelser.html">Berättelser</a></li>
+    <li><a href="resurser.html">Resurser</a></li>
+    <li><a href="produkter.html">Produkter</a></li>
+    <li><a href="appen.html" class="nav-cta">Appen</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">Professionellt stöd</div>
+  <h1>Chatta med en<br><em>legitimerad terapeut</em></h1>
+  <p>Ingen telefon. Ingen väntrumskänsla. Prata med en legitimerad psykoterapeut på dina villkor — svar inom 24 timmar, vardagar.</p>
+</div>
+
+<section style="padding:5rem 8%">
+  <div style="max-width:1100px;margin:0 auto">
+
+    <div class="t-grid">
+      <div class="t-card featured reveal">
+        <div class="t-tag">Ångest &amp; stress</div>
+        <div class="t-avatar">JL</div>
+        <div class="t-name">Johan Lindgren</div>
+        <div class="t-title">Leg. Psykoterapeut, KBT · 9 års erfarenhet</div>
+        <div class="t-specs"><span class="t-spec">KBT</span><span class="t-spec">Ångest</span><span class="t-spec">Depression</span><span class="t-spec">Stress</span></div>
+        <p class="t-bio">Jag har arbetat med mäns psykiska hälsa i 9 år och specialiserat mig på KBT. Jag tror på att ge dig konkreta verktyg att hantera dina utmaningar — i din egen takt.</p>
+        <div class="t-price">369 kr<span>/mån</span></div>
+        <button class="btn-primary" style="width:100%;font-size:0.88rem" onclick="document.getElementById('bokning').scrollIntoView({behavior:'smooth'})">Boka tid</button>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-tag">Livskriser &amp; förlust</div>
+        <div class="t-avatar">ME</div>
+        <div class="t-name">Mikael Eriksson</div>
+        <div class="t-title">Leg. Psykolog · 12 års erfarenhet</div>
+        <div class="t-specs"><span class="t-spec">Livskriser</span><span class="t-spec">Sorg</span><span class="t-spec">Relationer</span><span class="t-spec">Trauma</span></div>
+        <p class="t-bio">Med bakgrund i krishantering möter jag dig där du är. Jag arbetar med män som går igenom separationer, förluster och stora livsförändringar.</p>
+        <div class="t-price">369 kr<span>/mån</span></div>
+        <button class="btn-primary" style="width:100%;font-size:0.88rem" onclick="document.getElementById('bokning').scrollIntoView({behavior:'smooth'})">Boka tid</button>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-tag">Självkänsla &amp; identitet</div>
+        <div class="t-avatar">AS</div>
+        <div class="t-name">Anders Ström</div>
+        <div class="t-title">Leg. Psykoterapeut, ACT · 7 års erfarenhet</div>
+        <div class="t-specs"><span class="t-spec">ACT</span><span class="t-spec">Självkänsla</span><span class="t-spec">Mindfulness</span><span class="t-spec">Beroende</span></div>
+        <p class="t-bio">Jag arbetar med acceptans och värderingar som grund. Min approach är mjuk men effektiv — vi hittar vad som faktiskt betyder något för just dig.</p>
+        <div class="t-price">369 kr<span>/mån</span></div>
+        <button class="btn-primary" style="width:100%;font-size:0.88rem" onclick="document.getElementById('bokning').scrollIntoView({behavior:'smooth'})">Boka tid</button>
+      </div>
+    </div>
+
+    <div class="booking-box reveal" id="bokning">
+      <h3>Boka din första tid</h3>
+      <p>Fyll i formuläret så kontaktar vi dig inom 24 timmar. Första samtalet är kostnadsfritt.</p>
+      <form class="booking-grid" onsubmit="handleBooking(event)">
+        <input class="form-field" type="text" name="name" placeholder="Namn *" required>
+        <input class="form-field" type="email" name="email" placeholder="E-post *" required>
+        <input class="form-field" type="tel" name="phone" placeholder="Telefon (valfritt)">
+        <select class="form-field" name="terapeut">
+          <option value="">Välj terapeut (eller låt oss matcha)</option>
+          <option>Johan Lindgren — KBT, ångest &amp; stress</option>
+          <option>Mikael Eriksson — Livskriser &amp; förlust</option>
+          <option>Anders Ström — ACT, självkänsla</option>
+          <option>Matcha mig med rätt terapeut</option>
+        </select>
+        <select class="form-field" name="tid">
+          <option value="">Föredragen tid</option>
+          <option>Morgon 08–10</option><option>Förmiddag 10–12</option>
+          <option>Eftermiddag 13–17</option><option>Kväll 17–20</option>
+        </select>
+        <select class="form-field" name="typ">
+          <option value="">Kontaktform</option>
+          <option>Chatt (asynkron)</option><option>Videosamtal</option><option>Telefonsamtal</option>
+        </select>
+        <textarea class="form-field full" name="msg" style="min-height:90px;resize:vertical" placeholder="Berätta kort vad du vill prata om (valfritt) — hjälper oss matcha rätt terapeut"></textarea>
+        <div class="booking-note full">🔒 Dina uppgifter hanteras konfidentiellt. Vi delar aldrig din information. All kommunikation är krypterad.</div>
+        <div class="full"><button type="submit" class="btn-primary">Boka tid — första samtalet är gratis</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works">
+  <div class="hiw-inner">
+    <div class="section-label">Hur det fungerar</div>
+    <h2 class="section-title">Enkelt från start</h2>
+    <div class="hiw-steps">
+      <div class="hiw-step reveal"><div class="hiw-num">1</div><div class="hiw-label">Boka</div><div class="hiw-desc">Fyll i formuläret ovan. Vi kontaktar dig inom 24h för att bekräfta.</div></div>
+      <div class="hiw-step reveal"><div class="hiw-num">2</div><div class="hiw-label">Matchas</div><div class="hiw-desc">Vi matchar dig med rätt terapeut baserat på dina behov och preferenser.</div></div>
+      <div class="hiw-step reveal"><div class="hiw-num">3</div><div class="hiw-label">Prata</div><div class="hiw-desc">Chatta, videosamtal eller telefon — du väljer format. På dina villkor.</div></div>
+      <div class="hiw-step reveal"><div class="hiw-num">4</div><div class="hiw-label">Fortsätt</div><div class="hiw-desc">369 kr/mån ger dig löpande kontakt. Avsluta när du vill, ingen bindningstid.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="index.html" class="footer-brand">Tryggman</a><p class="footer-tagline">Där trygghet skapas. Tillsammans bryter vi tystnaden.</p></div>
+    <div class="footer-col"><h4>Plattformen</h4><ul><li><a href="index.html">Hem</a></li><li><a href="chat.html">AI-Chat</a></li><li><a href="terapeut.html">Terapeut</a></li><li><a href="appen.html">Appen</a></li></ul></div>
+    <div class="footer-col"><h4>Hjälp</h4><ul><li><a href="resurser.html">Hjälplinjer</a></li><li><a href="berattelser.html">Berättelser</a></li></ul></div>
+    <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@tryggman.se">kontakt@tryggman.se</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div>© 2026 Tryggman</div><div class="footer-crisis">Kris? Ring 90101 eller 112</div></div>
+</footer>
+<script>
+function handleBooking(e){e.preventDefault();const b=e.target.querySelector('button[type=submit]');b.textContent='✓ Bokning mottagen — vi hör av oss inom 24h';b.style.background='#3A7D6E';b.disabled=true}
+const obs=new IntersectionObserver(e=>{e.forEach(n=>{if(n.isIntersecting)n.target.classList.add('visible')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body></html>

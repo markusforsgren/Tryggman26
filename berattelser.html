@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berättelser — Tryggman</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.stories-grid{display:grid;grid-template-columns:240px 1fr;gap:5rem;align-items:start;padding:5rem 8%;max-width:1100px;margin:0 auto}
+.story-aside{position:sticky;top:5rem}
+.story-avatar{width:100%;aspect-ratio:1;background:var(--slate);margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.story-avatar svg{opacity:0.12}
+.story-name{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--slate);margin-bottom:0.2rem}
+.story-meta{font-size:0.82rem;color:var(--text-muted);margin-bottom:1.5rem}
+.story-pull{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.15rem;color:var(--slate);line-height:1.45;border-top:1px solid var(--border);padding-top:1.3rem}
+.story-body p{font-size:1.02rem;color:var(--text-muted);line-height:1.9;margin-bottom:1.4rem;font-weight:300}
+.story-body p:first-child::first-letter{font-family:'DM Serif Display',serif;font-size:3.6rem;float:left;line-height:0.82;margin:0.1em 0.12em 0 0;color:var(--slate)}
+
+.more-stories{background:var(--sand);padding:5rem 8%}
+.more-inner{max-width:1100px;margin:0 auto}
+.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.more-card{background:var(--white);padding:1.8rem;border-top:3px solid transparent;transition:border-color 0.25s,box-shadow 0.25s;cursor:pointer}
+.more-card:hover{border-top-color:var(--teal);box-shadow:0 6px 24px rgba(28,43,53,0.08)}
+.more-quote{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;color:var(--slate);line-height:1.5;margin-bottom:1rem}
+.more-author{font-size:0.8rem;color:var(--text-muted)}
+
+.share-section{padding:5rem 8%;max-width:700px;margin:0 auto;text-align:center}
+.share-section p{color:var(--text-muted);margin-bottom:2rem}
+
+@media(max-width:800px){.stories-grid{grid-template-columns:1fr;gap:2.5rem;padding:3rem 5%}.story-aside{position:relative;top:auto;display:grid;grid-template-columns:120px 1fr;gap:1.2rem}.story-avatar{width:120px}.more-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Tryggman</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Hem</a></li>
+    <li><a href="om-oss.html">Om oss</a></li>
+    <li><a href="chat.html">AI-Chat</a></li>
+    <li><a href="terapeut.html">Terapeut</a></li>
+    <li><a href="berattelser.html" class="active">Berättelser</a></li>
+    <li><a href="resurser.html">Resurser</a></li>
+    <li><a href="produkter.html">Produkter</a></li>
+    <li><a href="appen.html" class="nav-cta">Appen</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">Riktiga berättelser</div>
+  <h1>Du är inte<br><em>ensam</em></h1>
+  <p>Här delar män sina erfarenheter av psykisk ohälsa, av att söka hjälp — och av att ta sig igenom det. För att ingen ska behöva kämpa i tystnad.</p>
+</div>
+
+<div class="stories-grid">
+  <div class="story-aside">
+    <div class="story-avatar">
+      <svg width="70" height="70" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="30" r="18" fill="white"/><ellipse cx="40" cy="70" rx="28" ry="18" fill="white"/></svg>
+    </div>
+    <div>
+      <div class="story-name">Marcus</div>
+      <div class="story-meta">38 år · Stockholm</div>
+      <div class="story-pull">"Jag grät för första gången på 15 år. Det räddade mitt liv."</div>
+    </div>
+  </div>
+  <div class="story-body reveal">
+    <p>Jag var 35 år gammal när jag insåg att jag inte orkade längre. På ytan hade jag allt — ett bra jobb, en familj, ett hus. Men inombords var jag tom. Varje morgon var en kamp att ta mig ur sängen.</p>
+    <p>Jag drack för att klara av dagarna. Jag skrek åt mina barn för småsaker. Jag berättade aldrig för någon hur jag mådde — det kändes omöjligt. Vad skulle de tänka?</p>
+    <p>Det som räddade mig var en arbetskollega som drog mig åt sidan en dag och sa: "Du verkar inte må bra. Vill du prata?" Först förnekade jag allt. Men han lämnade inte. Och till slut brast det.</p>
+    <p>Jag grät för första gången på 15 år.</p>
+    <p>Idag, tre år senare, mår jag bättre. Jag har lärt mig att prata om mina känslor. Jag har insett att det inte är svaghet att be om hjälp — det är det modigaste jag någonsin gjort.</p>
+    <p style="font-size:0.88rem;font-style:italic;color:rgba(107,122,133,0.55)">Är det din tur att ta av dig masken?</p>
+  </div>
+</div>
+
+<section class="more-stories">
+  <div class="more-inner">
+    <div class="section-label">Fler röster</div>
+    <h2 class="section-title">Männen bakom masken</h2>
+    <div class="more-grid">
+      <div class="more-card reveal">
+        <div class="more-quote">"Jag trodde att be om hjälp var att misslyckas. Idag vet jag att det var tvärtom."</div>
+        <div class="more-author">Jonas, 34 år · Göteborg</div>
+      </div>
+      <div class="more-card reveal">
+        <div class="more-quote">"Att prata om det var det svåraste jag gjort. Och det viktigaste."</div>
+        <div class="more-author">Erik, 41 år · Malmö</div>
+      </div>
+      <div class="more-card reveal">
+        <div class="more-quote">"Jag hade allt på ytan. Inombords var jag tom. Det är okej att säga det högt."</div>
+        <div class="more-author">Peter, 52 år · Uppsala</div>
+      </div>
+      <div class="more-card reveal">
+        <div class="more-quote">"Första gången jag ringde hjälplinjen skakade händerna. Men det var rätt val."</div>
+        <div class="more-author">Kalle, 28 år · Stockholm</div>
+      </div>
+      <div class="more-card reveal">
+        <div class="more-quote">"Min son sa att han var stolt över mig. Det räckte."</div>
+        <div class="more-author">Anders, 46 år · Örebro</div>
+      </div>
+      <div class="more-card reveal">
+        <div class="more-quote">"Ingenting i livet hade förberett mig för hur mörkt det kan bli. Ingenting hade förberett mig för hur bra det kan bli."</div>
+        <div class="more-author">Mattias, 37 år · Luleå</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="share-section">
+  <div class="section-label">Dela din berättelse</div>
+  <h2 class="section-title">Din röst räknas</h2>
+  <p>Har du en berättelse att dela? Du kan vara anonym. Dina ord kan ge en annan man modet att ta första steget.</p>
+  <a href="mailto:kontakt@tryggman.se?subject=Min berättelse" class="btn-primary">Skicka din berättelse</a>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="index.html" class="footer-brand">Tryggman</a><p class="footer-tagline">Där trygghet skapas. Tillsammans bryter vi tystnaden.</p></div>
+    <div class="footer-col"><h4>Plattformen</h4><ul><li><a href="index.html">Hem</a></li><li><a href="chat.html">AI-Chat</a></li><li><a href="terapeut.html">Terapeut</a></li><li><a href="appen.html">Appen</a></li></ul></div>
+    <div class="footer-col"><h4>Hjälp</h4><ul><li><a href="resurser.html">Hjälplinjer</a></li><li><a href="berattelser.html">Berättelser</a></li></ul></div>
+    <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@tryggman.se">kontakt@tryggman.se</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div>© 2026 Tryggman</div><div class="footer-crisis">Kris? Ring 90101 eller 112</div></div>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(n=>{if(n.isIntersecting)n.target.classList.add('visible')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body></html>

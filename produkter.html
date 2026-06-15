@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produkter — Tryggman</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.p-section{padding:5rem 8%;max-width:1100px;margin:0 auto}
+.p-perks{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:3rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
+.p-perk{display:flex;align-items:center;gap:0.6rem;font-size:0.84rem;color:var(--text-muted)}
+.p-perk strong{color:var(--slate)}
+.p-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.p-card{background:var(--white);border:1px solid var(--border);padding:1.8rem 1.5rem;transition:border-color 0.2s,box-shadow 0.2s}
+.p-card:hover{border-color:rgba(28,43,53,0.18);box-shadow:0 4px 20px rgba(28,43,53,0.07)}
+.p-img{width:100%;aspect-ratio:1;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1rem;color:rgba(255,255,255,0.2)}
+.p-name{font-size:0.9rem;font-weight:500;color:var(--slate);margin-bottom:0.3rem}
+.p-desc{font-size:0.78rem;color:var(--text-muted);margin-bottom:0.8rem;font-weight:300}
+.p-price{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--teal);margin-bottom:0.9rem}
+.p-sizes{display:flex;gap:0.3rem;margin-bottom:1rem;flex-wrap:wrap}
+.sz{font-size:0.68rem;border:1px solid rgba(28,43,53,0.15);padding:0.18rem 0.5rem;color:var(--text-muted);cursor:pointer;transition:all 0.15s}
+.sz:hover,.sz.active{border-color:var(--teal);color:var(--teal)}
+.btn-buy{width:100%;background:var(--slate);color:var(--white);border:none;padding:0.75rem;font-family:'DM Sans',sans-serif;font-size:0.85rem;cursor:pointer;transition:background 0.2s;letter-spacing:0.04em}
+.btn-buy:hover{background:var(--teal)}
+.p-mission{background:var(--slate);padding:4rem 8%;text-align:center}
+.p-mission h2{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--white);margin-bottom:0.8rem}
+.p-mission p{color:rgba(255,255,255,0.45);font-size:0.95rem;max-width:500px;margin:0 auto;font-weight:300;line-height:1.8}
+@media(max-width:900px){.p-grid{grid-template-columns:1fr 1fr}.p-section{padding:3rem 5%}}
+@media(max-width:480px){.p-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Tryggman</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Hem</a></li>
+    <li><a href="om-oss.html">Om oss</a></li>
+    <li><a href="chat.html">AI-Chat</a></li>
+    <li><a href="terapeut.html">Terapeut</a></li>
+    <li><a href="berattelser.html">Berättelser</a></li>
+    <li><a href="resurser.html">Resurser</a></li>
+    <li><a href="produkter.html" class="active">Produkter</a></li>
+    <li><a href="appen.html" class="nav-cta">Appen</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">Tryggman Merch</div>
+  <h1>Bär<br><em>budskapet</em></h1>
+  <p>Stöd vårt arbete och visa att psykisk hälsa inte är tabu. Alla produkter är framtagna med omsorg — tryckta i Sverige.</p>
+</div>
+
+<section class="p-section">
+  <div class="p-perks">
+    <div class="p-perk">📦 <span><strong>Fri frakt</strong> över 500 kr</span></div>
+    <div class="p-perk">🔄 <span><strong>30 dagars</strong> öppet köp</span></div>
+    <div class="p-perk">🇸🇪 <span><strong>Tryckt i Sverige</strong> med kvalitetstryck</span></div>
+    <div class="p-perk">💙 <span>Stödjer <strong>Tryggmans arbete</strong></span></div>
+  </div>
+  <div class="p-grid">
+    <div class="p-card reveal">
+      <div class="p-img" style="background:linear-gradient(145deg,#2E4050,#1C2B35)">T-shirt</div>
+      <div class="p-name">Tryggman T-shirt</div>
+      <div class="p-desc">Premiumkvalitet med broderad logga. 100% organisk bomull.</div>
+      <div class="p-price">299 kr</div>
+      <div class="p-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz active">L</span><span class="sz">XL</span><span class="sz">XXL</span></div>
+      <button class="btn-buy">Köp nu</button>
+    </div>
+    <div class="p-card reveal">
+      <div class="p-img" style="background:linear-gradient(145deg,#3A7D6E,#2A6055)">Hoodie</div>
+      <div class="p-name">Tryggman Hoodie</div>
+      <div class="p-desc">Varm och mysig med stort Tryggman-tryck på ryggen.</div>
+      <div class="p-price">499 kr</div>
+      <div class="p-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz active">L</span><span class="sz">XL</span><span class="sz">XXL</span></div>
+      <button class="btn-buy">Köp nu</button>
+    </div>
+    <div class="p-card reveal">
+      <div class="p-img" style="background:linear-gradient(145deg,#2E4050,#1C2B35)">Ziptröja</div>
+      <div class="p-name">Tryggman Ziptröja</div>
+      <div class="p-desc">Smidig ziptröja i mjukt material. Perfekt för alla tillfällen.</div>
+      <div class="p-price">549 kr</div>
+      <div class="p-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz active">L</span><span class="sz">XL</span><span class="sz">XXL</span></div>
+      <button class="btn-buy">Köp nu</button>
+    </div>
+    <div class="p-card reveal">
+      <div class="p-img" style="background:linear-gradient(145deg,#C0873A,#9A6A2A)">Keps</div>
+      <div class="p-name">Tryggman Keps</div>
+      <div class="p-desc">Broderad logga. Justerbar storlek. One size fits all.</div>
+      <div class="p-price">249 kr</div>
+      <div class="p-sizes"><span class="sz active">One size</span></div>
+      <button class="btn-buy">Köp nu</button>
+    </div>
+    <div class="p-card reveal">
+      <div class="p-img" style="background:linear-gradient(145deg,#4E9E8D,#3A7D6E)">Mugg</div>
+      <div class="p-name">Tryggman Mugg</div>
+      <div class="p-desc">Keramikmugg 33cl med Tryggman-logga. Perfekt för morgonkaffet.</div>
+      <div class="p-price">149 kr</div>
+      <div class="p-sizes"><span class="sz active">33cl</span></div>
+      <button class="btn-buy">Köp nu</button>
+    </div>
+  </div>
+</section>
+
+<section class="p-mission">
+  <h2>Mer än en produkt</h2>
+  <p>Varje köp stödjer Tryggmans arbete med att bryta tystnaden kring mäns psykiska hälsa. Tack för att du är med på resan.</p>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="index.html" class="footer-brand">Tryggman</a><p class="footer-tagline">Där trygghet skapas. Tillsammans bryter vi tystnaden.</p></div>
+    <div class="footer-col"><h4>Plattformen</h4><ul><li><a href="index.html">Hem</a></li><li><a href="chat.html">AI-Chat</a></li><li><a href="terapeut.html">Terapeut</a></li><li><a href="appen.html">Appen</a></li></ul></div>
+    <div class="footer-col"><h4>Hjälp</h4><ul><li><a href="resurser.html">Hjälplinjer</a></li><li><a href="berattelser.html">Berättelser</a></li></ul></div>
+    <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@tryggman.se">kontakt@tryggman.se</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div>© 2026 Tryggman</div><div class="footer-crisis">Kris? Ring 90101 eller 112</div></div>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(n=>{if(n.isIntersecting)n.target.classList.add('visible')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.sz').forEach(sz=>{sz.addEventListener('click',function(){this.closest('.p-sizes').querySelectorAll('.sz').forEach(s=>s.classList.remove('active'));this.classList.add('active')})});
+</script>
+</body></html>

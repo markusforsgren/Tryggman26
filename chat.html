@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Chat — Tryggman</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.chat-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:calc(100vh - 62px);margin-top:62px}
+.chat-info{background:var(--slate);padding:5rem 6% 4rem;display:flex;flex-direction:column;justify-content:center}
+.chat-info .section-label{color:var(--teal-light)}
+.chat-info h1{font-family:'DM Serif Display',serif;font-size:3rem;line-height:1.1;color:var(--white);margin-bottom:1.2rem}
+.chat-info h1 em{font-style:italic;color:var(--teal-light)}
+.chat-info p{font-size:0.95rem;color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:1rem;font-weight:300;max-width:400px}
+.chat-disclaimer{background:rgba(192,135,58,0.12);border-left:3px solid var(--gold);padding:1rem 1.3rem;font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.7;margin-top:1.5rem}
+.chat-disclaimer strong{color:var(--gold);font-weight:500}
+.chat-tips{margin-top:2rem;display:flex;flex-direction:column;gap:0.7rem}
+.chat-tip{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.82rem;color:rgba(255,255,255,0.35);font-weight:300}
+.chat-tip-icon{color:var(--teal-light);flex-shrink:0;margin-top:1px}
+
+.chat-panel{background:var(--cream);display:flex;flex-direction:column}
+.chat-window{display:flex;flex-direction:column;height:100%}
+.chat-topbar{background:var(--slate-mid);padding:1.1rem 1.5rem;display:flex;align-items:center;gap:0.9rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.chat-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;box-shadow:0 0 0 3px rgba(58,125,110,0.2)}
+.chat-topbar-name{font-size:0.9rem;font-weight:500;color:var(--white)}
+.chat-topbar-status{font-size:0.72rem;color:rgba(255,255,255,0.32)}
+.chat-messages{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;background:var(--slate);min-height:0}
+.chat-messages::-webkit-scrollbar{width:3px}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:2px}
+.msg{max-width:78%;padding:0.8rem 1.1rem;font-size:0.88rem;line-height:1.65;border-radius:2px}
+.msg.bot{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.78);align-self:flex-start}
+.msg.user{background:var(--teal);color:var(--white);align-self:flex-end}
+.msg-time{font-size:0.66rem;color:rgba(255,255,255,0.22);margin-top:0.3rem}
+.typing{display:flex;gap:4px;padding:0.8rem 1.1rem;align-self:flex-start;background:rgba(255,255,255,0.06);border-radius:2px}
+.typing span{width:5px;height:5px;background:rgba(255,255,255,0.3);border-radius:50%;animation:blink 1.2s infinite}
+.typing span:nth-child(2){animation-delay:0.2s}.typing span:nth-child(3){animation-delay:0.4s}
+@keyframes blink{0%,100%{opacity:0.3}50%{opacity:1}}
+.chat-inputbar{display:flex;gap:0.5rem;padding:1rem 1.2rem;background:var(--slate-mid);border-top:1px solid rgba(255,255,255,0.06)}
+.chat-input-field{flex:1;background:rgba(255,255,255,0.07);border:none;padding:0.7rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.88rem;border-radius:2px;outline:none}
+.chat-input-field::placeholder{color:rgba(255,255,255,0.22)}
+.chat-send{background:var(--teal);border:none;color:var(--white);padding:0.7rem 1.3rem;border-radius:2px;cursor:pointer;font-size:0.85rem;font-weight:500;font-family:'DM Sans',sans-serif;transition:background 0.2s}
+.chat-send:hover{background:var(--teal-light)}
+.chat-crisis-note{font-size:0.72rem;color:rgba(255,255,255,0.22);text-align:center;padding:0.6rem 1rem;background:var(--slate)}
+
+.quick-prompts{display:flex;flex-wrap:wrap;gap:0.5rem;padding:0.8rem 1.2rem;background:var(--slate);border-top:1px solid rgba(255,255,255,0.05)}
+.qp{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);padding:0.35rem 0.8rem;font-size:0.75rem;font-family:'DM Sans',sans-serif;cursor:pointer;border-radius:2px;transition:all 0.2s}
+.qp:hover{background:rgba(58,125,110,0.2);border-color:var(--teal);color:rgba(255,255,255,0.85)}
+
+@media(max-width:800px){
+  .chat-layout{grid-template-columns:1fr;min-height:auto}
+  .chat-info{padding:3rem 5% 2.5rem}
+  .chat-panel{min-height:70vh}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Tryggman</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Hem</a></li>
+    <li><a href="om-oss.html">Om oss</a></li>
+    <li><a href="chat.html" class="active">AI-Chat</a></li>
+    <li><a href="terapeut.html">Terapeut</a></li>
+    <li><a href="berattelser.html">Berättelser</a></li>
+    <li><a href="resurser.html">Resurser</a></li>
+    <li><a href="produkter.html">Produkter</a></li>
+    <li><a href="appen.html" class="nav-cta">Appen</a></li>
+  </ul>
+</nav>
+
+<div class="chat-layout">
+  <div class="chat-info">
+    <div class="section-label">Stöd dygnet runt</div>
+    <h1>Prata med<br><em>någon som lyssnar</em></h1>
+    <p>Vår AI-rådgivare finns här när du behöver det — mitt i natten, tidigt på morgonen, när det känns tungt. Ingen väntetid. Ingen bokning. Ingen dom.</p>
+    <p>Du behöver inte ha allt klart för dig. Börja bara där du är.</p>
+    <div class="chat-disclaimer">
+      <strong>Viktigt:</strong> AI-chatten ersätter inte professionell vård. Vid kris — ring <strong>90101</strong> (Mind, dygnet runt) eller <strong>112</strong>. Vill du ha en riktig terapeut? <a href="terapeut.html" style="color:var(--teal-light)">Boka här →</a>
+    </div>
+    <div class="chat-tips">
+      <div class="chat-tip"><span class="chat-tip-icon">○</span>Anonymt — vi sparar inget om dig</div>
+      <div class="chat-tip"><span class="chat-tip-icon">○</span>Tillgänglig 24/7, utan väntetid</div>
+      <div class="chat-tip"><span class="chat-tip-icon">○</span>Ersätter inte men kompletterar professionell vård</div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-window">
+      <div class="chat-topbar">
+        <div class="chat-dot"></div>
+        <div>
+          <div class="chat-topbar-name">Tryggman AI-rådgivare</div>
+          <div class="chat-topbar-status">Alltid tillgänglig · Anonymt · Inte professionell vård</div>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg bot">Hej. Jag är här för att lyssna. Du behöver inte förklara allt på en gång — börja där du är.<div class="msg-time">Nu</div></div>
+      </div>
+      <div class="quick-prompts">
+        <button class="qp" onclick="quickSend('Jag vet inte riktigt hur jag mår')">Jag vet inte hur jag mår</button>
+        <button class="qp" onclick="quickSend('Jag har svårt att sova')">Svårt att sova</button>
+        <button class="qp" onclick="quickSend('Jag känner mig ensam')">Jag känner mig ensam</button>
+        <button class="qp" onclick="quickSend('Jag är stressad och trött')">Stressad och trött</button>
+      </div>
+      <div class="chat-inputbar">
+        <input class="chat-input-field" id="chatInput" type="text" placeholder="Skriv något..." maxlength="500">
+        <button class="chat-send" onclick="sendChat()">Skicka</button>
+      </div>
+      <div class="chat-crisis-note">Vid akut kris: ring 90101 (Mind) eller 112 · AI ersätter inte professionell vård</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="index.html" class="footer-brand">Tryggman</a><p class="footer-tagline">Där trygghet skapas. Tillsammans bryter vi tystnaden.</p></div>
+    <div class="footer-col"><h4>Plattformen</h4><ul><li><a href="index.html">Hem</a></li><li><a href="chat.html">AI-Chat</a></li><li><a href="terapeut.html">Terapeut</a></li><li><a href="appen.html">Appen</a></li></ul></div>
+    <div class="footer-col"><h4>Hjälp</h4><ul><li><a href="resurser.html">Hjälplinjer</a></li><li><a href="berattelser.html">Berättelser</a></li></ul></div>
+    <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@tryggman.se">kontakt@tryggman.se</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div>© 2026 Tryggman</div><div class="footer-crisis">Kris? Ring 90101 eller 112</div></div>
+</footer>
+
+<script>
+const replies = [
+  'Tack för att du delar det. Kan du berätta lite mer om hur det känns?',
+  'Det låter tungt. Du behöver inte bära det ensam.',
+  'Jag hör dig. Hur länge har du känt så här?',
+  'Det är modigt att du skriver det. Vad brukar hjälpa dig när det är svårt?',
+  'Du är inte ensam om det du känner — många män bär på precis det du beskriver.',
+  'Tack för att du litar på mig med det. Vill du berätta mer om vad som hände?',
+  'Jag förstår. Om det vid något tillfälle känns för tungt — ring Mind Självmordslinjen på 90101. De finns dygnet runt, anonymt och gratis.',
+];
+let ri = 0;
+
+function addMsg(text, type) {
+  const box = document.getElementById('chatMessages');
+  const d = document.createElement('div');
+  d.className = 'msg ' + type;
+  const t = new Date().toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'});
+  d.innerHTML = text + '<div class="msg-time">' + t + '</div>';
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+function showTyping() {
+  const box = document.getElementById('chatMessages');
+  const t = document.createElement('div');
+  t.className='typing';t.id='typing';
+  t.innerHTML='<span></span><span></span><span></span>';
+  box.appendChild(t);box.scrollTop=box.scrollHeight;
+}
+function removeTyping(){const t=document.getElementById('typing');if(t)t.remove()}
+function sendChat() {
+  const inp = document.getElementById('chatInput');
+  const txt = inp.value.trim();
+  if (!txt) return;
+  addMsg(txt, 'user');
+  inp.value = '';
+  showTyping();
+  setTimeout(()=>{removeTyping();addMsg(replies[ri%replies.length],'bot');ri++;},1100+Math.random()*900);
+}
+function quickSend(txt) {
+  document.getElementById('chatInput').value = txt;
+  sendChat();
+}
+document.getElementById('chatInput').addEventListener('keypress',e=>{if(e.key==='Enter')sendChat()});
+</script>
+</body></html>
