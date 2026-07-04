@@ -25,11 +25,11 @@ body{font-family:'DM Sans',sans-serif;background:#1C2B35;color:#fff;height:100vh
 .login-error{font-size:0.78rem;color:#ff6b6b;margin-bottom:0.8rem;display:none}
 
 /* ADMIN LAYOUT */
-.admin-layout{display:none;height:100vh;grid-template-columns:320px 1fr;grid-template-rows:56px 1fr}
+.admin-layout{display:none;height:100vh;grid-template-columns:300px 1fr;grid-template-rows:56px 1fr}
 .admin-layout.active{display:grid}
 
-/* TOPBAR */
-.topbar{grid-column:1/-1;background:#2E4050;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem}
+/* TOPBAR - mörk */
+.topbar{grid-column:1/-1;background:#1C2B35;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem}
 .topbar-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:#fff}
 .topbar-badge{font-size:0.72rem;color:#4E9E8D;background:rgba(78,158,141,0.1);padding:0.2rem 0.6rem;border-radius:2px;margin-left:0.8rem}
 .topbar-right{display:flex;align-items:center;gap:1rem}
@@ -37,56 +37,61 @@ body{font-family:'DM Sans',sans-serif;background:#1C2B35;color:#fff;height:100vh
 .logout-btn{background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);padding:0.3rem 0.8rem;font-size:0.75rem;font-family:'DM Sans',sans-serif;cursor:pointer;border-radius:2px;transition:all 0.2s}
 .logout-btn:hover{border-color:rgba(255,255,255,0.4);color:#fff}
 
-/* SIDEBAR */
-.sidebar{background:#243442;border-right:1px solid rgba(255,255,255,0.06);overflow-y:auto;display:flex;flex-direction:column}
+/* SIDEBAR - halvmörk */
+.sidebar{background:#2E4050;border-right:1px solid rgba(255,255,255,0.06);overflow-y:auto;display:flex;flex-direction:column}
 .sidebar-header{padding:1rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between}
-.sidebar-title{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+.sidebar-title{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
 .unread-badge{background:#C0873A;color:#fff;font-size:0.65rem;padding:0.15rem 0.5rem;border-radius:10px}
 
 .conv-list{flex:1;overflow-y:auto}
 .conv-item{padding:1rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;transition:background 0.15s;position:relative}
-.conv-item:hover{background:rgba(255,255,255,0.04)}
-.conv-item.active{background:rgba(58,125,110,0.15);border-left:3px solid #3A7D6E}
+.conv-item:hover{background:rgba(255,255,255,0.05)}
+.conv-item.active{background:rgba(58,125,110,0.2);border-left:3px solid #3A7D6E}
 .conv-item.unread{border-left:3px solid #C0873A}
 .conv-name{font-size:0.88rem;font-weight:500;color:#fff;margin-bottom:0.2rem}
-.conv-preview{font-size:0.75rem;color:rgba(255,255,255,0.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.3rem}
+.conv-preview{font-size:0.75rem;color:rgba(255,255,255,0.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.3rem}
 .conv-meta{display:flex;align-items:center;justify-content:space-between}
-.conv-time{font-size:0.68rem;color:rgba(255,255,255,0.25)}
+.conv-time{font-size:0.68rem;color:rgba(255,255,255,0.3)}
 .conv-unread-dot{width:8px;height:8px;border-radius:50%;background:#C0873A}
 .conv-empty{padding:2rem 1.2rem;text-align:center;color:rgba(255,255,255,0.3);font-size:0.85rem}
 
-/* CHAT AREA */
-.chat-area{display:flex;flex-direction:column;overflow:hidden}
-.chat-empty{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;color:rgba(255,255,255,0.25)}
+/* CHAT AREA - ljus */
+.chat-area{display:flex;flex-direction:column;overflow:hidden;background:#FAFAF7}
+.chat-empty{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;color:#6B7A85}
 .chat-empty-icon{font-size:3rem}
 .chat-empty p{font-size:0.88rem}
 
-.chat-header{padding:1rem 1.5rem;background:#2E4050;border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0;display:none}
+.chat-header{padding:1rem 1.5rem;background:#fff;border-bottom:1px solid rgba(28,43,53,0.08);flex-shrink:0;display:none}
 .chat-header.active{display:flex;align-items:center;justify-content:space-between}
-.chat-header-name{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#fff}
-.chat-header-email{font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:0.1rem}
-.chat-header-status{font-size:0.72rem;background:rgba(58,125,110,0.15);color:#4E9E8D;padding:0.2rem 0.6rem;border-radius:2px}
+.chat-header-name{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#1C2B35}
+.chat-header-email{font-size:0.75rem;color:#6B7A85;margin-top:0.1rem}
+.chat-header-status{font-size:0.72rem;background:rgba(58,125,110,0.1);color:#3A7D6E;padding:0.2rem 0.6rem;border-radius:2px}
 
-#adminMessages{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;display:none}
+#adminMessages{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;display:none;background:#FAFAF7}
 #adminMessages.active{display:flex}
+#adminMessages::-webkit-scrollbar{width:3px}
+#adminMessages::-webkit-scrollbar-thumb{background:rgba(28,43,53,0.12);border-radius:2px}
 
-.message{max-width:70%;padding:0.85rem 1.1rem;font-size:0.88rem;line-height:1.65;border-radius:2px}
-.message.user{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.82);align-self:flex-start}
-.message.therapist{background:#3A7D6E;color:#fff;align-self:flex-end}
-.message.system{background:rgba(78,158,141,0.1);color:#4E9E8D;align-self:center;font-size:0.75rem;text-align:center;padding:0.4rem 1rem}
-.message-sender{font-size:0.65rem;color:rgba(255,255,255,0.3);margin-bottom:0.3rem}
-.message-time{font-size:0.65rem;color:rgba(255,255,255,0.3);margin-top:0.3rem;text-align:right}
-.message.user .message-time{text-align:left}
+/* Meddelanden - iMessage stil */
+.message{max-width:70%;padding:0.85rem 1.1rem;font-size:0.88rem;line-height:1.65;border-radius:12px}
+.message.user{background:#fff;color:#1C2B35;align-self:flex-start;border:1px solid rgba(28,43,53,0.1);border-bottom-left-radius:2px;box-shadow:0 1px 4px rgba(28,43,53,0.06)}
+.message.therapist{background:#3A7D6E;color:#fff;align-self:flex-end;border-bottom-right-radius:2px}
+.message.system{background:rgba(58,125,110,0.08);color:#3A7D6E;align-self:center;font-size:0.75rem;text-align:center;padding:0.4rem 1rem;border-radius:2px}
+.message-sender{font-size:0.65rem;color:#6B7A85;margin-bottom:0.3rem}
+.message-time{font-size:0.65rem;margin-top:0.3rem}
+.message.user .message-time{color:#6B7A85;text-align:left}
+.message.therapist .message-time{color:rgba(255,255,255,0.55);text-align:right}
 
-.reply-area{padding:1rem 1.5rem;background:#2E4050;border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0;display:none}
+/* Svarsruta - ljus */
+.reply-area{padding:1rem 1.5rem;background:#fff;border-top:1px solid rgba(28,43,53,0.08);flex-shrink:0;display:none}
 .reply-area.active{display:block}
 .reply-row{display:flex;gap:0.5rem}
-#replyInput{flex:1;background:rgba(255,255,255,0.07);border:none;padding:0.7rem 1rem;color:#fff;font-family:'DM Sans',sans-serif;font-size:0.88rem;border-radius:2px;outline:none;resize:none;min-height:42px;max-height:120px}
-#replyInput::placeholder{color:rgba(255,255,255,0.3)}
-.reply-btn{background:#3A7D6E;border:none;color:#fff;padding:0.7rem 1.2rem;border-radius:2px;cursor:pointer;font-size:0.85rem;font-weight:500;font-family:'DM Sans',sans-serif;transition:background 0.2s;white-space:nowrap}
+#replyInput{flex:1;background:#F2EDE5;border:none;padding:0.7rem 1rem;color:#1C2B35;font-family:'DM Sans',sans-serif;font-size:0.88rem;border-radius:20px;outline:none;resize:none;min-height:42px;max-height:120px}
+#replyInput::placeholder{color:#6B7A85}
+.reply-btn{background:#3A7D6E;border:none;color:#fff;padding:0.7rem 1.2rem;border-radius:20px;cursor:pointer;font-size:0.85rem;font-weight:500;font-family:'DM Sans',sans-serif;transition:background 0.2s;white-space:nowrap}
 .reply-btn:hover{background:#4E9E8D}
 .reply-btn:disabled{opacity:0.4;cursor:not-allowed}
-.reply-note{font-size:0.68rem;color:rgba(255,255,255,0.25);margin-top:0.5rem}
+.reply-note{font-size:0.68rem;color:#6B7A85;margin-top:0.5rem}
 </style>
 </head>
 <body>
@@ -155,7 +160,7 @@ body{font-family:'DM Sans',sans-serif;background:#1C2B35;color:#fff;height:100vh
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, getDocs, serverTimestamp, doc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, getDocs, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyC-hMsjidzd--a4buvtAapLWpXmbj2yaH4",
@@ -173,7 +178,6 @@ const db = getFirestore(app);
 let currentConvId = null;
 let messageUnsubscribe = null;
 
-// Auth state
 onAuthStateChanged(auth, (user) => {
   if (user) {
     document.getElementById('loginScreen').classList.add('hidden');
@@ -203,7 +207,6 @@ window.doLogout = async function() {
   currentConvId = null;
 };
 
-// Enter to login
 document.getElementById('loginPassword').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') window.doLogin();
 });
@@ -213,18 +216,14 @@ function loadConversations() {
   onSnapshot(q, async (snapshot) => {
     const list = document.getElementById('convList');
     list.innerHTML = '';
-
     if (snapshot.empty) {
       list.innerHTML = '<div class="conv-empty">Inga konversationer än.</div>';
       return;
     }
-
     let unreadCount = 0;
     for (const docSnap of snapshot.docs) {
       const conv = docSnap.data();
       const convId = docSnap.id;
-
-      // Hämta senaste meddelandet
       const msgQ = query(collection(db, 'conversations', convId, 'messages'), orderBy('timestamp', 'desc'));
       const msgSnap = await getDocs(msgQ);
       let lastMsg = '';
@@ -234,7 +233,6 @@ function loadConversations() {
         lastMsg = last.content || '';
         if (last.role === 'user') { hasUnread = true; unreadCount++; }
       }
-
       const item = document.createElement('div');
       item.className = `conv-item${hasUnread ? ' unread' : ''}${convId === currentConvId ? ' active' : ''}`;
       item.innerHTML = `
@@ -247,21 +245,14 @@ function loadConversations() {
       item.onclick = () => openConversation(convId, conv.userName, conv.userEmail);
       list.appendChild(item);
     }
-
     const badge = document.getElementById('unreadBadge');
-    if (unreadCount > 0) {
-      badge.textContent = unreadCount;
-      badge.style.display = 'inline';
-    } else {
-      badge.style.display = 'none';
-    }
+    if (unreadCount > 0) { badge.textContent = unreadCount; badge.style.display = 'inline'; }
+    else { badge.style.display = 'none'; }
   });
 }
 
 window.openConversation = function(convId, name, email) {
   currentConvId = convId;
-
-  // Uppdatera UI
   document.querySelectorAll('.conv-item').forEach(el => el.classList.remove('active'));
   document.getElementById('chatEmpty').style.display = 'none';
   document.getElementById('chatHeader').classList.add('active');
@@ -269,9 +260,7 @@ window.openConversation = function(convId, name, email) {
   document.getElementById('replyArea').classList.add('active');
   document.getElementById('headerName').textContent = name || 'Anonym';
   document.getElementById('headerEmail').textContent = email || '';
-
   if (messageUnsubscribe) messageUnsubscribe();
-
   const q = query(collection(db, 'conversations', convId, 'messages'), orderBy('timestamp', 'asc'));
   messageUnsubscribe = onSnapshot(q, (snapshot) => {
     const container = document.getElementById('adminMessages');
@@ -307,26 +296,18 @@ window.sendReply = async function() {
   const input = document.getElementById('replyInput');
   const message = input.value.trim();
   if (!message) return;
-
   const btn = document.getElementById('replyBtn');
   btn.disabled = true;
   input.value = '';
   input.style.height = 'auto';
-
   try {
     await addDoc(collection(db, 'conversations', currentConvId, 'messages'), {
-      role: 'therapist',
-      content: message,
-      timestamp: serverTimestamp()
+      role: 'therapist', content: message, timestamp: serverTimestamp()
     });
-  } catch(e) {
-    console.error(e);
-  } finally {
-    btn.disabled = false;
-  }
+  } catch(e) { console.error(e); }
+  finally { btn.disabled = false; }
 };
 
-// Textarea auto-resize + Enter
 document.getElementById('replyInput').addEventListener('input', (e) => {
   e.target.style.height = 'auto';
   e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px';
