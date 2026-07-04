@@ -87,6 +87,47 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .pillar-title{font-family:'DM Serif Display',serif;font-size:1.35rem;color:#1C2B35;margin-bottom:0.7rem}
 .pillar-body{font-size:0.88rem;color:#6B7A85;line-height:1.85;font-weight:300}
 
+/* PRICING */
+.section-pricing{padding:6rem 8%;background:#1C2B35}
+.pricing-inner{max-width:900px;margin:0 auto}
+.pricing-header{text-align:center;margin-bottom:3.5rem}
+.pricing-header .section-label{color:#4E9E8D}
+.pricing-header .section-title{color:#fff}
+.pricing-header p{color:rgba(255,255,255,0.45);font-size:0.95rem;font-weight:300}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem}
+
+.price-card{background:#2E4050;padding:2.2rem;position:relative;border-top:3px solid #3A7D6E}
+.price-card.featured{background:#3A7D6E;border-top-color:#4E9E8D}
+.price-tag-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:#4E9E8D;margin-bottom:0.8rem}
+.price-card.featured .price-tag-label{color:rgba(255,255,255,0.7)}
+.price-name{font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:0.5rem}
+.price-amount{font-family:'DM Serif Display',serif;font-size:3rem;color:#fff;line-height:1;margin-bottom:0.3rem}
+.price-amount span{font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:300;color:rgba(255,255,255,0.5)}
+.price-desc{font-size:0.82rem;color:rgba(255,255,255,0.45);margin-bottom:1.5rem;line-height:1.6}
+.price-card.featured .price-desc{color:rgba(255,255,255,0.7)}
+.price-features{list-style:none;margin-bottom:1.8rem;display:flex;flex-direction:column;gap:0.65rem}
+.price-features li{font-size:0.85rem;color:rgba(255,255,255,0.65);display:flex;align-items:flex-start;gap:0.6rem}
+.price-features li::before{content:'✓';color:#4E9E8D;font-weight:600;flex-shrink:0;margin-top:1px}
+.price-card.featured .price-features li{color:rgba(255,255,255,0.85)}
+.price-card.featured .price-features li::before{color:#fff}
+.price-btn{width:100%;padding:0.85rem;border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;transition:all 0.2s;text-align:center;display:block;text-decoration:none}
+.price-btn-outline{background:none;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7)}
+.price-btn-outline:hover{border-color:#4E9E8D;color:#fff}
+.price-btn-solid{background:#fff;color:#1C2B35}
+.price-btn-solid:hover{background:#F2EDE5}
+.price-free-note{font-size:0.75rem;color:rgba(255,255,255,0.35);text-align:center;margin-top:0.6rem}
+.price-value-note{font-size:0.78rem;color:rgba(255,255,255,0.5);font-style:italic;margin-top:0.8rem;text-align:center;line-height:1.5}
+
+/* FAQ */
+.section-faq{padding:5rem 8%;background:#F2EDE5}
+.faq-inner{max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(28,43,53,0.1);padding:1.2rem 0}
+.faq-q{font-weight:500;color:#1C2B35;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:0.95rem}
+.faq-q::after{content:'+';font-size:1.3rem;color:#3A7D6E;transition:transform 0.2s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:0.88rem;color:#6B7A85;line-height:1.75;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease}
+.faq-item.open .faq-a{max-height:200px;padding-top:0.8rem}
+
 .section-cta{background:#1C2B35;padding:5rem 8%;text-align:center}
 .section-cta h2{font-family:'DM Serif Display',serif;font-size:2.8rem;color:#fff;margin-bottom:1rem}
 .section-cta p{color:rgba(255,255,255,0.45);font-size:1rem;margin-bottom:2.5rem;font-weight:300}
@@ -115,6 +156,7 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
   .hero-title{font-size:3rem}
   .section-why{grid-template-columns:1fr;gap:3rem;padding:4rem 5%}
   .pillars-grid{grid-template-columns:1fr;gap:1.2rem}
+  .pricing-grid{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr 1fr}
   .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
 }
@@ -169,7 +211,7 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
     <h1 class="hero-title">Där<br><em>trygghet</em><br>skapas</h1>
     <p class="hero-body">Vi tror på att varje man förtjänar att känna sig trygg med sin psykiska hälsa. I en värld där män förväntas hålla masken — skapar vi ett utrymme där det är okej att inte vara okej.</p>
     <div class="hero-actions">
-      <a href="appen.html" class="btn-primary">Upptäck appen</a>
+      <a href="chat.html" class="btn-primary">Prova gratis</a>
       <a href="resurser.html" class="btn-ghost-white">Få hjälp nu</a>
     </div>
   </div>
@@ -237,7 +279,7 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
           <div class="pillar-num">2</div>
           <span class="pillar-icon">🤝</span>
           <h3 class="pillar-title">Legitimerad terapeut</h3>
-          <p class="pillar-body">Chatta med eller boka tid hos en legitimerad psykoterapeut. Svar inom 24 timmar. Ingen bokning via telefon.</p>
+          <p class="pillar-body">Chatta med en legitimerad psykoterapeut. Svar inom 24 timmar. Ingen bokning via telefon. Ingen väntrumskänsla.</p>
         </div>
       </a>
       <a href="berattelser.html" style="text-decoration:none">
@@ -252,12 +294,90 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
   </div>
 </section>
 
+<!-- PRICING -->
+<section class="section-pricing" id="priser">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <div class="section-label">Transparent prissättning</div>
+      <h2 class="section-title">Välj ditt stöd</h2>
+      <p>Ingen bindningstid. Inga dolda kostnader. Avsluta när du vill.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-tag-label">Mental Fitness</div>
+        <div class="price-name">AI-Rådgivare</div>
+        <div class="price-amount">39 <span>kr/mån</span></div>
+        <div class="price-desc">Dygnet runt stöd, verktyg och reflektion — i din egen takt.</div>
+        <ul class="price-features">
+          <li>Obegränsad AI-chatt dygnet runt</li>
+          <li>Daglig humörtracking</li>
+          <li>Guidade andnings- & mindfulnessövningar</li>
+          <li>Artiklar & kunskap om mäns hälsa</li>
+          <li>100% anonymt</li>
+          <li>Ingen bindningstid</li>
+        </ul>
+        <a href="chat.html" class="price-btn price-btn-outline">Prova 3 meddelanden gratis</a>
+        <div class="price-free-note">Inget kreditkort krävs för att prova</div>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="price-tag-label">Professionell terapi</div>
+        <div class="price-name">Personlig Terapeut</div>
+        <div class="price-amount">349 <span>kr/mån</span></div>
+        <div class="price-desc">Asynkron textterapi med legitimerad psykoterapeut. Skriv när du vill — svar vardagar inom 24 timmar.</div>
+        <ul class="price-features">
+          <li>Legitimerad psykoterapeut</li>
+          <li>Svar inom 24 timmar (måndag–fredag)</li>
+          <li>Full tystnadsplikt</li>
+          <li>Skräddarsydd behandlingsplan</li>
+          <li>Allt i AI-paketet ingår</li>
+          <li>Ingen bindningstid</li>
+        </ul>
+        <a href="terapeut.html" class="price-btn price-btn-solid">Starta samtal med terapeut</a>
+        <div class="price-value-note">Motsvarar mindre än 12 kr om dagen — billigare än ett enskilt fysiskt terapeutbesök.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-faq">
+  <div class="faq-inner">
+    <div class="section-label">Vanliga frågor</div>
+    <h2 class="section-title" style="margin-bottom:2rem">Trygghet i varje detalj</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Syns det på mitt kontoutdrag?</div>
+      <div class="faq-a">Transaktionen visas som "Tryggman" — inte med något som avslöjar vad tjänsten handlar om. Din integritet är vår prioritet.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Hur hanteras mina data och chattar?</div>
+      <div class="faq-a">All data hanteras enligt GDPR. Dina chattar är krypterade och säljs aldrig vidare till tredje part. Du kan begära att all din data raderas när som helst.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Är terapeuterna verkligen legitimerade?</div>
+      <div class="faq-a">Ja. Alla terapeuter på Tryggman är legitimerade psykoterapeuter eller psykologer med svensk legitimation. De arbetar under full tystnadsplikt.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Hur fungerar asynkron textterapi?</div>
+      <div class="faq-a">Du skriver ett meddelande när du vill — dag eller natt. Din terapeut läser och svarar inom 24 timmar på vardagar. Ingen inbokad tid, inga videosamtal, ingen press.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Kan jag avsluta när som helst?</div>
+      <div class="faq-a">Absolut. Ingen bindningstid, inga avgifter för uppsägning. Du avslutar din prenumeration med ett klick, när du vill.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Vad är skillnaden på AI-chatten och terapeuten?</div>
+      <div class="faq-a">AI-rådgivaren finns dygnet runt och är utmärkt för reflektion, dagliga verktyg och att ta första steget. Terapeuten är en legitimerad människa med klinisk utbildning — bättre för djupare bearbetning och behandling.</div>
+    </div>
+  </div>
+</section>
+
 <section class="section-cta">
   <h2>Redo att ta första steget?</h2>
   <p>Det behöver inte vara stort. Det räcker med ett meddelande.</p>
   <div class="cta-buttons">
-    <a href="chat.html" class="btn-primary">Prata med AI-rådgivaren</a>
-    <a href="terapeut.html" class="btn-ghost-white">Boka tid med terapeut</a>
+    <a href="chat.html" class="btn-primary">Prova AI-rådgivaren gratis</a>
+    <a href="terapeut.html" class="btn-ghost-white">Starta med terapeut</a>
   </div>
 </section>
 
@@ -270,8 +390,19 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
   </div>
   <div class="footer-bottom"><div>© 2026 Tryggman</div><div class="footer-crisis">Kris? Ring 90101 eller 112</div></div>
 </footer>
+
 <script>
 const obs=new IntersectionObserver(e=>{e.forEach(n=>{if(n.isIntersecting)n.target.classList.add('visible')})},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
 </script>
 </body></html>
