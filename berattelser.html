@@ -1,130 +1,434 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <title>Berättelser — Tryggman</title>
-<link rel="stylesheet" href="shared.css">
 <style>
-.stories-grid{display:grid;grid-template-columns:240px 1fr;gap:5rem;align-items:start;padding:5rem 8%;max-width:1100px;margin:0 auto}
-.story-aside{position:sticky;top:5rem}
-.story-avatar{width:100%;aspect-ratio:1;background:var(--slate);margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
-.story-avatar svg{opacity:0.12}
-.story-name{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--slate);margin-bottom:0.2rem}
-.story-meta{font-size:0.82rem;color:var(--text-muted);margin-bottom:1.5rem}
-.story-pull{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.15rem;color:var(--slate);line-height:1.45;border-top:1px solid var(--border);padding-top:1.3rem}
-.story-body p{font-size:1.02rem;color:var(--text-muted);line-height:1.9;margin-bottom:1.4rem;font-weight:300}
-.story-body p:first-child::first-letter{font-family:'DM Serif Display',serif;font-size:3.6rem;float:left;line-height:0.82;margin:0.1em 0.12em 0 0;color:var(--slate)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#FAFAF7;color:#1C2B35;line-height:1.6;overflow-x:hidden}
 
-.more-stories{background:var(--sand);padding:5rem 8%}
-.more-inner{max-width:1100px;margin:0 auto}
-.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
-.more-card{background:var(--white);padding:1.8rem;border-top:3px solid transparent;transition:border-color 0.25s,box-shadow 0.25s;cursor:pointer}
-.more-card:hover{border-top-color:var(--teal);box-shadow:0 6px 24px rgba(28,43,53,0.08)}
-.more-quote{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;color:var(--slate);line-height:1.5;margin-bottom:1rem}
-.more-author{font-size:0.8rem;color:var(--text-muted)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 6%;background:rgba(28,43,53,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.35rem;color:#fff;letter-spacing:0.02em;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.82rem;font-weight:400;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-links a.active{border-bottom:1px solid #4E9E8D;padding-bottom:2px}
+.nav-cta{background:#3A7D6E!important;color:#fff!important;padding:0.45rem 1.2rem!important;border-radius:2px;font-weight:500!important}
 
-.share-section{padding:5rem 8%;max-width:700px;margin:0 auto;text-align:center}
-.share-section p{color:var(--text-muted);margin-bottom:2rem}
+.page-hero{padding:7rem 8% 4rem;background:#1C2B35;margin-top:62px}
+.section-label{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#4E9E8D;margin-bottom:0.9rem}
+.page-hero h1{font-family:'DM Serif Display',serif;font-size:3.5rem;line-height:1.1;color:#fff;margin-bottom:1rem}
+.page-hero h1 em{font-style:italic;color:#4E9E8D}
+.page-hero p{font-size:1rem;color:rgba(255,255,255,0.5);max-width:560px;font-weight:300;line-height:1.85;margin-bottom:2rem}
+.hero-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.08);margin-top:1rem}
+.hero-tab{padding:0.8rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;background:none;border-top:none;border-left:none;border-right:none;font-family:'DM Sans',sans-serif}
+.hero-tab.active{color:#fff;border-bottom-color:#4E9E8D}
 
-@media(max-width:800px){.stories-grid{grid-template-columns:1fr;gap:2.5rem;padding:3rem 5%}.story-aside{position:relative;top:auto;display:grid;grid-template-columns:120px 1fr;gap:1.2rem}.story-avatar{width:120px}.more-grid{grid-template-columns:1fr}}
+/* BERÄTTELSER */
+.stories-section{padding:4rem 8%}
+.stories-inner{max-width:900px;margin:0 auto}
+.stories-list{display:flex;flex-direction:column;gap:2rem}
+
+.story-card{background:#fff;border:1px solid rgba(28,43,53,0.08);padding:2.2rem;position:relative;cursor:pointer;transition:all 0.2s}
+.story-card:hover{box-shadow:0 8px 32px rgba(28,43,53,0.08);border-color:rgba(28,43,53,0.15)}
+.story-card.locked{overflow:hidden}
+.story-card.locked .story-body{filter:blur(4px);pointer-events:none;user-select:none}
+
+.story-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.2rem;gap:1rem}
+.story-author{display:flex;align-items:center;gap:0.8rem}
+.story-avatar{width:42px;height:42px;border-radius:50%;background:#1C2B35;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1rem;color:#4E9E8D;flex-shrink:0}
+.story-name{font-weight:500;font-size:0.92rem;color:#1C2B35}
+.story-meta{font-size:0.72rem;color:#6B7A85;margin-top:0.1rem}
+.story-tag{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#3A7D6E;background:rgba(58,125,110,0.08);padding:0.25rem 0.7rem;border-radius:2px;white-space:nowrap}
+
+.story-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#1C2B35;margin-bottom:0.8rem;line-height:1.3}
+.story-body{font-size:0.92rem;color:#1C2B35;line-height:1.85;font-weight:300}
+.story-body p{margin-bottom:1rem}
+.story-body p:last-child{margin-bottom:0}
+.story-quote{border-left:3px solid #3A7D6E;padding:0.8rem 1.2rem;background:#F2EDE5;margin:1.2rem 0;font-family:'DM Serif Display',serif;font-style:italic;font-size:1rem;color:#1C2B35;line-height:1.5}
+
+.story-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(28,43,53,0.06);font-size:0.75rem;color:#6B7A85}
+.story-read-more{color:#3A7D6E;font-weight:500;cursor:pointer}
+
+/* LOCK */
+.story-lock-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,#fff 65%,rgba(255,255,255,0));padding:4rem 2.2rem 1.5rem;text-align:center}
+.story-lock-badge{display:inline-flex;align-items:center;gap:0.5rem;background:#1C2B35;color:#fff;padding:0.5rem 1rem;border-radius:2px;font-size:0.78rem;font-weight:500;margin-bottom:0.8rem}
+.story-lock-text{font-size:0.75rem;color:#6B7A85}
+.story-lock-link{color:#3A7D6E;font-weight:500;text-decoration:none}
+
+/* SKICKA IN */
+.submit-section{padding:4rem 8%;background:#F2EDE5;display:none}
+.submit-section.active{display:block}
+.submit-inner{max-width:700px;margin:0 auto}
+.submit-intro{margin-bottom:2.5rem}
+.submit-intro h2{font-family:'DM Serif Display',serif;font-size:2rem;color:#1C2B35;margin-bottom:0.8rem}
+.submit-intro p{font-size:0.92rem;color:#6B7A85;line-height:1.8;font-weight:300}
+.submit-note{background:rgba(28,43,53,0.05);border-left:3px solid #3A7D6E;padding:1rem 1.2rem;font-size:0.82rem;color:#6B7A85;margin-top:1rem;line-height:1.7}
+
+.submit-form{background:#fff;padding:2rem;border:1px solid rgba(28,43,53,0.08)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{margin-bottom:1rem}
+.form-label{font-size:0.78rem;font-weight:500;color:#1C2B35;margin-bottom:0.4rem;display:block}
+.form-field{width:100%;padding:0.82rem 1rem;border:1px solid rgba(28,43,53,0.12);font-family:'DM Sans',sans-serif;font-size:0.88rem;color:#1C2B35;border-radius:2px;outline:none;background:#FAFAF7;transition:border-color 0.2s}
+.form-field:focus{border-color:#3A7D6E;background:#fff}
+.form-field::placeholder{color:#6B7A85}
+textarea.form-field{min-height:180px;resize:vertical}
+.form-anon{display:flex;align-items:flex-start;gap:0.6rem;margin-bottom:1.5rem;padding:0.8rem;background:#F2EDE5;border-radius:2px}
+.form-anon input{accent-color:#3A7D6E;margin-top:3px;flex-shrink:0}
+.form-anon label{font-size:0.78rem;color:#6B7A85;line-height:1.5}
+.form-submit{background:#3A7D6E;color:#fff;padding:0.9rem 2rem;border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;transition:background 0.2s;width:100%}
+.form-submit:hover{background:#4E9E8D}
+.form-submit:disabled{opacity:0.5;cursor:not-allowed}
+.form-success{background:rgba(58,125,110,0.08);border:1px solid rgba(58,125,110,0.3);border-left:4px solid #3A7D6E;padding:1.5rem;text-align:center;display:none}
+.form-success h3{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#1C2B35;margin-bottom:0.5rem}
+.form-success p{font-size:0.85rem;color:#6B7A85}
+
+/* STORY OVERLAY */
+.story-overlay{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;background:#FAFAF7;overflow-y:auto}
+.story-overlay.active{display:flex}
+.story-overlay-header{background:#1C2B35;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;flex-shrink:0}
+.story-overlay-back{background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);padding:0.4rem 0.8rem;font-size:0.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;border-radius:2px;transition:all 0.2s}
+.story-overlay-back:hover{color:#fff;border-color:rgba(255,255,255,0.4)}
+.story-full{max-width:660px;margin:0 auto;padding:4rem 2rem}
+.story-full-author{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(28,43,53,0.08)}
+.story-full-avatar{width:52px;height:52px;border-radius:50%;background:#1C2B35;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1.2rem;color:#4E9E8D;flex-shrink:0}
+.story-full-name{font-weight:500;color:#1C2B35;margin-bottom:0.2rem}
+.story-full-meta{font-size:0.78rem;color:#6B7A85}
+.story-full-title{font-family:'DM Serif Display',serif;font-size:2.2rem;color:#1C2B35;margin-bottom:1.5rem;line-height:1.2}
+.story-full-body{font-size:0.98rem;color:#1C2B35;line-height:1.9;font-weight:300}
+.story-full-body p{margin-bottom:1.5rem}
+.story-full-body blockquote{border-left:3px solid #3A7D6E;padding:1rem 1.5rem;background:#F2EDE5;margin:2rem 0;font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;color:#1C2B35;line-height:1.55}
+
+footer{background:#1C2B35;padding:4.5rem 8% 2rem}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2rem}
+.footer-brand{font-family:'DM Serif Display',serif;font-size:1.6rem;color:#fff;margin-bottom:0.9rem;display:block;text-decoration:none}
+.footer-tagline{font-size:0.85rem;color:rgba(255,255,255,0.35);line-height:1.75;max-width:260px;font-weight:300}
+.footer-col h4{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:1.1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:0.5rem}
+.footer-col a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.85rem;transition:color 0.2s;font-weight:300}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;color:rgba(255,255,255,0.25);flex-wrap:wrap;gap:0.5rem}
+.footer-crisis{color:#4E9E8D;font-weight:500}
+
+@media(max-width:800px){
+  .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
+  .page-hero h1{font-size:2.4rem}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .story-full-title{font-size:1.7rem}
+}
 </style>
 </head>
 <body>
+
+<!-- STORY OVERLAY -->
+<div class="story-overlay" id="storyOverlay">
+  <div class="story-overlay-header">
+    <button class="story-overlay-back" onclick="closeStory()">← Tillbaka</button>
+  </div>
+  <div class="story-full" id="storyFull"></div>
+</div>
+
 <nav>
   <a href="index.html" class="nav-logo">Tryggman</a>
   <ul class="nav-links">
     <li><a href="index.html">Hem</a></li>
-    <li><a href="om-oss.html">Om oss</a></li>
     <li><a href="chat.html">AI-Chat</a></li>
     <li><a href="terapeut.html">Terapeut</a></li>
     <li><a href="halsa.html">Min hälsa</a></li>
     <li><a href="ovningar.html">Övningar</a></li>
-    <li><a href="berattelser.html" class="active">Berättelser</a></li>
     <li><a href="artiklar.html">Artiklar</a></li>
-    <li><a href="resurser.html">Resurser</a></li>
-    <li><a href="produkter.html">Produkter</a></li>
+    <li><a href="berattelser.html" class="active">Berättelser</a></li>
+    <li><a href="community.html">Community</a></li>
     <li><a href="appen.html" class="nav-cta">Appen</a></li>
   </ul>
 </nav>
 
 <div class="page-hero">
-  <div class="section-label">Riktiga berättelser</div>
-  <h1>Du är inte<br><em>ensam</em></h1>
-  <p>Här delar män sina erfarenheter av psykisk ohälsa, av att söka hjälp — och av att ta sig igenom det. För att ingen ska behöva kämpa i tystnad.</p>
-</div>
-
-<div class="stories-grid">
-  <div class="story-aside">
-    <div class="story-avatar">
-      <svg width="70" height="70" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="30" r="18" fill="white"/><ellipse cx="40" cy="70" rx="28" ry="18" fill="white"/></svg>
-    </div>
-    <div>
-      <div class="story-name">Marcus</div>
-      <div class="story-meta">38 år · Stockholm</div>
-      <div class="story-pull">"Jag grät för första gången på 15 år. Det räddade mitt liv."</div>
-    </div>
-  </div>
-  <div class="story-body reveal">
-    <p>Jag var 35 år gammal när jag insåg att jag inte orkade längre. På ytan hade jag allt — ett bra jobb, en familj, ett hus. Men inombords var jag tom. Varje morgon var en kamp att ta mig ur sängen.</p>
-    <p>Jag drack för att klara av dagarna. Jag skrek åt mina barn för småsaker. Jag berättade aldrig för någon hur jag mådde — det kändes omöjligt. Vad skulle de tänka?</p>
-    <p>Det som räddade mig var en arbetskollega som drog mig åt sidan en dag och sa: "Du verkar inte må bra. Vill du prata?" Först förnekade jag allt. Men han lämnade inte. Och till slut brast det.</p>
-    <p>Jag grät för första gången på 15 år.</p>
-    <p>Idag, tre år senare, mår jag bättre. Jag har lärt mig att prata om mina känslor. Jag har insett att det inte är svaghet att be om hjälp — det är det modigaste jag någonsin gjort.</p>
-    <p style="font-size:0.88rem;font-style:italic;color:rgba(107,122,133,0.55)">Är det din tur att ta av dig masken?</p>
+  <div class="section-label">Röster från verkligheten</div>
+  <h1>Berättelser från<br><em>riktiga män</em></h1>
+  <p>Korta, personliga berättelser om hur det faktiskt kan se ut på insidan. Anonyma röster. Inga filter. Inget vackert förpackat — bara sant.</p>
+  <div class="hero-tabs">
+    <button class="hero-tab active" onclick="switchTab('stories', this)">Läs berättelser</button>
+    <button class="hero-tab" onclick="switchTab('submit', this)">Dela din berättelse</button>
   </div>
 </div>
 
-<section class="more-stories">
-  <div class="more-inner">
-    <div class="section-label">Fler röster</div>
-    <h2 class="section-title">Männen bakom masken</h2>
-    <div class="more-grid">
-      <div class="more-card reveal">
-        <div class="more-quote">"Jag trodde att be om hjälp var att misslyckas. Idag vet jag att det var tvärtom."</div>
-        <div class="more-author">Jonas, 34 år · Göteborg</div>
+<!-- BERÄTTELSER -->
+<div class="stories-section" id="storiesSection">
+  <div class="stories-inner">
+    <div class="stories-list" id="storiesList"></div>
+  </div>
+</div>
+
+<!-- SKICKA IN -->
+<div class="submit-section" id="submitSection">
+  <div class="submit-inner">
+    <div class="submit-intro">
+      <h2>Din berättelse spelar roll</h2>
+      <p>Varje berättelse som delas bryter tystnaden lite mer. Du behöver inte ha gått igenom något dramatiskt. Det räcker med att du känner igen dig i något — och vill dela det med andra män som kanske gör detsamma.</p>
+      <p>Vi läser igenom varje inskickad berättelse innan publicering. Du väljer själv om du vill vara anonym.</p>
+      <div class="submit-note">Din berättelse publiceras inte automatiskt. Vi kontaktar dig (om du lämnar e-post) innan vi publicerar. Du kan alltid dra tillbaka din berättelse.</div>
+    </div>
+
+    <div class="submit-form" id="submitForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Ditt namn eller alias</label>
+          <input class="form-field" type="text" id="subName" placeholder="Marcus, 38 år — eller bara 'Anonym'">
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-post (valfritt, för kontakt)</label>
+          <input class="form-field" type="email" id="subEmail" placeholder="din@email.se">
+        </div>
       </div>
-      <div class="more-card reveal">
-        <div class="more-quote">"Att prata om det var det svåraste jag gjort. Och det viktigaste."</div>
-        <div class="more-author">Erik, 41 år · Malmö</div>
+      <div class="form-group">
+        <label class="form-label">Rubrik *</label>
+        <input class="form-field" type="text" id="subTitle" placeholder="T.ex. 'Dagen jag äntligen bad om hjälp'" maxlength="100">
       </div>
-      <div class="more-card reveal">
-        <div class="more-quote">"Jag hade allt på ytan. Inombords var jag tom. Det är okej att säga det högt."</div>
-        <div class="more-author">Peter, 52 år · Uppsala</div>
+      <div class="form-group">
+        <label class="form-label">Din berättelse *</label>
+        <textarea class="form-field" id="subBody" placeholder="Skriv fritt. Det behöver inte vara perfekt — det ska vara sant. Minimum 100 tecken." maxlength="5000"></textarea>
       </div>
-      <div class="more-card reveal">
-        <div class="more-quote">"Första gången jag ringde hjälplinjen skakade händerna. Men det var rätt val."</div>
-        <div class="more-author">Kalle, 28 år · Stockholm</div>
+      <div class="form-anon">
+        <input type="checkbox" id="subAnon" checked>
+        <label for="subAnon">Publicera mig som anonym. Mitt namn visas inte — bara berättelsen och eventuellt ålder/ort om jag väljer att skriva det i texten själv.</label>
       </div>
-      <div class="more-card reveal">
-        <div class="more-quote">"Min son sa att han var stolt över mig. Det räckte."</div>
-        <div class="more-author">Anders, 46 år · Örebro</div>
-      </div>
-      <div class="more-card reveal">
-        <div class="more-quote">"Ingenting i livet hade förberett mig för hur mörkt det kan bli. Ingenting hade förberett mig för hur bra det kan bli."</div>
-        <div class="more-author">Mattias, 37 år · Luleå</div>
-      </div>
+      <button class="form-submit" id="submitBtn" onclick="submitStory()">Skicka in min berättelse</button>
+    </div>
+
+    <div class="form-success" id="formSuccess">
+      <h3>Tack för att du delar.</h3>
+      <p>Vi har tagit emot din berättelse och läser igenom den inom några dagar. Om du lämnat e-post hör vi av oss innan publicering.</p>
     </div>
   </div>
-</section>
-
-<section class="share-section">
-  <div class="section-label">Dela din berättelse</div>
-  <h2 class="section-title">Din röst räknas</h2>
-  <p>Har du en berättelse att dela? Du kan vara anonym. Dina ord kan ge en annan man modet att ta första steget.</p>
-  <a href="mailto:kontakt@tryggman.se?subject=Min berättelse" class="btn-primary">Skicka din berättelse</a>
-</section>
+</div>
 
 <footer>
   <div class="footer-top">
-    <div><a href="index.html" class="footer-brand">Tryggman</a><p class="footer-tagline">Där trygghet skapas. Tillsammans bryter vi tystnaden.</p></div>
-    <div class="footer-col"><h4>Plattformen</h4><ul><li><a href="index.html">Hem</a></li><li><a href="chat.html">AI-Chat</a></li><li><a href="terapeut.html">Terapeut</a></li><li><a href="appen.html">Appen</a></li></ul></div>
-    <div class="footer-col"><h4>Hjälp</h4><ul><li><a href="resurser.html">Hjälplinjer</a></li><li><a href="berattelser.html">Berättelser</a></li></ul></div>
+    <div><a href="index.html" class="footer-brand">Tryggman</a><p class="footer-tagline">Där trygghet skapas. Tillsammans bryter vi tystnaden kring mäns psykiska hälsa.</p></div>
+    <div class="footer-col"><h4>Plattformen</h4><ul><li><a href="index.html">Hem</a></li><li><a href="chat.html">AI-Chat</a></li><li><a href="artiklar.html">Artiklar</a></li><li><a href="berattelser.html">Berättelser</a></li></ul></div>
+    <div class="footer-col"><h4>Hjälp</h4><ul><li><a href="resurser.html">Hjälplinjer</a></li><li><a href="community.html">Community</a></li></ul></div>
     <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@tryggman.se">kontakt@tryggman.se</a></li></ul></div>
   </div>
   <div class="footer-bottom"><div>© 2026 Tryggman</div><div class="footer-crisis">Kris? Ring 90101 eller 112</div></div>
 </footer>
-<script>
-const obs=new IntersectionObserver(e=>{e.forEach(n=>{if(n.isIntersecting)n.target.classList.add('visible')})},{threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+<script type="module">
+import { initializeApp, getApps } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC-hMsjidzd--a4buvtAapLWpXmbj2yaH4",
+  authDomain: "tryggman-b89fa.firebaseapp.com",
+  projectId: "tryggman-b89fa",
+  storageBucket: "tryggman-b89fa.firebasestorage.app",
+  messagingSenderId: "871100564839",
+  appId: "1:871100564839:web:0515b9d9d706706c335bc2"
+};
+
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const stories = [
+  {
+    id: 1,
+    name: 'Johan',
+    initials: 'J',
+    meta: '42 år · Göteborg',
+    tag: 'Utbrändhet',
+    title: 'Dagen jag grät på parkeringen',
+    locked: false,
+    excerpt: 'Jag satt i bilen i tjugo minuter innan jag orkade gå in på jobbet. Inte för att jag var rädd. Utan för att jag var så trött att tårarna bara rann och jag inte ens förstod varför.',
+    full: `<p>Jag satt i bilen i tjugo minuter innan jag orkade gå in på jobbet. Inte för att jag var rädd för något. Utan för att jag var så trött att tårarna bara rann och jag inte ens förstod varför.</p>
+    <p>Det hade byggt på sig i månader. Jag hade jobbat övertid, skött familjen, löst problem som inte var mina att lösa — och hela tiden sagt till mig själv att det snart skulle lugna sig. Att det bara var en tuff period.</p>
+    <blockquote>"Det är inte en tuff period. Det är ditt liv. Och det håller på att köra dig i botten."</blockquote>
+    <p>Det var vad min fru sa till mig den kvällen. Inte elakt. Utan desperat, för att hon sett det länge men inte vetat hur hon skulle nå fram.</p>
+    <p>Jag sökte hjälp tre veckor senare. Det var det svåraste jag gjort. Och det bästa.</p>`
+  },
+  {
+    id: 2,
+    name: 'Anonym',
+    initials: 'A',
+    meta: '35 år',
+    tag: 'Skilsmässa & barn',
+    title: 'Jag fick lära mig att vara pappa på halv tid',
+    locked: false,
+    excerpt: 'Ingen förberedde mig på hur det skulle kännas att lämna dem på söndagskvällen. Hur jag satt i den tomma lägenheten och inte visste vad jag skulle göra med alla timmar.',
+    full: `<p>Ingen förberedde mig på hur det skulle kännas att lämna dem på söndagskvällen. Hur jag satt i den tomma lägenheten och inte visste vad jag skulle göra med alla timmar som plötsligt inte längre var fyllda med dem.</p>
+    <p>Skilsmässan var rätt. Det visste vi båda. Men det gör det inte lättare att vara pappa på halv tid. Att missa saker. Att inte vara där när de vaknar på torsdagar.</p>
+    <p>Det tog mig ett år att sluta se den tomma lägenheten som ett misslyckande — och börja se den som ett ställe att vara människa i, inte bara pappa och försörjare.</p>
+    <blockquote>Jag är fortfarande deras pappa, varje dag, oavsett vilket hem de sover i.</blockquote>
+    <p>Det låter enkelt. Det är det inte. Men det är sant.</p>`
+  },
+  {
+    id: 3,
+    name: 'Mikael',
+    initials: 'M',
+    meta: '51 år · Stockholm',
+    tag: 'Depression',
+    title: 'Tjugo år med ett leende som inte var mitt',
+    locked: true,
+    excerpt: 'Jag var den rolige. Den som alltid hade ett svar, en historia, ett skämt. Ingen visste — inte ens min fru på länge — att jag på insidan var totalt tom.',
+    full: `<p>Jag var den rolige. Den som alltid hade ett svar, en historia, ett skämt. Folk sökte upp mig på fester. Jag var den som fick folk att skratta.</p>
+    <p>Ingen visste — inte ens min fru på länge — att jag på insidan var totalt tom. Att leendet var en kostym jag klädde på mig varje morgon. Att jag ibland satt i bilen utanför huset i fem minuter för att hinna sätta på mig den innan jag gick in.</p>
+    <blockquote>Depression ser sällan ut som man tror. Ibland ser det ut som att allting är bra.</blockquote>
+    <p>Det var min läkare som till slut ställde rätt fråga. Inte "hur mår du?" utan "hur mår du egentligen, när ingen ser på?" Då sprack något.</p>
+    <p>Jag är 51. Det tog mig tjugo år att förstå vad jag bar på. Jag önskar att någon hade frågat tidigare.</p>`
+  },
+  {
+    id: 4,
+    name: 'Anonym',
+    initials: 'A',
+    meta: '28 år',
+    tag: 'Ångest',
+    title: 'Ångesten ingen visste om',
+    locked: true,
+    excerpt: 'Utifrån såg jag ut att ha allt. Bra jobb, bra tjej, bra lägenhet. Inuti var det som att sitta i en bil med en motor som aldrig stängs av.',
+    full: `<p>Utifrån såg jag ut att ha allt. Bra jobb, bra tjej, bra lägenhet. Gym tre gånger i veckan. Vänner som tyckte jag var en "jordad" kille.</p>
+    <p>Inuti var det som att sitta i en bil med en motor som aldrig stängs av. Konstant brus. Konstant beredskap för något som aldrig kom men som alltid kändes som om det var på väg.</p>
+    <p>Jag berättade aldrig. Inte för tjejerna jag dejtat, inte för kompisarna, inte för mina föräldrar. Det var ett skämmigt hemlighållande av något jag inte ens hade ord för.</p>
+    <blockquote>Det tog ett panikattack på jobbet — framför tre kollegor — innan jag sökte hjälp. Jag önskar att jag hade gjort det utan att behöva nå botten först.</blockquote>
+    <p>KBT hjälpte. Det tar tid. Men det funkar. Och det är inget att skämmas för.</p>`
+  },
+  {
+    id: 5,
+    name: 'Thomas',
+    initials: 'T',
+    meta: '44 år · Malmö',
+    tag: 'Ensamhet',
+    title: 'Omgiven av folk, helt ensam',
+    locked: true,
+    excerpt: 'Jag hade ett fullt socialt liv på pappret. Fotbollslaget på tisdagar, grillkvällar, kollegor jag åt lunch med. Men ingen visste egentligen vem jag var.',
+    full: `<p>Jag hade ett fullt socialt liv på pappret. Fotbollslaget på tisdagar, grillkvällar sommartid, kollegor jag åt lunch med varje dag.</p>
+    <p>Men ingen visste egentligen vem jag var. Vi pratade om matcher och semestrar och arbete. Aldrig om hur man faktiskt hade det. Det var som om det fanns ett oskrivet avtal — vi håller oss på ytan, och vi låtsas att ytan är allt.</p>
+    <p>Jag tror att de flesta männen i min bekantskapskrets är lika ensamma som jag var. Vi ser det bara inte på varandra, för vi alla spelar samma spel.</p>
+    <blockquote>Den enda platsen jag faktiskt fick vara ärlig var i en anonym onlineforum. Det säger något om hur vi har det.</blockquote>
+    <p>Nu har jag en terapeut jag pratar med varannan vecka. Det är konstigt att det krävs en yrkesperson för att ha ett ärligt samtal — men det är bättre än ingenting.</p>`
+  }
+];
+
+let userPlan = 'free';
+
+// Kolla plan
+const auth = getAuth(app);
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    try {
+      const { doc, getDoc } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+      const snap = await getDoc(doc(db, 'users', user.uid));
+      if (snap.exists()) userPlan = snap.data().plan || 'free';
+    } catch(e) {}
+  }
+  renderStories();
+});
+
+function renderStories() {
+  const list = document.getElementById('storiesList');
+  list.innerHTML = '';
+  stories.forEach(story => {
+    const locked = story.locked && userPlan === 'free';
+    const card = document.createElement('div');
+    card.className = `story-card${locked ? ' locked' : ''}`;
+    card.innerHTML = `
+      <div class="story-header">
+        <div class="story-author">
+          <div class="story-avatar">${story.initials}</div>
+          <div>
+            <div class="story-name">${story.name}</div>
+            <div class="story-meta">${story.meta}</div>
+          </div>
+        </div>
+        <span class="story-tag">${story.tag}</span>
+      </div>
+      <div class="story-title">${story.title}</div>
+      <div class="story-body"><p>${story.excerpt}</p></div>
+      ${locked ? `
+        <div class="story-lock-overlay">
+          <div class="story-lock-badge">🔒 Kräver BAS-medlemskap</div>
+          <div class="story-lock-text">Läs alla berättelser med BAS — <a href="priser.html" class="story-lock-link">39 kr/mån →</a></div>
+        </div>` : `
+        <div class="story-footer">
+          <span>${story.tag}</span>
+          <span class="story-read-more" onclick="openStory(${story.id})">Läs hela berättelsen →</span>
+        </div>`}`;
+    list.appendChild(card);
+  });
+}
+
+window.openStory = function(id) {
+  const story = stories.find(s => s.id === id);
+  if (!story) return;
+  document.getElementById('storyFull').innerHTML = `
+    <div class="story-full-author">
+      <div class="story-full-avatar">${story.initials}</div>
+      <div>
+        <div class="story-full-name">${story.name}</div>
+        <div class="story-full-meta">${story.meta} · ${story.tag}</div>
+      </div>
+    </div>
+    <h1 class="story-full-title">${story.title}</h1>
+    <div class="story-full-body">${story.full}</div>`;
+  document.getElementById('storyOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('storyOverlay').scrollTop = 0;
+};
+
+window.closeStory = function() {
+  document.getElementById('storyOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+};
+
+window.switchTab = function(tab, btn) {
+  document.querySelectorAll('.hero-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('storiesSection').style.display = tab === 'stories' ? 'block' : 'none';
+  document.getElementById('submitSection').classList.toggle('active', tab === 'submit');
+};
+
+window.submitStory = async function() {
+  const name = document.getElementById('subName').value.trim();
+  const email = document.getElementById('subEmail').value.trim();
+  const title = document.getElementById('subTitle').value.trim();
+  const body = document.getElementById('subBody').value.trim();
+  const anon = document.getElementById('subAnon').checked;
+
+  if (!title || !body || body.length < 100) {
+    alert('Fyll i rubrik och en berättelse på minst 100 tecken.');
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Skickar...';
+
+  try {
+    await addDoc(collection(db, 'story_submissions'), {
+      name: anon ? 'Anonym' : (name || 'Anonym'),
+      email: email || null,
+      title,
+      body,
+      anonymous: anon,
+      status: 'pending',
+      submittedAt: serverTimestamp()
+    });
+    document.getElementById('submitForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  } catch(e) {
+    console.error(e);
+    alert('Något gick fel. Försök igen eller maila kontakt@tryggman.se');
+    btn.disabled = false;
+    btn.textContent = 'Skicka in min berättelse';
+  }
+};
+
+renderStories();
 </script>
 </body></html>
