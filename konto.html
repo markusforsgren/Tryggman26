@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<title>Mitt konto — Tryggman</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#FAFAF7;color:#1C2B35;min-height:100vh}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 6%;background:rgba(28,43,53,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.35rem;color:#fff;letter-spacing:0.02em;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.82rem;font-weight:400;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:#3A7D6E!important;color:#fff!important;padding:0.45rem 1.2rem!important;border-radius:2px;font-weight:500!important}
+
+.page-wrap{max-width:700px;margin:0 auto;padding:7rem 2rem 4rem}
+
+/* SUCCESS BANNER */
+.success-banner{background:rgba(58,125,110,0.1);border:1px solid rgba(58,125,110,0.3);border-left:4px solid #3A7D6E;padding:1.2rem 1.5rem;border-radius:2px;margin-bottom:2rem;display:none}
+.success-banner.active{display:flex;align-items:center;gap:1rem}
+.success-banner-icon{font-size:1.5rem}
+.success-banner h3{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#1C2B35;margin-bottom:0.2rem}
+.success-banner p{font-size:0.82rem;color:#6B7A85}
+
+/* PLAN CARD */
+.plan-card{background:#fff;border:1px solid rgba(28,43,53,0.08);padding:2rem;margin-bottom:1.5rem;border-radius:2px}
+.plan-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+.plan-card-title{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#6B7A85}
+.plan-badge{padding:0.3rem 0.8rem;border-radius:2px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em}
+.plan-badge.free{background:#F2EDE5;color:#6B7A85}
+.plan-badge.bas{background:rgba(28,43,53,0.08);color:#1C2B35}
+.plan-badge.premium{background:#3A7D6E;color:#fff}
+
+.plan-name{font-family:'DM Serif Display',serif;font-size:2rem;color:#1C2B35;margin-bottom:0.3rem}
+.plan-price{font-size:0.88rem;color:#6B7A85;margin-bottom:1.5rem}
+
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(28,43,53,0.08)}
+.plan-features li{font-size:0.85rem;color:#1C2B35;display:flex;align-items:center;gap:0.6rem}
+.plan-features li::before{content:'✓';color:#3A7D6E;font-weight:600}
+
+.plan-actions{display:flex;gap:0.8rem;flex-wrap:wrap}
+.btn-upgrade{background:#3A7D6E;color:#fff;padding:0.75rem 1.5rem;border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block}
+.btn-upgrade:hover{background:#4E9E8D}
+.btn-cancel{background:none;color:#6B7A85;padding:0.75rem 1.5rem;border:1px solid rgba(28,43,53,0.15);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.88rem;cursor:pointer;transition:all 0.2s}
+.btn-cancel:hover{border-color:#c0392b;color:#c0392b}
+
+/* PROFILE CARD */
+.profile-card{background:#fff;border:1px solid rgba(28,43,53,0.08);padding:2rem;margin-bottom:1.5rem;border-radius:2px}
+.profile-card-title{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#6B7A85;margin-bottom:1.2rem}
+.profile-row{display:flex;align-items:center;justify-content:space-between;padding:0.8rem 0;border-bottom:1px solid rgba(28,43,53,0.06)}
+.profile-row:last-child{border-bottom:none}
+.profile-label{font-size:0.82rem;color:#6B7A85}
+.profile-value{font-size:0.88rem;color:#1C2B35;font-weight:500}
+
+/* DANGER ZONE */
+.danger-card{background:#fff;border:1px solid rgba(192,57,43,0.15);padding:2rem;border-radius:2px}
+.danger-title{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#c0392b;margin-bottom:1rem}
+.danger-text{font-size:0.85rem;color:#6B7A85;margin-bottom:1.2rem;line-height:1.7}
+.btn-logout{background:none;color:#6B7A85;padding:0.65rem 1.2rem;border:1px solid rgba(28,43,53,0.15);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.85rem;cursor:pointer;transition:all 0.2s;margin-right:0.8rem}
+.btn-logout:hover{border-color:#1C2B35;color:#1C2B35}
+
+/* CANCEL MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(28,43,53,0.6);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.active{display:flex}
+.modal-card{background:#fff;padding:2rem;max-width:440px;width:100%;border-radius:2px;box-shadow:0 8px 32px rgba(28,43,53,0.15)}
+.modal-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#1C2B35;margin-bottom:0.8rem}
+.modal-text{font-size:0.88rem;color:#6B7A85;line-height:1.75;margin-bottom:1.5rem}
+.modal-actions{display:flex;gap:0.8rem;justify-content:flex-end}
+.modal-keep{background:#3A7D6E;color:#fff;border:none;padding:0.7rem 1.2rem;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer}
+.modal-keep:hover{background:#4E9E8D}
+.modal-confirm-cancel{background:none;color:#c0392b;border:1px solid rgba(192,57,43,0.3);padding:0.7rem 1.2rem;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.85rem;cursor:pointer}
+.modal-confirm-cancel:hover{background:rgba(192,57,43,0.05)}
+
+.loading{text-align:center;padding:4rem;color:#6B7A85}
+</style>
+</head>
+<body>
+
+<div class="modal-overlay" id="cancelModal">
+  <div class="modal-card">
+    <div class="modal-title">Avsluta prenumeration?</div>
+    <div class="modal-text">Om du avslutar tappar du tillgång till alla premiumfunktioner vid nästa fakturadatum. Du kan återaktivera när som helst.</div>
+    <div class="modal-actions">
+      <button class="modal-confirm-cancel" onclick="confirmCancel()">Ja, avsluta</button>
+      <button class="modal-keep" onclick="document.getElementById('cancelModal').classList.remove('active')">Behåll prenumeration</button>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Tryggman</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Hem</a></li>
+    <li><a href="chat.html">AI-Chat</a></li>
+    <li><a href="community.html">Community</a></li>
+    <li><a href="halsa.html">Min hälsa</a></li>
+    <li><a href="priser.html" class="nav-cta">Uppgradera</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <div class="success-banner" id="successBanner">
+    <div class="success-banner-icon">🎉</div>
+    <div>
+      <h3>Välkommen till Tryggman!</h3>
+      <p>Din prenumeration är aktiv. Du har nu tillgång till alla funktioner i ditt paket.</p>
+    </div>
+  </div>
+
+  <div id="accountContent" class="loading">Laddar ditt konto...</div>
+</div>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC-hMsjidzd--a4buvtAapLWpXmbj2yaH4",
+  authDomain: "tryggman-b89fa.firebaseapp.com",
+  projectId: "tryggman-b89fa",
+  storageBucket: "tryggman-b89fa.firebasestorage.app",
+  messagingSenderId: "871100564839",
+  appId: "1:871100564839:web:0515b9d9d706706c335bc2"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser = null;
+let userPlan = 'free';
+let subscriptionId = null;
+
+// Visa success-banner om redirect från checkout
+if (new URLSearchParams(window.location.search).get('success') === 'true') {
+  document.getElementById('successBanner').classList.add('active');
+  window.history.replaceState({}, '', 'konto.html');
+}
+
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.href = 'login.html?redirect=konto.html';
+    return;
+  }
+  currentUser = user;
+  loadAccount(user);
+});
+
+function loadAccount(user) {
+  const userRef = doc(db, 'users', user.uid);
+  onSnapshot(userRef, (snap) => {
+    const data = snap.exists() ? snap.data() : {};
+    userPlan = data.plan || 'free';
+    subscriptionId = data.stripeSubscriptionId || null;
+    renderAccount(user, data);
+  });
+}
+
+function renderAccount(user, data) {
+  const plan = data.plan || 'free';
+  const planNames = { free: 'Gratis', bas: 'BAS', premium: 'PREMIUM' };
+  const planPrices = { free: '0 kr/mån', bas: '39 kr/mån', premium: '349 kr/mån' };
+  const planFeatures = {
+    free: ['4 AI-meddelanden per dag', '2 berättelser per dag', 'Alla resurser & hjälplinjer'],
+    bas: ['Obegränsad AI-chatt', 'Community', 'Min hälsa & övningar', 'Alla berättelser', 'Chatthistorik 14 dagar'],
+    premium: ['Allt i BAS', 'Terapeut-chatt (svar inom 24h)', 'AI-analys av mående', 'Veckorapport', 'Exklusiva artiklar', 'Chatthistorik 30 dagar']
+  };
+
+  const activatedAt = data.planActivatedAt ? new Date(data.planActivatedAt.toDate()).toLocaleDateString('sv-SE') : '–';
+
+  document.getElementById('accountContent').innerHTML = `
+    <div class="plan-card">
+      <div class="plan-card-header">
+        <div class="plan-card-title">Din prenumeration</div>
+        <span class="plan-badge ${plan}">${planNames[plan]}</span>
+      </div>
+      <div class="plan-name">${planNames[plan]}</div>
+      <div class="plan-price">${planPrices[plan]} · Ingen bindningstid</div>
+      <ul class="plan-features">
+        ${planFeatures[plan].map(f => `<li>${f}</li>`).join('')}
+      </ul>
+      <div class="plan-actions">
+        ${plan === 'free' ? `
+          <a href="priser.html" class="btn-upgrade">Uppgradera till BAS – 39 kr/mån</a>
+          <a href="priser.html" class="btn-upgrade" style="background:#1C2B35">Uppgradera till PREMIUM</a>
+        ` : ''}
+        ${plan === 'bas' ? `
+          <a href="priser.html" class="btn-upgrade">Uppgradera till PREMIUM – 349 kr/mån</a>
+          <button class="btn-cancel" onclick="document.getElementById('cancelModal').classList.add('active')">Avsluta prenumeration</button>
+        ` : ''}
+        ${plan === 'premium' ? `
+          <button class="btn-cancel" onclick="document.getElementById('cancelModal').classList.add('active')">Avsluta prenumeration</button>
+        ` : ''}
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="profile-card-title">Kontoinformation</div>
+      <div class="profile-row">
+        <span class="profile-label">Namn</span>
+        <span class="profile-value">${user.displayName || 'Anonym'}</span>
+      </div>
+      <div class="profile-row">
+        <span class="profile-label">E-post</span>
+        <span class="profile-value">${user.email}</span>
+      </div>
+      <div class="profile-row">
+        <span class="profile-label">Plan aktiverad</span>
+        <span class="profile-value">${activatedAt}</span>
+      </div>
+      <div class="profile-row">
+        <span class="profile-label">Konto skapat</span>
+        <span class="profile-value">${user.metadata?.creationTime ? new Date(user.metadata.creationTime).toLocaleDateString('sv-SE') : '–'}</span>
+      </div>
+    </div>
+
+    <div class="danger-card">
+      <div class="danger-title">Kontoinställningar</div>
+      <div class="danger-text">Loggar du ut avslutas din session. Din data och prenumeration påverkas inte.</div>
+      <button class="btn-logout" onclick="doLogout()">Logga ut</button>
+    </div>
+  `;
+}
+
+window.doLogout = async function() {
+  await signOut(auth);
+  window.location.href = 'index.html';
+};
+
+window.confirmCancel = async function() {
+  document.getElementById('cancelModal').classList.remove('active');
+  try {
+    const response = await fetch('/.netlify/functions/cancel-subscription', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: currentUser.uid })
+    });
+    const data = await response.json();
+    if (data.success) {
+      alert('Din prenumeration avslutas vid nästa fakturadatum.');
+    } else {
+      alert('Något gick fel. Kontakta kontakt@tryggman.se');
+    }
+  } catch(e) {
+    alert('Något gick fel. Kontakta kontakt@tryggman.se');
+  }
+};
+</script>
+</body></html>
