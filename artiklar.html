@@ -14,11 +14,26 @@ body{font-family:'DM Sans',sans-serif;background:#FAFAF7;color:#1C2B35;line-heig
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 6%;background:rgba(28,43,53,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.05)}
 .nav-logo{font-family:'DM Serif Display',serif;font-size:1.35rem;color:#fff;letter-spacing:0.02em;text-decoration:none}
-.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
-.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.82rem;font-weight:400;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
-.nav-links a:hover,.nav-links a.active{color:#fff}
-.nav-links a.active{border-bottom:1px solid #4E9E8D;padding-bottom:2px}
-.nav-cta{background:#3A7D6E!important;color:#fff!important;padding:0.45rem 1.2rem!important;border-radius:2px;font-weight:500!important}
+
+.hamburger{background:none;border:none;cursor:pointer;padding:0.3rem;display:flex;flex-direction:column;gap:5px;z-index:102}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:all 0.3s ease;border-radius:2px}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:translateX(-8px)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-menu{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:#1C2B35;z-index:101;transition:right 0.35s ease;display:flex;flex-direction:column;padding:5rem 2rem 2rem;box-shadow:-8px 0 32px rgba(0,0,0,0.3)}
+.nav-menu.open{right:0}
+.nav-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;display:none;backdrop-filter:blur(2px)}
+.nav-menu-overlay.open{display:block}
+.nav-menu ul{list-style:none;display:flex;flex-direction:column;gap:0.2rem;flex:1}
+.nav-menu ul li a{display:block;padding:0.75rem 0.8rem;color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.95rem;font-weight:400;border-radius:2px;transition:all 0.2s}
+.nav-menu ul li a:hover,.nav-menu ul li a.active{color:#fff;background:rgba(255,255,255,0.05)}
+.nav-menu ul li a.active{color:#4E9E8D}
+.nav-menu-cta{background:#3A7D6E!important;color:#fff!important;font-weight:500!important;margin-top:0.5rem}
+.nav-menu-cta:hover{background:#4E9E8D!important}
+.nav-menu-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:1.2rem;margin-top:auto}
+.nav-menu-bottom a{display:block;padding:0.5rem 0.8rem;color:rgba(255,255,255,0.3);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
+.nav-menu-bottom a:hover{color:rgba(255,255,255,0.6)}
+.nav-menu-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 0.8rem;margin-bottom:0.3rem;margin-top:1rem}
 
 .page-hero{padding:7rem 8% 4rem;background:#1C2B35;margin-top:62px}
 .section-label{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#4E9E8D;margin-bottom:0.9rem}
@@ -26,14 +41,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .page-hero h1 em{font-style:italic;color:#4E9E8D}
 .page-hero p{font-size:1rem;color:rgba(255,255,255,0.5);max-width:560px;font-weight:300;line-height:1.85}
 
-/* FILTER */
 .filter-bar{padding:1.5rem 8%;background:#fff;border-bottom:1px solid rgba(28,43,53,0.08);display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center}
 .filter-btn{padding:0.4rem 1rem;border:1px solid rgba(28,43,53,0.15);background:#FAFAF7;border-radius:2px;font-size:0.78rem;color:#6B7A85;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
 .filter-btn:hover{border-color:#3A7D6E;color:#3A7D6E}
 .filter-btn.active{background:#1C2B35;border-color:#1C2B35;color:#fff}
 .filter-label{font-size:0.72rem;color:#6B7A85;text-transform:uppercase;letter-spacing:0.1em;margin-right:0.5rem}
 
-/* ARTIKLAR */
 .articles-section{padding:4rem 8%}
 .articles-inner{max-width:1100px;margin:0 auto}
 .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
@@ -41,22 +54,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .article-card{background:#fff;border:1px solid rgba(28,43,53,0.08);overflow:hidden;cursor:pointer;transition:all 0.2s;position:relative}
 .article-card:hover{box-shadow:0 8px 32px rgba(28,43,53,0.1);transform:translateY(-2px)}
 .article-card.locked .article-body{filter:blur(3px);pointer-events:none;user-select:none}
-
 .article-top{padding:1.5rem 1.5rem 0}
 .article-tag{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:#3A7D6E;margin-bottom:0.5rem}
 .article-title{font-family:'DM Serif Display',serif;font-size:1.25rem;color:#1C2B35;line-height:1.3;margin-bottom:0.8rem}
 .article-body{padding:0 1.5rem 1.5rem}
 .article-excerpt{font-size:0.85rem;color:#6B7A85;line-height:1.75;margin-bottom:1rem;font-weight:300}
 .article-meta{display:flex;align-items:center;justify-content:space-between;font-size:0.72rem;color:#6B7A85;padding-top:0.8rem;border-top:1px solid rgba(28,43,53,0.06)}
-.article-read-time{display:flex;align-items:center;gap:0.3rem}
 
-/* LOCK OVERLAY */
 .lock-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,#fff 60%,rgba(255,255,255,0));padding:3rem 1.5rem 1.5rem;text-align:center}
 .lock-badge{display:inline-flex;align-items:center;gap:0.5rem;background:#1C2B35;color:#fff;padding:0.5rem 1rem;border-radius:2px;font-size:0.78rem;font-weight:500;margin-bottom:0.8rem}
 .lock-text{font-size:0.75rem;color:#6B7A85}
 .lock-upgrade{color:#3A7D6E;font-weight:500;text-decoration:none}
 
-/* FEATURED */
 .article-featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0}
 .article-featured .article-top{padding:2rem 2rem 0}
 .article-featured .article-body{padding:0 2rem 2rem}
@@ -65,14 +74,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .article-featured-img{background:#1C2B35;display:flex;align-items:center;justify-content:center;min-height:280px}
 .article-featured-img-inner{font-family:'DM Serif Display',serif;font-size:4rem;color:rgba(255,255,255,0.08);padding:2rem;text-align:center;line-height:1.2}
 
-/* ARTICLE OVERLAY */
 .article-overlay{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;background:#FAFAF7;overflow-y:auto}
 .article-overlay.active{display:flex}
-.article-overlay-header{background:#1C2B35;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:10}
+.article-overlay-header{background:#1C2B35;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;flex-shrink:0}
 .article-overlay-back{background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);padding:0.4rem 0.8rem;font-size:0.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;border-radius:2px;transition:all 0.2s}
 .article-overlay-back:hover{color:#fff;border-color:rgba(255,255,255,0.4)}
 .article-overlay-premium{font-size:0.72rem;color:#4E9E8D}
-
 .article-content{max-width:680px;margin:0 auto;padding:4rem 2rem}
 .article-content-tag{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#3A7D6E;margin-bottom:1rem}
 .article-content-title{font-family:'DM Serif Display',serif;font-size:2.8rem;line-height:1.1;color:#1C2B35;margin-bottom:1rem}
@@ -80,13 +87,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .article-content-body{font-size:1rem;color:#1C2B35;line-height:1.9;font-weight:300}
 .article-content-body p{margin-bottom:1.5rem}
 .article-content-body h2{font-family:'DM Serif Display',serif;font-size:1.6rem;color:#1C2B35;margin:2.5rem 0 1rem}
-.article-content-body h3{font-family:'DM Serif Display',serif;font-size:1.2rem;color:#1C2B35;margin:2rem 0 0.8rem}
 .article-content-body blockquote{border-left:3px solid #3A7D6E;padding:1rem 1.5rem;background:#F2EDE5;margin:2rem 0;font-family:'DM Serif Display',serif;font-style:italic;font-size:1.1rem;color:#1C2B35;line-height:1.55}
 .article-content-body .stat-box{background:#1C2B35;color:#fff;padding:1.5rem;margin:2rem 0;border-radius:2px}
 .article-content-body .stat-box strong{font-family:'DM Serif Display',serif;font-size:2rem;color:#4E9E8D;display:block;margin-bottom:0.3rem}
 .article-content-body .stat-box span{font-size:0.85rem;color:rgba(255,255,255,0.6)}
 
-/* PREMIUM GATE */
 .premium-gate{background:#1C2B35;padding:3rem;text-align:center;margin-top:3rem;border-radius:2px}
 .premium-gate h3{font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:0.8rem}
 .premium-gate p{font-size:0.88rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem;line-height:1.75}
@@ -109,7 +114,6 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
   .articles-grid{grid-template-columns:1fr}
   .article-featured{grid-template-columns:1fr}
   .article-featured-img{display:none}
-  .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
   .page-hero h1{font-size:2.4rem}
   .footer-top{grid-template-columns:1fr 1fr}
   .article-content-title{font-size:2rem}
@@ -118,7 +122,6 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
 </head>
 <body>
 
-<!-- ARTIKEL OVERLAY -->
 <div class="article-overlay" id="articleOverlay">
   <div class="article-overlay-header">
     <button class="article-overlay-back" onclick="closeArticle()">← Tillbaka</button>
@@ -127,18 +130,36 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
   <div class="article-content" id="articleContent"></div>
 </div>
 
-<nav>
-  <a href="index.html" class="nav-logo">Tryggman</a>
-  <ul class="nav-links">
+<div class="nav-menu-overlay" id="navOverlay" onclick="closeMenu()"></div>
+<div class="nav-menu" id="navMenu">
+  <ul>
+    <div class="nav-menu-label">Plattformen</div>
     <li><a href="index.html">Hem</a></li>
     <li><a href="chat.html">AI-Chat</a></li>
     <li><a href="terapeut.html">Terapeut</a></li>
     <li><a href="halsa.html">Min hälsa</a></li>
     <li><a href="ovningar.html">Övningar</a></li>
     <li><a href="artiklar.html" class="active">Artiklar</a></li>
+    <li><a href="berattelser.html">Berättelser</a></li>
     <li><a href="community.html">Community</a></li>
-    <li><a href="appen.html" class="nav-cta">Appen</a></li>
+    <div class="nav-menu-label">Konto</div>
+    <li><a href="priser.html">Priser</a></li>
+    <li><a href="konto.html">Mitt konto</a></li>
+    <li><a href="appen.html" class="nav-menu-cta">Appen</a></li>
   </ul>
+  <div class="nav-menu-bottom">
+    <a href="om-oss.html">Om oss</a>
+    <a href="resurser.html">Resurser & hjälplinjer</a>
+    <a href="produkter.html">Produkter</a>
+    <a href="mailto:kontakt@tryggman.se">Kontakt</a>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Tryggman</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Meny">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="page-hero">
@@ -166,248 +187,86 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
 <footer>
   <div class="footer-top">
     <div><a href="index.html" class="footer-brand">Tryggman</a><p class="footer-tagline">Där trygghet skapas. Tillsammans bryter vi tystnaden kring mäns psykiska hälsa.</p></div>
-    <div class="footer-col"><h4>Plattformen</h4><ul><li><a href="index.html">Hem</a></li><li><a href="chat.html">AI-Chat</a></li><li><a href="artiklar.html">Artiklar</a></li><li><a href="community.html">Community</a></li></ul></div>
-    <div class="footer-col"><h4>Hjälp</h4><ul><li><a href="resurser.html">Hjälplinjer</a></li><li><a href="berattelser.html">Berättelser</a></li></ul></div>
-    <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@tryggman.se">kontakt@tryggman.se</a></li></ul></div>
+    <div class="footer-col"><h4>Plattformen</h4><ul>
+      <li><a href="chat.html">AI-Chat</a></li>
+      <li><a href="terapeut.html">Terapeut</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="halsa.html">Min hälsa</a></li>
+      <li><a href="ovningar.html">Övningar</a></li>
+      <li><a href="appen.html">Appen</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Innehåll</h4><ul>
+      <li><a href="artiklar.html">Artiklar</a></li>
+      <li><a href="berattelser.html">Berättelser</a></li>
+      <li><a href="resurser.html">Resurser</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Om Tryggman</h4><ul>
+      <li><a href="om-oss.html">Om oss</a></li>
+      <li><a href="priser.html">Priser</a></li>
+      <li><a href="produkter.html">Produkter</a></li>
+      <li><a href="mailto:kontakt@tryggman.se">Kontakt</a></li>
+    </ul></div>
   </div>
   <div class="footer-bottom"><div>© 2026 Tryggman</div><div class="footer-crisis">Kris? Ring 90101 eller 112</div></div>
 </footer>
 
 <script>
+function toggleMenu() {
+  const menu = document.getElementById('navMenu');
+  const overlay = document.getElementById('navOverlay');
+  const hamburger = document.getElementById('hamburger');
+  menu.classList.toggle('open'); overlay.classList.toggle('open'); hamburger.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('navMenu').classList.remove('open');
+  document.getElementById('navOverlay').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', closeMenu));
+
 const articles = [
-  {
-    id: 1,
-    tag: 'Tystnad & manlighet',
-    category: 'tystnad',
-    title: 'Borsta bort gruset och upp igen — om pojken som lärde sig hålla tyst',
-    excerpt: 'Det börjar inte med något dramatiskt. Det börjar inte med ett enda ögonblick man kan peka på och säga: där. Det börjar istället tyst, omärkligt och sakta — med en röst som med tiden börjar låta som din egen.',
-    readTime: '8 min',
-    premium: false,
-    featured: true,
-    content: `
-      <p>Det börjar inte med något dramatiskt. Det börjar inte med ett enda ögonblick man kan peka på och säga: där. Det var då det hände. Det börjar istället som de flesta viktiga saker i livet börjar – tyst, omärkligt och så sakta att man inte ens märker att det pågår.</p>
-      <p>Det börjar med en röst.</p>
-      <p>Kanske din pappas röst. Kanske din farfars, din äldre brors, en tränares eller en lärares. En röst som tillhörde någon du såg upp till, någon vars åsikt vägde tungt, någon vars ord landade djupt. En röst som hördes så tidigt och så ofta och i så många olika sammanhang att den till slut slutade låta som någon annans – och i stället började låta som din egen.</p>
-      <blockquote>Borsta bort gruset. Upp igen.</blockquote>
-      <p>Du föll. Det gjorde ont, på det äkta, genuina sätt som det gör ont när man slår sig som barn. Smärtan var verklig. Men den fick inte ta plats. Den borstades bort tillsammans med gruset på knäet, och du reste dig. Inte för att du inte hade ont. Utan för att det var det enda som var tillåtet.</p>
-      <h2>Fasaden som blev ett hem</h2>
-      <p>För det är det som är så lurigt och så farligt med inlärd tystnad – den är fullständigt osynlig inifrån. Du ser den inte på dig själv. Du märker inte när du gör det. Du lär dig le på rätt ställen i konversationen, svara "bra tack" när folk frågar hur du mår och mena det på ett sätt som känns äkta just i ögonblicket.</p>
-      <p>Tills fasaden inte längre är något du medvetet upprätthåller. Tills den har blivit du. Tills du har glömt att det är en fasad.</p>
-      <div class="stat-box"><strong>70%</strong><span>Av män som mår dåligt söker aldrig professionell hjälp. Rädslan för att dömas håller dem tysta — tills det är för sent. (Källa: Mind)</span></div>
-      <h2>Det vi inte fick lära oss</h2>
-      <p>Det finns en fråga som aldrig ställdes. En fråga som borde ha ställts – av föräldrar, av lärare, av tränare – men som i stället tystnade i samma ögonblick som tårarna kom:</p>
-      <blockquote>Hur har du det egentligen?</blockquote>
-      <p>Det vi egentligen behövde lära oss är att känslor inte är ett tecken på svaghet. Att gråta inte gör en till mindre man. Att be om hjälp inte är ett nederlag utan ett mod som kräver mer av en människa än att hålla tyst någonsin gör.</p>
-      <p>Att känslor är ett tecken på att man lever.</p>
-    `
-  },
-  {
-    id: 2,
-    tag: 'Utbrändhet & stress',
-    category: 'utbrändhet',
-    title: 'Vad utbrändhet faktiskt är — och varför sjukvården missar det hos män',
-    excerpt: 'Att gå in i väggen är inte bara att man blir trött. Det är en monumental felaktighet i hur vi som samhälle pratar om utbrändhet — och den felaktigheten kostar väldigt mycket för de som drabbas.',
-    readTime: '10 min',
-    premium: false,
-    content: `
-      <p>Att gå in i väggen är inte bara att man blir trött. Det är en så monumental felaktighet i hur vi som samhälle pratar om utbrändhet, och det är en felaktighet som kostar väldigt mycket för de människor som drabbas av den.</p>
-      <p>Det handlar inte om att behöva en sovmorgon, en helg i soffan eller en extra veckas semester. Det är inte en fråga om att skärpa sig, ta sig i kragen eller prioritera om. Det handlar om att kroppen bokstavligen håller på att stänga av på ett grundläggande, biologiskt plan.</p>
-      <h2>Hjärnan som slutade fungera</h2>
-      <p>Logiken försvinner. Den analytiska förmågan som man alltid tagit för given — som om den var en del av vem man var — är borta. Minnet sviker i de mest vardagliga situationer. Man kan gå ut från en affär och inte ha en aning om var man parkerat bilen.</p>
-      <p>Värst är det när det händer inför andra. Man kan stå mitt i fredagsrusningen på ICA och plötsligt drabbas av en total, akut överväldigande känsla av hjälplöshet. Bröstet snördes åt. Och tårarna börjar bara rinna — där, mellan mjölkhyllorna och frysdiskarna.</p>
-      <blockquote>Det var som om alla försvarsmurar jag byggt upp under ett helt liv hade vittrat sönder till damm på en sekund. Kroppen sa ifrån. Den vägrade att lyda mer.</blockquote>
-      <h2>Varför sjukvården missar det</h2>
-      <div class="stat-box"><strong>Underdiagnostiserade</strong><span>Forskning från Lunds universitet visar att män och kvinnor drabbas ungefär lika ofta av utbrändhet — men att symtombilden ser annorlunda ut. Männens utbrändhet är svårare att känna igen och systematiskt underdiagnostiseras. (Källa: Lunds universitet / Karolinska Institutet)</span></div>
-      <p>Kvinnor uppvisar oftare emotionell utmattning och öppen nedstämdhet. Män uppvisar oftare cynism, distansering, irritabilitet och fysiska symtom. Det gör att männens utbrändhet är svårare att känna igen — och svårare för sjukvården att hantera.</p>
-      <p>Stressen sätter hela hormonbalansen ur spel. Kroppen befinner sig i ett konstant fight-or-flight-tillstånd där nervsystemet alltid är på högsta beredskap. Kortisolnivåerna är förhöjda. Sömnkvaliteten kollapsar. Kroppens förmåga att återhämta sig bryter samman.</p>
-      <h2>Det är inte ditt fel</h2>
-      <p>Byggnadsarbetare — snickare, plåtslagare, målare — har förhöjd risk för självmord jämfört med befolkningen i övrigt. En grupp som sällan pratar om hur de mår. Som arbetar hårt, levererar och förväntas hålla ihop.</p>
-      <p>Män går in i väggen. Män drabbas av utmattning. Och när de väl tar steget och söker hjälp — när de äntligen sitter mitt emot någon och försöker berätta — förtjänar de att bli sedda. Inte bortförklarade.</p>
-    `
-  },
-  {
-    id: 3,
-    tag: 'Föräldraskap',
-    category: 'föräldraskap',
-    title: 'Pappan som inte räknades — om osynligheten i ett jämställt land',
-    excerpt: 'Sverige är ett av världens mest jämställda länder. Men det finns en sida av berättelsen som sällan berättas — pappan som sitter ensam i väntrummet på BVC och känner blickarna falla på honom.',
-    readTime: '9 min',
-    premium: true,
-    content: `
-      <p>Sverige är ett av världens mest jämställda länder. Det sägs med en stolthet som är svår att ifrågasätta — på konferenser, i rapporter, i valmanifest. Vi har kommit långt. Det är sant.</p>
-      <p>Men det finns en sida av jämställdhetsberättelsen som sällan berättas. En sida som är svårare att mäta, svårare att sätta i ett diagram. Det är berättelsen om pappan som sitter ensam i väntrummet på BVC och känner blickarna falla på honom.</p>
-      <blockquote>Inte onda blickar. Inte fientliga. Bara frågande. En tyst undran som hänger i luften: Var är mamman? Varför är det han som kom?</blockquote>
-      <h2>Det osynliga kontraktet</h2>
-      <p>Det finns ett kontrakt som ingen skriver på men som alla förväntas följa. Du ska se till att familjen tar sig från A till B. Du ska jobba. Du ska leverera ekonomisk trygghet. Det är ditt ansvar, och det ifrågasätts sällan — det förväntas bara, som gravitationen förväntas.</p>
-      <p>Och när du är hemma ska du inte ta för mycket plats. Det finns en hierarki i föräldraskap som sällan uttalas men som alla känner av. Det märks i hur sjuksköterskan vänder sig mot mamman trots att det är du som ställde frågan.</p>
-      <h2>En pappa som är engagerad</h2>
-      <p>En pappa som är engagerad — som hämtar och lämnar, som går på möten och läkarbesök, som vet barnens vänners namn — kallas ofta för en fantastisk pappa. Som om engagemanget vore något exceptionellt.</p>
-      <p>En mamma som gör exakt samma saker kallas för en mamma.</p>
-      <div class="stat-box"><strong>Stark riskfaktor</strong><span>Forskning visar att fäder som förlorar kontakten med sina barn efter en separation löper kraftigt förhöjd risk för psykisk ohälsa och självmord. Förlorad kontakt med barn är en av de starkaste enskilda riskfaktorerna för manligt självmord som identifierats i nordisk forskning.</span></div>
-      <h2>Jämställdhet på riktigt</h2>
-      <p>Jämställdhet på riktigt betyder att vi ser alla föräldrar som föräldrar. Att en pappa på BVC är lika självklar som en mamma. Att familjerätten väger lika tungt på båda sidor av bordet — inte som en princip i en lagtext utan som en praktik som genomsyrar hur ärendena faktiskt hanteras.</p>
-      <p>Det betyder att vi slutar fira halvmålet som om vi kommit i mål.</p>
-    `
-  },
-  {
-    id: 4,
-    tag: 'Relationer',
-    category: 'relationer',
-    title: 'Rösten som sa att du är fel — om psykologisk utmattning i nära relationer',
-    excerpt: 'Det finns en sorts utmattning som inte syns på ett blodprov. Den har inga synliga symtom som en läkare kan peka på. Den är utmattningen av att leva länge med en röst som talar om för dig vem du är.',
-    readTime: '11 min',
-    premium: true,
-    content: `
-      <p>Det finns en sorts utmattning som inte syns på ett blodprov och som inte mäts på en våg. Den har inga synliga symtom som en läkare kan peka på och klassificera. Den är inte biologisk i sin ursprung, även om den med tiden blir det.</p>
-      <p>Det är utmattningen av att leva länge — år, inte veckor eller månader — med en röst som talar om för dig vem du är.</p>
-      <h2>Rösten som blev din egen</h2>
-      <p>Vad du gör fel. Hur du borde vara annorlunda. Att du säger fel saker. Att du tar för mycket plats, eller för lite, beroende på dagen och humöret och vad som behövdes just då. Att du aldrig, aldrig riktigt räcker till.</p>
-      <p>Det upprepas. Det varierar. Det hittar nya former. Och med tiden suddas gränsen ut mellan den andres röst och ens egen inre röst. Det som en gång var något som kom utifrån börjar låta som ens egna tankar.</p>
-      <blockquote>Man justerar sig. Man försöker bli bättre. Man försöker räcka till — utan att märka att tillräcklighet aldrig var möjlig, för reglerna var konstruerade på ett sätt som garanterade att man alltid misslyckades.</blockquote>
-      <h2>Att sättas fast i klor man trodde berodde på en själv</h2>
-      <p>Det som gör det extra tungt — det som lägger ett lager ovanpå det redan svåra — är när det inte stannar vid en person. Manipulativa mönster i nära relationer sprider sig sällan till bara den närmaste. De sprider sig ut. De berättar en historia om vem du är till vänner och familj.</p>
-      <p>Och sakta tar omgivningen på sig den bilden. Inte av illvilja — sällan av illvilja — utan för att det är den bild de erbjudits.</p>
-      <div class="stat-box"><strong>Osynligt problem</strong><span>Psykologisk forskning visar att de som lever i kontrollerande relationer sällan identifierar mönstren medan de befinner sig mitt i dem. Det sker en gradvis normalisering av beteenden som utifrån verkar uppenbara men inifrån känns som den egna verkligheten. (Källa: Nationellt centrum för kvinnofrid)</span></div>
-      <h2>Det som inte var ditt fel</h2>
-      <p>Det tar tid att förlåta sig själv. Att se vad som är en reaktion på omständigheter snarare än en sanning om ens karaktär. Man fortsätter att ursäkta sig. Man fortsätter att förvänta sig kritik som inte kommer. Man fortsätter att krympa sig i rum där det faktiskt finns plats.</p>
-      <p>Det är inte svaghet. Det är ett nervsystem som lärt sig en lektion och inte vet om att lektionen inte längre gäller.</p>
-      <p>Det pratas sällan om att män drabbas av detta. Det finns inga bra ord för det i det offentliga samtalet. Men det händer. Och det kostar. Och det var inte hans fel att han inte såg det förrän efteråt.</p>
-    `
-  },
-  {
-    id: 5,
-    tag: 'Återhämtning',
-    category: 'återhämtning',
-    title: 'Klockan 03 — natten jag förstod hur illa det faktiskt var',
-    excerpt: 'Strålkastarna från de mötande bilarna skar som glödande knivar genom vindrutan. Musiken på högsta volym var det enda tillförlitliga verktyget jag hade kvar för att hålla ögonlocken uppe. Det var ett liv på marginalen av vad en kropp klarar.',
-    readTime: '12 min',
-    premium: true,
-    content: `
-      <p>Strålkastarna från de mötande bilarna skar som glödande knivar genom den smutsiga vindrutan och rakt in i mina grusiga, trötta ögon. I högtalarna spelades någon svensk ballad på absolut högsta volym — det enda tillförlitliga verktyget jag hade kvar för att överhuvudtaget hålla hjärnan vaken.</p>
-      <p>Det var en ren säkerhetsåtgärd för att inte somna vid ratten. Det var ett liv som pågick på marginalen av vad en kropp klarar.</p>
-      <h2>Ekorrhjulet</h2>
-      <p>Varje dag var jag tvungen att åka minst tio mil till jobbet. Sedan åtta-tio timmar på bygget. Tio mil hem. Mat till barnen. Familjelivets maskineri. Och när barnen väl var i säng — ut i skogen. Jaga vildsvin.</p>
-      <blockquote>Det låter kanske som en lyxig hobby. Men för mig var det ren och skär överlevnad. Det var den enda platsen på jorden där tystnaden kunde döva det konstanta, skrikande bruset i mitt huvud. För första gången på hela dagen var det ingen som ville något av mig.</blockquote>
-      <h2>Solnedgången och mörkret inuti</h2>
-      <p>Framför mig, strax över de mörka trädtopparna, brann himlen i en helt utomordentligt vacker solnedgång. Breda strimmor av rosa, djupt orange och lila. Den sortens skönhet som stannar upp och kräver att man ser.</p>
-      <p>Men tankarna fanns där hela tiden. Och medan jag stod där kände jag hur de sakta åt mig inifrån. Man kan titta på en vacker solnedgång hur länge som helst — men om mörkret redan har flyttat in under huden, gör det vackra bara ont. Det blir en påminnelse om hur det borde kännas — och hur långt bort det känns.</p>
-      <h2>Det som höll mig kvar</h2>
-      <p>Barnen. Inte som en abstrakt tanke om förpliktelse. Utan deras ansikten — konkreta, verkliga, levande. Hur de luktar när man kramar dem på morgonen. Hur de ser ut när de sover.</p>
-      <p>Det var inte mod som höll mig kvar den natten. Det var inte en viljestyrka jag aktiverade. Det var två barn som inte hade valt att komma till världen och som förtjänade att ha sin pappa kvar i den.</p>
-      <div class="stat-box"><strong>Varje dag</strong><span>Tar i genomsnitt fyra personer sitt liv i Sverige. Tre av dem är män. Men forskning visar att nio av tio som gjort ett självmordsförsök och överlever, inte dör av självmord senare i livet. Det finns en väg framåt. (Källa: Mind / Folkhälsomyndigheten)</span></div>
-      <p>Rädslan för sig själv är ett tecken. Inte på att du är farlig, inte på att du är trasig bortom räddning. Utan på att du har burit för mycket, för länge, utan tillräcklig hjälp. Lyssna på det skriket — och lyssna på det tidigare än jag gjorde.</p>
-    `
-  },
-  {
-    id: 6,
-    tag: 'Återhämtning',
-    category: 'återhämtning',
-    title: 'Altanen — ur mörkret, en gnista',
-    excerpt: 'Det var de tankarna som malde i mig den kvällen. Ensam under plasttaket medan regnet smattrade. Och mitt i det mörkret hände något: Det kan inte bara vara jag.',
-    readTime: '8 min',
-    premium: true,
-    content: `
-      <p>Det finns en särskild sorts trötthet i att veta att man bygger på lösan sand. Varje vecka startar samma Sisyfosarbete. Man bygger upp rutiner, struktur och en trygg ram — och vet att allt kommer att vara raderat när barnen åker till det andra hemmet.</p>
-      <h2>Rädslan för att bli bortvald</h2>
-      <p>Denna obalans föder en hemsk, förlamande rädsla. Kommer de ens att vilja bo här? Eller kommer de till slut bara vilja vara hos sin mamma?</p>
-      <p>Rädslan gör något giftigt med föräldraskapet. Den gör att man knappt törs sätta gränser. Man blir en linjegångare i sitt eget hem — hela tiden avvägande, hela tiden undvikande konflikter som man egentligen vet behöver hanteras.</p>
-      <blockquote>Det är en hemsk insikt att bära på: att man i sin iver att vara den trygga famnen riskerar att bli den som sviker barnen genom att inte hålla linjen.</blockquote>
-      <h2>Altanen i regnet</h2>
-      <p>Jag satt under plasttaket medan regnet smattrade och stänkte in över golvplankorna. Jag tittade på mina egna händer. De darrade lätt — av den kroniska spänning som blivit min kropps normaltillstånd. Händerna som byggt saker, burit saker, hållit ihop saker i så många år.</p>
-      <p>Och ändå — mitt i det där mörkret — hände något. Trots allt det svåra var det så otroligt fint ute. Luften doftade av våt asfalt och jord. Och plötsligt slog det mig:</p>
-      <blockquote>Det kan inte bara vara jag. Det måste finnas tusentals män som sitter på exakt likadana altaner just nu, i exakt samma ensamhet, och brottas med exakt samma tankar.</blockquote>
-      <h2>Gnistan</h2>
-      <p>Ur den insikten föddes något. En vägran att låta tystnaden vinna. Tankarna slutade attackera mig inifrån och började istället, försiktigt, bygga framåt.</p>
-      <p>En plats för män som inte hade någon plats. Inte en hjälplinje, inte en krisresurs, utan ett sammanhang. En gemenskap. En plats där det faktiskt gick att säga det man inte fick säga.</p>
-      <p>Det var där, under det smattrande plasttaket, i lukten av våt asfalt och jord — som idén till Tryggman.se tog form.</p>
-      <p>Tystnaden vann i för många år. Den vinner fortfarande för för många män. Det var dags att börja bryta den.</p>
-    `
-  }
+  { id:1, tag:'Tystnad & manlighet', category:'tystnad', title:'Borsta bort gruset och upp igen — om pojken som lärde sig hålla tyst', excerpt:'Det börjar inte med något dramatiskt. Det börjar istället tyst, omärkligt och sakta — med en röst som med tiden börjar låta som din egen.', readTime:'8 min', premium:false, featured:true, content:`<p>Det börjar inte med något dramatiskt. Det börjar istället som de flesta viktiga saker i livet börjar – tyst, omärkligt och så sakta att man inte ens märker att det pågår.</p><p>Det börjar med en röst. Kanske din pappas röst. Kanske din farfars, din äldre brors, en tränares eller en lärares. En röst som tillhörde någon du såg upp till, vars ord landade djupt.</p><blockquote>Borsta bort gruset. Upp igen.</blockquote><p>Du föll. Det gjorde ont. Men smärtan fick inte ta plats. Den borstades bort tillsammans med gruset på knäet, och du reste dig. Inte för att du inte hade ont. Utan för att det var det enda som var tillåtet.</p><h2>Fasaden som blev ett hem</h2><p>Det är det som är så lurigt med inlärd tystnad — den är fullständigt osynlig inifrån. Du ser den inte på dig själv. Du lär dig le på rätt ställen, svara "bra tack" när folk frågar hur du mår och mena det på ett sätt som känns äkta just i ögonblicket.</p><div class="stat-box"><strong>70%</strong><span>Av män som mår dåligt söker aldrig professionell hjälp. Rädslan för att dömas håller dem tysta — tills det är för sent. (Källa: Mind)</span></div><h2>Det vi inte fick lära oss</h2><p>Det finns en fråga som aldrig ställdes. En fråga som borde ha ställts — av föräldrar, av lärare, av tränare:</p><blockquote>Hur har du det egentligen?</blockquote><p>Det vi egentligen behövde lära oss är att känslor inte är ett tecken på svaghet. Att gråta inte gör en till mindre man. Att be om hjälp inte är ett nederlag utan ett mod som kräver mer av en människa än att hålla tyst någonsin gör.</p>` },
+  { id:2, tag:'Utbrändhet & stress', category:'utbrändhet', title:'Vad utbrändhet faktiskt är — och varför sjukvården missar det hos män', excerpt:'Att gå in i väggen är inte bara att man blir trött. Det är en monumental felaktighet i hur vi som samhälle pratar om utbrändhet.', readTime:'10 min', premium:false, content:`<p>Att gå in i väggen är inte bara att man blir trött. Det handlar om att kroppen bokstavligen håller på att stänga av på ett grundläggande, biologiskt plan.</p><h2>Hjärnan som slutade fungera</h2><p>Logiken försvinner. Den analytiska förmågan — som om den var en del av vem man var — är borta. Minnet sviker i de mest vardagliga situationer.</p><blockquote>Det var som om alla försvarsmurar jag byggt upp under ett helt liv hade vittrat sönder till damm på en sekund. Kroppen sa ifrån. Den vägrade att lyda mer.</blockquote><h2>Varför sjukvården missar det</h2><div class="stat-box"><strong>Underdiagnostiserade</strong><span>Forskning visar att män och kvinnor drabbas ungefär lika ofta av utbrändhet — men att symtombilden ser annorlunda ut. Männens utbrändhet är svårare att känna igen och systematiskt underdiagnostiseras. (Källa: Lunds universitet)</span></div><p>Kvinnor uppvisar oftare emotionell utmattning och öppen nedstämdhet. Män uppvisar oftare cynism, irritabilitet och fysiska symtom. Det gör att männens utbrändhet är svårare att känna igen.</p><h2>Det är inte ditt fel</h2><p>Män går in i väggen. Män drabbas av utmattning. Och när de väl tar steget och söker hjälp — förtjänar de att bli sedda. Inte bortförklarade.</p>` },
+  { id:3, tag:'Föräldraskap', category:'föräldraskap', title:'Pappan som inte räknades — om osynligheten i ett jämställt land', excerpt:'Sverige är ett av världens mest jämställda länder. Men det finns en sida av berättelsen som sällan berättas — pappan som sitter ensam i väntrummet på BVC.', readTime:'9 min', premium:true, content:`<p>Sverige är ett av världens mest jämställda länder. Men det finns en sida av jämställdhetsberättelsen som sällan berättas. Det är berättelsen om pappan som sitter ensam i väntrummet på BVC och känner blickarna falla på honom.</p><blockquote>Inte onda blickar. Inte fientliga. Bara frågande. En tyst undran: Var är mamman? Varför är det han som kom?</blockquote><h2>Det osynliga kontraktet</h2><p>Det finns ett kontrakt som ingen skriver på men som alla förväntas följa. Du ska se till att familjen tar sig från A till B. Du ska jobba. Du ska leverera ekonomisk trygghet.</p><h2>En pappa som är engagerad</h2><p>En pappa som är engagerad kallas ofta för en fantastisk pappa. Som om engagemanget vore något exceptionellt. En mamma som gör exakt samma saker kallas för en mamma.</p><div class="stat-box"><strong>Stark riskfaktor</strong><span>Forskning visar att fäder som förlorar kontakten med sina barn efter en separation löper kraftigt förhöjd risk för psykisk ohälsa och självmord.</span></div>` },
+  { id:4, tag:'Relationer', category:'relationer', title:'Rösten som sa att du är fel — om psykologisk utmattning i nära relationer', excerpt:'Det finns en sorts utmattning som inte syns på ett blodprov. Utmattningen av att leva länge med en röst som talar om för dig vem du är.', readTime:'11 min', premium:true, content:`<p>Det finns en sorts utmattning som inte syns på ett blodprov. Det är utmattningen av att leva länge med en röst som talar om för dig vem du är.</p><h2>Rösten som blev din egen</h2><p>Vad du gör fel. Hur du borde vara annorlunda. Att du aldrig, aldrig riktigt räcker till.</p><blockquote>Man justerar sig. Man försöker bli bättre. Man försöker räcka till — utan att märka att tillräcklighet aldrig var möjlig, för reglerna var konstruerade på ett sätt som garanterade att man alltid misslyckades.</blockquote><div class="stat-box"><strong>Osynligt problem</strong><span>Psykologisk forskning visar att de som lever i kontrollerande relationer sällan identifierar mönstren medan de befinner sig mitt i dem. Det sker en gradvis normalisering av beteenden som utifrån verkar uppenbara. (Källa: Nationellt centrum för kvinnofrid)</span></div><h2>Det som inte var ditt fel</h2><p>Det tar tid att förlåta sig själv. Att se vad som är en reaktion på omständigheter snarare än en sanning om ens karaktär. Det är inte svaghet. Det är ett nervsystem som lärt sig en lektion och inte vet om att lektionen inte längre gäller.</p>` },
+  { id:5, tag:'Återhämtning', category:'återhämtning', title:'Klockan 03 — natten jag förstod hur illa det faktiskt var', excerpt:'Strålkastarna skar som glödande knivar. Musiken på högsta volym var det enda tillförlitliga verktyget jag hade kvar för att hålla ögonlocken uppe.', readTime:'12 min', premium:true, content:`<p>Strålkastarna från de mötande bilarna skar som glödande knivar genom vindrutan. Musiken på absolut högsta volym — det enda tillförlitliga verktyget för att hålla hjärnan vaken.</p><p>Det var en ren säkerhetsåtgärd för att inte somna vid ratten. Det var ett liv på marginalen av vad en kropp klarar.</p><blockquote>Det var som om tankarna malde om samma sak om och om igen. Och de malde hårdast mitt i natten, när allt annat var tyst.</blockquote><h2>Det som höll mig kvar</h2><p>Barnen. Inte som en abstrakt tanke om förpliktelse. Utan deras ansikten — konkreta, verkliga, levande. Hur de luktar när man kramar dem på morgonen.</p><div class="stat-box"><strong>Varje dag</strong><span>Tar i genomsnitt fyra personer sitt liv i Sverige. Tre av dem är män. Men forskning visar att nio av tio som gjort ett självmordsförsök och överlever, inte dör av självmord senare i livet. Det finns en väg framåt. (Källa: Mind)</span></div><p>Rädslan för sig själv är ett tecken. Inte på att du är trasig bortom räddning. Utan på att du har burit för mycket, för länge, utan tillräcklig hjälp.</p>` },
+  { id:6, tag:'Återhämtning', category:'återhämtning', title:'Altanen — ur mörkret, en gnista', excerpt:'Det var de tankarna som malde i mig den kvällen. Ensam under plasttaket medan regnet smattrade. Och mitt i det mörkret hände något.', readTime:'8 min', premium:true, content:`<p>Det finns en särskild sorts trötthet i att veta att man bygger på lösan sand. Varje vecka startar samma Sisyfosarbete.</p><h2>Altanen i regnet</h2><p>Jag satt under plasttaket medan regnet smattrade och stänkte in. Jag tittade på mina egna händer. De darrade lätt — av den kroniska spänning som blivit min kropps normaltillstånd.</p><p>Och ändå — mitt i det där mörkret — hände något. Trots allt det svåra var det så otroligt fint ute. Luften doftade av våt asfalt och jord. Och plötsligt slog det mig:</p><blockquote>Det kan inte bara vara jag. Det måste finnas tusentals män som sitter på exakt likadana altaner just nu, i exakt samma ensamhet, och brottas med exakt samma tankar.</blockquote><h2>Gnistan</h2><p>Ur den insikten föddes något. En vägran att låta tystnaden vinna. Det var där, under det smattrande plasttaket — som idén till Tryggman.se tog form.</p><p>Tystnaden vann i för många år. Den vinner fortfarande för för många män. Det var dags att börja bryta den.</p>` }
 ];
 
 let currentFilter = 'alla';
 let userPlan = 'free';
 
-// Kolla plan
 async function checkPlan() {
   try {
     const { initializeApp, getApps } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
     const { getAuth, onAuthStateChanged } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
     const { getFirestore, doc, getDoc } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyC-hMsjidzd--a4buvtAapLWpXmbj2yaH4",
-      authDomain: "tryggman-b89fa.firebaseapp.com",
-      projectId: "tryggman-b89fa",
-      storageBucket: "tryggman-b89fa.firebasestorage.app",
-      messagingSenderId: "871100564839",
-      appId: "1:871100564839:web:0515b9d9d706706c335bc2"
-    };
-
+    const firebaseConfig = { apiKey:"AIzaSyC-hMsjidzd--a4buvtAapLWpXmbj2yaH4", authDomain:"tryggman-b89fa.firebaseapp.com", projectId:"tryggman-b89fa", storageBucket:"tryggman-b89fa.firebasestorage.app", messagingSenderId:"871100564839", appId:"1:871100564839:web:0515b9d9d706706c335bc2" };
     const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
-
     onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const snap = await getDoc(doc(db, 'users', user.uid));
-        if (snap.exists()) userPlan = snap.data().plan || 'free';
-      }
+      if (user) { try { const snap = await getDoc(doc(db, 'users', user.uid)); if (snap.exists()) userPlan = snap.data().plan || 'free'; } catch(e) {} }
       renderArticles();
     });
-  } catch(e) {
-    renderArticles();
-  }
+  } catch(e) { renderArticles(); }
 }
 
 function renderArticles() {
   const grid = document.getElementById('articlesGrid');
   const filtered = currentFilter === 'alla' ? articles : articles.filter(a => a.category === currentFilter);
   grid.innerHTML = '';
-
   filtered.forEach((article, i) => {
     const locked = article.premium && userPlan !== 'premium';
     const card = document.createElement('div');
     card.className = `article-card${article.featured && i === 0 ? ' article-featured' : ''}${locked ? ' locked' : ''}`;
-
     if (article.featured && i === 0) {
-      card.innerHTML = `
-        <div class="article-featured-img">
-          <div class="article-featured-img-inner">Det vi<br>inte fick<br>säga</div>
-        </div>
-        <div>
-          <div class="article-top">
-            <div class="article-featured-label">Fördjupning</div>
-            <div class="article-tag">${article.tag}</div>
-            <div class="article-title">${article.title}</div>
-          </div>
-          <div class="article-body">
-            <div class="article-excerpt">${article.excerpt}</div>
-            <div class="article-meta">
-              <span class="article-read-time">⏱ ${article.readTime} läsning</span>
-              <span>${article.premium ? 'PREMIUM' : 'Gratis'}</span>
-            </div>
-          </div>
-        </div>`;
+      card.innerHTML = `<div class="article-featured-img"><div class="article-featured-img-inner">Det vi<br>inte fick<br>säga</div></div><div><div class="article-top"><div class="article-featured-label">Fördjupning</div><div class="article-tag">${article.tag}</div><div class="article-title">${article.title}</div></div><div class="article-body"><div class="article-excerpt">${article.excerpt}</div><div class="article-meta"><span>⏱ ${article.readTime} läsning</span><span>${article.premium ? 'PREMIUM' : 'Gratis'}</span></div></div></div>`;
     } else {
-      card.innerHTML = `
-        <div class="article-top">
-          <div class="article-tag">${article.tag}</div>
-          <div class="article-title">${article.title}</div>
-        </div>
-        <div class="article-body">
-          <div class="article-excerpt">${article.excerpt}</div>
-          <div class="article-meta">
-            <span class="article-read-time">⏱ ${article.readTime} läsning</span>
-            <span>${article.premium ? 'PREMIUM' : 'Gratis'}</span>
-          </div>
-        </div>
-        ${locked ? `<div class="lock-overlay">
-          <div class="lock-badge">🔒 PREMIUM-artikel</div>
-          <div class="lock-text">Uppgradera till PREMIUM för att läsa — <a href="priser.html" class="lock-upgrade">349 kr/mån →</a></div>
-        </div>` : ''}`;
+      card.innerHTML = `<div class="article-top"><div class="article-tag">${article.tag}</div><div class="article-title">${article.title}</div></div><div class="article-body"><div class="article-excerpt">${article.excerpt}</div><div class="article-meta"><span>⏱ ${article.readTime} läsning</span><span>${article.premium ? 'PREMIUM' : 'Gratis'}</span></div></div>${locked ? `<div class="lock-overlay"><div class="lock-badge">🔒 PREMIUM-artikel</div><div class="lock-text">Uppgradera till PREMIUM — <a href="priser.html" class="lock-upgrade">349 kr/mån →</a></div></div>` : ''}`;
     }
-
     if (!locked) card.onclick = () => openArticle(article);
     grid.appendChild(card);
   });
@@ -416,18 +275,7 @@ function renderArticles() {
 function openArticle(article) {
   const locked = article.premium && userPlan !== 'premium';
   document.getElementById('overlayPremiumLabel').textContent = article.premium ? 'PREMIUM' : 'Gratis';
-  document.getElementById('articleContent').innerHTML = `
-    <div class="article-content-tag">${article.tag}</div>
-    <h1 class="article-content-title">${article.title}</h1>
-    <div class="article-content-meta">${article.readTime} läsning · Tryggman</div>
-    <div class="article-content-body">
-      ${locked ? article.content.split('</p>').slice(0,2).join('</p>') + '</p>' : article.content}
-      ${locked ? `<div class="premium-gate">
-        <h3>Fortsätt läsa med PREMIUM</h3>
-        <p>Den här artikeln är exklusiv för PREMIUM-medlemmar. Uppgradera för att läsa alla fördjupningsartiklar, få tillgång till terapeut-chatt och AI-analys av ditt mående.</p>
-        <a href="priser.html">Uppgradera till PREMIUM — 349 kr/mån</a>
-      </div>` : ''}
-    </div>`;
+  document.getElementById('articleContent').innerHTML = `<div class="article-content-tag">${article.tag}</div><h1 class="article-content-title">${article.title}</h1><div class="article-content-meta">${article.readTime} läsning · Tryggman</div><div class="article-content-body">${locked ? article.content.split('</p>').slice(0,2).join('</p>') + '</p>' : article.content}${locked ? `<div class="premium-gate"><h3>Fortsätt läsa med PREMIUM</h3><p>Den här artikeln är exklusiv för PREMIUM-medlemmar. Uppgradera för att läsa alla fördjupningsartiklar.</p><a href="priser.html">Uppgradera till PREMIUM — 349 kr/mån</a></div>` : ''}</div>`;
   document.getElementById('articleOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
   document.getElementById('articleOverlay').scrollTop = 0;
