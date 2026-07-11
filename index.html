@@ -12,15 +12,34 @@
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:#FAFAF7;color:#1C2B35;line-height:1.6;overflow-x:hidden}
 
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 6%;background:rgba(28,43,53,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.05)}
 .nav-logo{font-family:'DM Serif Display',serif;font-size:1.35rem;color:#fff;letter-spacing:0.02em;text-decoration:none}
-.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
-.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.82rem;font-weight:400;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
-.nav-links a:hover,.nav-links a.active{color:#fff}
-.nav-links a.active{border-bottom:1px solid #4E9E8D;padding-bottom:2px}
-.nav-cta{background:#3A7D6E!important;color:#fff!important;padding:0.45rem 1.2rem!important;border-radius:2px;font-weight:500!important}
-.nav-cta:hover{background:#4E9E8D!important}
 
+/* HAMBURGER */
+.hamburger{background:none;border:none;cursor:pointer;padding:0.3rem;display:flex;flex-direction:column;gap:5px;z-index:102}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:all 0.3s ease;border-radius:2px}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:translateX(-8px)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* MOBILE MENU */
+.nav-menu{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:#1C2B35;z-index:101;transition:right 0.35s ease;display:flex;flex-direction:column;padding:5rem 2rem 2rem;box-shadow:-8px 0 32px rgba(0,0,0,0.3)}
+.nav-menu.open{right:0}
+.nav-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;display:none;backdrop-filter:blur(2px)}
+.nav-menu-overlay.open{display:block}
+.nav-menu ul{list-style:none;display:flex;flex-direction:column;gap:0.2rem;flex:1}
+.nav-menu ul li a{display:block;padding:0.75rem 0.8rem;color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.95rem;font-weight:400;border-radius:2px;transition:all 0.2s;letter-spacing:0.02em}
+.nav-menu ul li a:hover,.nav-menu ul li a.active{color:#fff;background:rgba(255,255,255,0.05)}
+.nav-menu ul li a.active{color:#4E9E8D}
+.nav-menu-cta{background:#3A7D6E!important;color:#fff!important;font-weight:500!important;margin-top:0.5rem}
+.nav-menu-cta:hover{background:#4E9E8D!important}
+.nav-menu-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:1.2rem;margin-top:auto}
+.nav-menu-bottom a{display:block;padding:0.5rem 0.8rem;color:rgba(255,255,255,0.3);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
+.nav-menu-bottom a:hover{color:rgba(255,255,255,0.6)}
+.nav-menu-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 0.8rem;margin-bottom:0.3rem;margin-top:1rem}
+
+/* TICKER */
 .ticker-wrap{overflow:hidden;padding:0.85rem 0;background:#1C2B35;border-bottom:1px solid rgba(255,255,255,0.04);position:relative;margin-top:62px}
 .ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:5rem;z-index:2;pointer-events:none}
 .ticker-wrap::before{left:0;background:linear-gradient(to right,#1C2B35,transparent)}
@@ -87,7 +106,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .pillar-title{font-family:'DM Serif Display',serif;font-size:1.35rem;color:#1C2B35;margin-bottom:0.7rem}
 .pillar-body{font-size:0.88rem;color:#6B7A85;line-height:1.85;font-weight:300}
 
-/* PRICING */
 .section-pricing{padding:6rem 8%;background:#1C2B35}
 .pricing-inner{max-width:900px;margin:0 auto}
 .pricing-header{text-align:center;margin-bottom:3.5rem}
@@ -95,7 +113,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .pricing-header .section-title{color:#fff}
 .pricing-header p{color:rgba(255,255,255,0.45);font-size:0.95rem;font-weight:300}
 .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem}
-
 .price-card{background:#2E4050;padding:2.2rem;position:relative;border-top:3px solid #3A7D6E}
 .price-card.featured{background:#3A7D6E;border-top-color:#4E9E8D}
 .price-tag-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:#4E9E8D;margin-bottom:0.8rem}
@@ -118,7 +135,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .price-free-note{font-size:0.75rem;color:rgba(255,255,255,0.35);text-align:center;margin-top:0.6rem}
 .price-value-note{font-size:0.78rem;color:rgba(255,255,255,0.5);font-style:italic;margin-top:0.8rem;text-align:center;line-height:1.5}
 
-/* FAQ */
 .section-faq{padding:5rem 8%;background:#F2EDE5}
 .faq-inner{max-width:700px;margin:0 auto}
 .faq-item{border-bottom:1px solid rgba(28,43,53,0.1);padding:1.2rem 0}
@@ -158,7 +174,6 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
   .pillars-grid{grid-template-columns:1fr;gap:1.2rem}
   .pricing-grid{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr 1fr}
-  .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
 }
 @media(max-width:600px){
   .hero-title{font-size:2.4rem}
@@ -168,18 +183,42 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
 </style>
 </head>
 <body>
+
+<!-- OVERLAY -->
+<div class="nav-menu-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+<!-- SLIDE-IN MENY -->
+<div class="nav-menu" id="navMenu">
+  <ul>
+    <div class="nav-menu-label">Plattformen</div>
+    <li><a href="index.html" class="active">Hem</a></li>
+    <li><a href="chat.html">AI-Chat</a></li>
+    <li><a href="terapeut.html">Terapeut</a></li>
+    <li><a href="halsa.html">Min hälsa</a></li>
+    <li><a href="ovningar.html">Övningar</a></li>
+    <li><a href="artiklar.html">Artiklar</a></li>
+    <li><a href="berattelser.html">Berättelser</a></li>
+    <li><a href="community.html">Community</a></li>
+    <div class="nav-menu-label">Konto</div>
+    <li><a href="priser.html">Priser</a></li>
+    <li><a href="konto.html">Mitt konto</a></li>
+    <li><a href="appen.html" class="nav-menu-cta">Appen</a></li>
+  </ul>
+  <div class="nav-menu-bottom">
+    <a href="om-oss.html">Om oss</a>
+    <a href="resurser.html">Resurser & hjälplinjer</a>
+    <a href="produkter.html">Produkter</a>
+    <a href="mailto:kontakt@tryggman.se">Kontakt</a>
+  </div>
+</div>
+
 <nav>
   <a href="index.html" class="nav-logo">Tryggman</a>
-  <<ul class="nav-links">
-  <li><a href="index.html">Hem</a></li>
-  <li><a href="chat.html">AI-Chat</a></li>
-  <li><a href="terapeut.html">Terapeut</a></li>
-  <li><a href="halsa.html">Min hälsa</a></li>
-  <li><a href="ovningar.html">Övningar</a></li>
-  <li><a href="artiklar.html">Artiklar</a></li>
-  <li><a href="community.html">Community</a></li>
-  <li><a href="appen.html" class="nav-cta">Appen</a></li>
-</ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Meny">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <div class="ticker-wrap">
@@ -278,7 +317,7 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
         <div class="pillar-card reveal">
           <div class="pillar-num">2</div>
           <span class="pillar-icon">🤝</span>
-          <h3 class="pillar-title">certifierad terapeut</h3>
+          <h3 class="pillar-title">Certifierad terapeut</h3>
           <p class="pillar-body">Chatta med en certifierad psykoterapeut. Svar inom 24 timmar. Ingen bokning via telefon. Ingen väntrumskänsla.</p>
         </div>
       </a>
@@ -294,7 +333,6 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
   </div>
 </section>
 
-<!-- PRICING -->
 <section class="section-pricing" id="priser">
   <div class="pricing-inner">
     <div class="pricing-header">
@@ -313,10 +351,10 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
           <li>Daglig humörtracking</li>
           <li>Guidade andnings- & mindfulnessövningar</li>
           <li>Artiklar & kunskap om mäns hälsa</li>
-          <li>100% anonymt</li>
+          <li>Community</li>
           <li>Ingen bindningstid</li>
         </ul>
-        <a href="chat.html" class="price-btn price-btn-outline">Prova 3 meddelanden gratis</a>
+        <a href="chat.html" class="price-btn price-btn-outline">Prova 4 meddelanden gratis</a>
         <div class="price-free-note">Inget kreditkort krävs för att prova</div>
       </div>
       <div class="price-card featured reveal">
@@ -325,49 +363,51 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
         <div class="price-amount">349 <span>kr/mån</span></div>
         <div class="price-desc">Asynkron textterapi med certifierad psykoterapeut. Skriv när du vill — svar vardagar inom 24 timmar.</div>
         <ul class="price-features">
-          <li>certifierad psykoterapeut</li>
+          <li>Certifierad psykoterapeut</li>
+          <li>Upp till 10 meddelanden per månad</li>
           <li>Svar inom 24 timmar (måndag–fredag)</li>
           <li>Full tystnadsplikt</li>
-          <li>Skräddarsydd behandlingsplan</li>
           <li>Allt i AI-paketet ingår</li>
           <li>Ingen bindningstid</li>
         </ul>
         <a href="terapeut.html" class="price-btn price-btn-solid">Starta samtal med terapeut</a>
-        <div class="price-value-note">Motsvarar mindre än 12 kr om dagen — billigare än ett enskilt fysiskt terapeutbesök.</div>
+        <div class="price-value-note">Mindre än 12 kr om dagen — billigare än ett enskilt fysiskt terapeutbesök.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="section-faq">
   <div class="faq-inner">
     <div class="section-label">Vanliga frågor</div>
     <h2 class="section-title" style="margin-bottom:2rem">Trygghet i varje detalj</h2>
-
     <div class="faq-item">
       <div class="faq-q">Syns det på mitt kontoutdrag?</div>
-      <div class="faq-a">Transaktionen visas som "Tryggman" — inte med något som avslöjar vad tjänsten handlar om. Din integritet är vår prioritet.</div>
+      <div class="faq-a">Transaktionen visas som "Tryggman" — inte med något som avslöjar vad tjänsten handlar om.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Hur hanteras mina data och chattar?</div>
-      <div class="faq-a">All data hanteras enligt GDPR. Dina chattar är krypterade och säljs aldrig vidare till tredje part. Du kan begära att all din data raderas när som helst.</div>
+      <div class="faq-a">All data hanteras enligt GDPR. Dina chattar är krypterade och säljs aldrig vidare till tredje part.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Är terapeuterna verkligen certifierade?</div>
-      <div class="faq-a">Ja. Alla terapeuter på Tryggman är certifierade psykoterapeuter eller psykologer med svensk legitimation. De arbetar under full tystnadsplikt.</div>
+      <div class="faq-q">Är terapeuterna certifierade?</div>
+      <div class="faq-a">Ja. Alla terapeuter på Tryggman är certifierade psykoterapeuter med svensk legitimation och full tystnadsplikt.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Hur fungerar asynkron textterapi?</div>
-      <div class="faq-a">Du skriver ett meddelande när du vill — dag eller natt. Din terapeut läser och svarar inom 24 timmar på vardagar. Ingen inbokad tid, inga videosamtal, ingen press.</div>
+      <div class="faq-a">Du skriver ett meddelande när du vill — dag eller natt. Din terapeut läser och svarar inom 24 timmar på vardagar.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Kan jag avsluta när som helst?</div>
-      <div class="faq-a">Absolut. Ingen bindningstid, inga avgifter för uppsägning. Du avslutar din prenumeration med ett klick, när du vill.</div>
+      <div class="faq-a">Absolut. Ingen bindningstid, inga avgifter för uppsägning.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Vad är skillnaden på AI-chatten och terapeuten?</div>
-      <div class="faq-a">AI-rådgivaren finns dygnet runt och är utmärkt för reflektion, dagliga verktyg och att ta första steget. Terapeuten är en certifierad människa med klinisk utbildning — bättre för djupare bearbetning och behandling.</div>
+      <div class="faq-a">AI-rådgivaren finns dygnet runt och är utmärkt för reflektion och första steget. Terapeuten är en certifierad människa med klinisk utbildning — bättre för djupare bearbetning.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Ersätter detta professionell vård?</div>
+      <div class="faq-a">Nej. Tryggman är ett komplement till, inte ersättning för, professionell psykiatrisk vård. Vid akut kris — ring 90101 eller 112.</div>
     </div>
   </div>
 </section>
@@ -382,30 +422,55 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
 </section>
 
 <footer>
-<div class="footer-col"><h4>Plattformen</h4><ul>
-  <li><a href="index.html">Hem</a></li>
-  <li><a href="chat.html">AI-Chat</a></li>
-  <li><a href="terapeut.html">Terapeut</a></li>
-  <li><a href="community.html">Community</a></li>
-  <li><a href="appen.html">Appen</a></li>
-</ul></div>
-<div class="footer-col"><h4>Innehåll</h4><ul>
-  <li><a href="artiklar.html">Artiklar</a></li>
-  <li><a href="berattelser.html">Berättelser</a></li>
-  <li><a href="resurser.html">Resurser</a></li>
-</ul></div>
-<div class="footer-col"><h4>Om Tryggman</h4><ul>
-  <li><a href="om-oss.html">Om oss</a></li>
-  <li><a href="priser.html">Priser</a></li>
-  <li><a href="produkter.html">Produkter</a></li>
-  <li><a href="mailto:kontakt@tryggman.se">Kontakt</a></li>
-</ul></div>
+  <div class="footer-top">
+    <div><a href="index.html" class="footer-brand">Tryggman</a><p class="footer-tagline">Där trygghet skapas. Tillsammans bryter vi tystnaden kring mäns psykiska hälsa.</p></div>
+    <div class="footer-col"><h4>Plattformen</h4><ul>
+      <li><a href="chat.html">AI-Chat</a></li>
+      <li><a href="terapeut.html">Terapeut</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="halsa.html">Min hälsa</a></li>
+      <li><a href="ovningar.html">Övningar</a></li>
+      <li><a href="appen.html">Appen</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Innehåll</h4><ul>
+      <li><a href="artiklar.html">Artiklar</a></li>
+      <li><a href="berattelser.html">Berättelser</a></li>
+      <li><a href="resurser.html">Resurser</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Om Tryggman</h4><ul>
+      <li><a href="om-oss.html">Om oss</a></li>
+      <li><a href="priser.html">Priser</a></li>
+      <li><a href="produkter.html">Produkter</a></li>
+      <li><a href="mailto:kontakt@tryggman.se">Kontakt</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom"><div>© 2026 Tryggman</div><div class="footer-crisis">Kris? Ring 90101 eller 112</div></div>
+</footer>
 
 <script>
-const obs=new IntersectionObserver(e=>{e.forEach(n=>{if(n.isIntersecting)n.target.classList.add('visible')})},{threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function toggleMenu() {
+  const menu = document.getElementById('navMenu');
+  const overlay = document.getElementById('navOverlay');
+  const hamburger = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  overlay.classList.toggle('open');
+  hamburger.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
 
-// FAQ accordion
+function closeMenu() {
+  document.getElementById('navMenu').classList.remove('open');
+  document.getElementById('navOverlay').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Stäng menyn om man klickar på en länk
+document.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', closeMenu));
+
+const obs = new IntersectionObserver(e => { e.forEach(n => { if (n.isIntersecting) n.target.classList.add('visible') }) }, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.parentElement;
