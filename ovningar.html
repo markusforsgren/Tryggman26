@@ -14,11 +14,26 @@ body{font-family:'DM Sans',sans-serif;background:#FAFAF7;color:#1C2B35;line-heig
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 6%;background:rgba(28,43,53,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.05)}
 .nav-logo{font-family:'DM Serif Display',serif;font-size:1.35rem;color:#fff;letter-spacing:0.02em;text-decoration:none}
-.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
-.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.82rem;font-weight:400;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
-.nav-links a:hover,.nav-links a.active{color:#fff}
-.nav-links a.active{border-bottom:1px solid #4E9E8D;padding-bottom:2px}
-.nav-cta{background:#3A7D6E!important;color:#fff!important;padding:0.45rem 1.2rem!important;border-radius:2px;font-weight:500!important}
+
+.hamburger{background:none;border:none;cursor:pointer;padding:0.3rem;display:flex;flex-direction:column;gap:5px;z-index:102}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:all 0.3s ease;border-radius:2px}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:translateX(-8px)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-menu{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:#1C2B35;z-index:101;transition:right 0.35s ease;display:flex;flex-direction:column;padding:5rem 2rem 2rem;box-shadow:-8px 0 32px rgba(0,0,0,0.3)}
+.nav-menu.open{right:0}
+.nav-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;display:none;backdrop-filter:blur(2px)}
+.nav-menu-overlay.open{display:block}
+.nav-menu ul{list-style:none;display:flex;flex-direction:column;gap:0.2rem;flex:1}
+.nav-menu ul li a{display:block;padding:0.75rem 0.8rem;color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.95rem;font-weight:400;border-radius:2px;transition:all 0.2s}
+.nav-menu ul li a:hover,.nav-menu ul li a.active{color:#fff;background:rgba(255,255,255,0.05)}
+.nav-menu ul li a.active{color:#4E9E8D}
+.nav-menu-cta{background:#3A7D6E!important;color:#fff!important;font-weight:500!important;margin-top:0.5rem}
+.nav-menu-cta:hover{background:#4E9E8D!important}
+.nav-menu-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:1.2rem;margin-top:auto}
+.nav-menu-bottom a{display:block;padding:0.5rem 0.8rem;color:rgba(255,255,255,0.3);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
+.nav-menu-bottom a:hover{color:rgba(255,255,255,0.6)}
+.nav-menu-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 0.8rem;margin-bottom:0.3rem;margin-top:1rem}
 
 .page-hero{padding:7rem 8% 5rem;background:#1C2B35;margin-top:62px;min-height:50vh;display:flex;flex-direction:column;justify-content:center}
 .section-label{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#4E9E8D;margin-bottom:0.9rem}
@@ -26,7 +41,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .page-hero h1 em{font-style:italic;color:#4E9E8D}
 .page-hero p{font-size:1rem;color:rgba(255,255,255,0.5);max-width:520px;font-weight:300;line-height:1.85}
 
-/* ÖVNINGSKORT */
 .exercises-section{padding:5rem 8%}
 .exercises-inner{max-width:1100px;margin:0 auto}
 .exercises-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
@@ -37,11 +51,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .exercise-title{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#1C2B35;margin-bottom:0.5rem}
 .exercise-desc{font-size:0.85rem;color:#6B7A85;line-height:1.7;margin-bottom:1.2rem;font-weight:300}
 .exercise-meta{display:flex;gap:1rem;font-size:0.75rem;color:#6B7A85}
-.exercise-meta span{display:flex;align-items:center;gap:0.3rem}
 .exercise-start{background:#1C2B35;color:#fff;border:none;padding:0.65rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;border-radius:2px;transition:background 0.2s;width:100%;margin-top:1rem}
 .exercise-start:hover{background:#3A7D6E}
 
-/* OVERLAY */
 .overlay{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;background:#1C2B35}
 .overlay.active{display:flex}
 .overlay-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:#2E4050;border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0}
@@ -51,38 +63,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .overlay-close:hover{border-color:rgba(255,255,255,0.4);color:#fff}
 
 .exercise-view{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;flex-direction:column}
-
-/* ANDNINGSCIRKEL */
 .breath-circle-wrap{position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:2rem}
-.breath-circle-bg{width:220px;height:220px;border-radius:50%;border:2px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;position:relative}
-.breath-circle{width:160px;height:160px;border-radius:50%;background:rgba(58,125,110,0.2);border:2px solid #3A7D6E;display:flex;align-items:center;justify-content:center;transition:transform 0.1s;position:relative}
-.breath-circle.expanding{animation:expand var(--in-dur, 4s) ease-in-out forwards}
-.breath-circle.holding{animation:none}
-.breath-circle.shrinking{animation:shrink var(--out-dur, 6s) ease-in-out forwards}
-@keyframes expand{from{transform:scale(1)}to{transform:scale(1.4)}}
-@keyframes shrink{from{transform:scale(1.4)}to{transform:scale(1)}}
-.breath-text{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#fff;text-align:center;z-index:1}
+.breath-circle-bg{width:220px;height:220px;border-radius:50%;border:2px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center}
+.breath-circle{width:160px;height:160px;border-radius:50%;background:rgba(58,125,110,0.2);border:2px solid #3A7D6E;display:flex;align-items:center;justify-content:center;transition:transform 0.1s}
+.breath-text{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#fff;text-align:center}
 .breath-count{font-size:2.5rem;color:#4E9E8D;display:block;line-height:1}
-
 .exercise-instruction{font-family:'DM Serif Display',serif;font-size:1.8rem;color:#fff;text-align:center;margin-bottom:0.8rem;min-height:2.5rem}
 .exercise-sub{font-size:0.95rem;color:rgba(255,255,255,0.5);text-align:center;margin-bottom:2.5rem;max-width:380px}
 .exercise-phase{font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;color:#4E9E8D;text-align:center;margin-bottom:0.5rem}
 .exercise-round{font-size:0.78rem;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:2rem}
-
 .exercise-controls{display:flex;gap:1rem;justify-content:center}
 .ctrl-btn{padding:0.8rem 1.8rem;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;transition:all 0.2s;border:none}
 .ctrl-start{background:#3A7D6E;color:#fff}
 .ctrl-start:hover{background:#4E9E8D}
-.ctrl-pause{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2)}
-.ctrl-pause:hover{background:rgba(255,255,255,0.15)}
 .ctrl-stop{background:none;color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.1)}
 .ctrl-stop:hover{color:#fff;border-color:rgba(255,255,255,0.3)}
-
-/* PROGRESS BAR */
 .progress-bar-wrap{width:300px;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;margin-bottom:2rem}
 .progress-bar-fill{height:100%;background:#3A7D6E;border-radius:2px;transition:width 0.5s linear}
 
-/* COMPLETE */
 .complete-view{display:none;flex:1;align-items:center;justify-content:center;flex-direction:column;padding:2rem;text-align:center}
 .complete-view.active{display:flex}
 .complete-icon{font-size:4rem;margin-bottom:1.5rem}
@@ -105,7 +103,6 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
 
 @media(max-width:900px){
   .exercises-grid{grid-template-columns:1fr 1fr}
-  .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
   .page-hero h1{font-size:2.4rem}
   .footer-top{grid-template-columns:1fr 1fr}
 }
@@ -116,19 +113,37 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
 </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">Tryggman</a>
-  <ul class="nav-links">
+
+<div class="nav-menu-overlay" id="navOverlay" onclick="closeMenu()"></div>
+<div class="nav-menu" id="navMenu">
+  <ul>
+    <div class="nav-menu-label">Plattformen</div>
     <li><a href="index.html">Hem</a></li>
-    <li><a href="om-oss.html">Om oss</a></li>
     <li><a href="chat.html">AI-Chat</a></li>
     <li><a href="terapeut.html">Terapeut</a></li>
     <li><a href="halsa.html">Min hälsa</a></li>
-    <li><a href="artiklar.html">Artiklar</a></li>
     <li><a href="ovningar.html" class="active">Övningar</a></li>
-    <li><a href="resurser.html">Resurser</a></li>
-    <li><a href="appen.html" class="nav-cta">Appen</a></li>
+    <li><a href="artiklar.html">Artiklar</a></li>
+    <li><a href="berattelser.html">Berättelser</a></li>
+    <li><a href="community.html">Community</a></li>
+    <div class="nav-menu-label">Konto</div>
+    <li><a href="priser.html">Priser</a></li>
+    <li><a href="konto.html">Mitt konto</a></li>
+    <li><a href="appen.html" class="nav-menu-cta">Appen</a></li>
   </ul>
+  <div class="nav-menu-bottom">
+    <a href="om-oss.html">Om oss</a>
+    <a href="resurser.html">Resurser & hjälplinjer</a>
+    <a href="produkter.html">Produkter</a>
+    <a href="mailto:kontakt@tryggman.se">Kontakt</a>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Tryggman</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Meny">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="page-hero">
@@ -142,87 +157,55 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
     <div class="section-label">Välj en övning</div>
     <h2 style="font-family:'DM Serif Display',serif;font-size:2.4rem;color:#1C2B35;margin-bottom:0.5rem">Börja där du är</h2>
     <p style="color:#6B7A85;font-size:0.95rem;font-weight:300">Alla övningar är vetenskapligt grundade. Inga konstigheter.</p>
-
     <div class="exercises-grid">
-
       <div class="exercise-card">
         <div class="exercise-icon">🌬️</div>
         <div class="exercise-tag">Ångest · Akut stress</div>
         <div class="exercise-title">4-7-8 Andning</div>
         <div class="exercise-desc">Aktiverar det parasympatiska nervsystemet och sänker stresshormonet kortisol inom minuter. Används av militärer och idrottare världen över.</div>
-        <div class="exercise-meta">
-          <span>⏱ 4 min</span>
-          <span>🔄 4 rundor</span>
-          <span>📊 Nybörjare</span>
-        </div>
+        <div class="exercise-meta"><span>⏱ 4 min</span><span>🔄 4 rundor</span><span>📊 Nybörjare</span></div>
         <button class="exercise-start" onclick="startExercise('478')">Starta övning →</button>
       </div>
-
       <div class="exercise-card">
         <div class="exercise-icon">📦</div>
         <div class="exercise-tag">Stress · Fokus</div>
         <div class="exercise-title">Box Breathing</div>
         <div class="exercise-desc">Samma teknik som Navy SEALs använder under press. Fyrkants-andning balanserar nervsystemet och ger omedelbart ökad kontroll och fokus.</div>
-        <div class="exercise-meta">
-          <span>⏱ 5 min</span>
-          <span>🔄 5 rundor</span>
-          <span>📊 Nybörjare</span>
-        </div>
+        <div class="exercise-meta"><span>⏱ 5 min</span><span>🔄 5 rundor</span><span>📊 Nybörjare</span></div>
         <button class="exercise-start" onclick="startExercise('box')">Starta övning →</button>
       </div>
-
       <div class="exercise-card">
         <div class="exercise-icon">🔥</div>
         <div class="exercise-tag">Energi · Humör</div>
         <div class="exercise-title">Aktiveringsandning</div>
         <div class="exercise-desc">Snabb diafragmaandning som ökar syreupptagning, höjer energinivåer och ger en naturlig endorfinkick. Perfekt på morgonen eller när energin dalar.</div>
-        <div class="exercise-meta">
-          <span>⏱ 3 min</span>
-          <span>🔄 3 rundor</span>
-          <span>📊 Medel</span>
-        </div>
+        <div class="exercise-meta"><span>⏱ 3 min</span><span>🔄 3 rundor</span><span>📊 Medel</span></div>
         <button class="exercise-start" onclick="startExercise('activation')">Starta övning →</button>
       </div>
-
       <div class="exercise-card">
         <div class="exercise-icon">🧠</div>
         <div class="exercise-tag">Ångest · Oro</div>
         <div class="exercise-title">5-4-3-2-1 Grounding</div>
         <div class="exercise-desc">Bryt ångestspiralen direkt. Teknik som hjälper dig att landa i nuet och avbryta negativa tankespiraler genom att aktivera alla sinnen.</div>
-        <div class="exercise-meta">
-          <span>⏱ 3 min</span>
-          <span>🔄 1 gång</span>
-          <span>📊 Nybörjare</span>
-        </div>
+        <div class="exercise-meta"><span>⏱ 3 min</span><span>🔄 1 gång</span><span>📊 Nybörjare</span></div>
         <button class="exercise-start" onclick="startExercise('grounding')">Starta övning →</button>
       </div>
-
       <div class="exercise-card">
         <div class="exercise-icon">🌊</div>
         <div class="exercise-tag">Sömn · Avslappning</div>
         <div class="exercise-title">Progressiv avslappning</div>
         <div class="exercise-desc">Spänna och slappna av muskelgrupper systematiskt. Effektivt mot sömnproblem, spänningshuvudvärk och kronisk stress i kroppen.</div>
-        <div class="exercise-meta">
-          <span>⏱ 10 min</span>
-          <span>🔄 1 gång</span>
-          <span>📊 Nybörjare</span>
-        </div>
+        <div class="exercise-meta"><span>⏱ 10 min</span><span>🔄 1 gång</span><span>📊 Nybörjare</span></div>
         <button class="exercise-start" onclick="startExercise('relaxation')">Starta övning →</button>
       </div>
-
       <div class="exercise-card">
         <div class="exercise-icon">⚡</div>
         <div class="exercise-tag">Ilska · Frustration</div>
         <div class="exercise-title">Snabb nedvarvning</div>
         <div class="exercise-desc">När ilskan tar över. En 2-minuters teknik som sänker puls och blodtryck snabbt och ger dig tillbaka kontrollen innan du agerar.</div>
-        <div class="exercise-meta">
-          <span>⏱ 2 min</span>
-          <span>🔄 3 rundor</span>
-          <span>📊 Nybörjare</span>
-        </div>
+        <div class="exercise-meta"><span>⏱ 2 min</span><span>🔄 3 rundor</span><span>📊 Nybörjare</span></div>
         <button class="exercise-start" onclick="startExercise('anger')">Starta övning →</button>
       </div>
-
     </div>
   </div>
 </section>
@@ -230,9 +213,25 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
 <footer>
   <div class="footer-top">
     <div><a href="index.html" class="footer-brand">Tryggman</a><p class="footer-tagline">Där trygghet skapas. Tillsammans bryter vi tystnaden.</p></div>
-    <div class="footer-col"><h4>Plattformen</h4><ul><li><a href="index.html">Hem</a></li><li><a href="chat.html">AI-Chat</a></li><li><a href="terapeut.html">Terapeut</a></li><li><a href="halsa.html">Min hälsa</a></li><li><a href="ovningar.html">Övningar</a></li></ul></div>
-    <div class="footer-col"><h4>Hjälp</h4><ul><li><a href="resurser.html">Hjälplinjer</a></li><li><a href="berattelser.html">Berättelser</a></li></ul></div>
-    <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@tryggman.se">kontakt@tryggman.se</a></li></ul></div>
+    <div class="footer-col"><h4>Plattformen</h4><ul>
+      <li><a href="chat.html">AI-Chat</a></li>
+      <li><a href="terapeut.html">Terapeut</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="halsa.html">Min hälsa</a></li>
+      <li><a href="ovningar.html">Övningar</a></li>
+      <li><a href="appen.html">Appen</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Innehåll</h4><ul>
+      <li><a href="artiklar.html">Artiklar</a></li>
+      <li><a href="berattelser.html">Berättelser</a></li>
+      <li><a href="resurser.html">Resurser</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Om Tryggman</h4><ul>
+      <li><a href="om-oss.html">Om oss</a></li>
+      <li><a href="priser.html">Priser</a></li>
+      <li><a href="produkter.html">Produkter</a></li>
+      <li><a href="mailto:kontakt@tryggman.se">Kontakt</a></li>
+    </ul></div>
   </div>
   <div class="footer-bottom"><div>© 2026 Tryggman</div><div class="footer-crisis">Kris? Ring 90101 eller 112</div></div>
 </footer>
@@ -246,34 +245,24 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
     </div>
     <button class="overlay-close" onclick="closeOverlay()">✕</button>
   </div>
-
   <div class="exercise-view" id="exerciseView">
     <div class="exercise-phase" id="phaseLabel"></div>
     <div class="exercise-instruction" id="instruction"></div>
     <div class="exercise-sub" id="exerciseSub"></div>
-
-    <div class="breath-circle-wrap" id="circleWrap">
+    <div class="breath-circle-wrap">
       <div class="breath-circle-bg">
         <div class="breath-circle" id="breathCircle">
-          <div class="breath-text">
-            <span class="breath-count" id="breathCount">–</span>
-          </div>
+          <div class="breath-text"><span class="breath-count" id="breathCount">–</span></div>
         </div>
       </div>
     </div>
-
-    <div class="progress-bar-wrap">
-      <div class="progress-bar-fill" id="progressBar" style="width:0%"></div>
-    </div>
-
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar" style="width:0%"></div></div>
     <div class="exercise-round" id="roundLabel"></div>
-
     <div class="exercise-controls">
       <button class="ctrl-btn ctrl-start" id="startBtn" onclick="toggleExercise()">Starta</button>
-      <button class="ctrl-btn ctrl-stop" id="stopBtn" onclick="closeOverlay()">Avsluta</button>
+      <button class="ctrl-btn ctrl-stop" onclick="closeOverlay()">Avsluta</button>
     </div>
   </div>
-
   <div class="complete-view" id="completeView">
     <div class="complete-icon">✅</div>
     <h2 class="complete-title">Bra jobbat.</h2>
@@ -283,90 +272,30 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
 </div>
 
 <script>
+function toggleMenu() {
+  const menu = document.getElementById('navMenu');
+  const overlay = document.getElementById('navOverlay');
+  const hamburger = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  overlay.classList.toggle('open');
+  hamburger.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('navMenu').classList.remove('open');
+  document.getElementById('navOverlay').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', closeMenu));
+
 const exercises = {
-  '478': {
-    name: '4-7-8 Andning',
-    desc: 'Andas in genom näsan i 4 sekunder, håll i 7, andas ut genom munnen i 8.',
-    rounds: 4,
-    totalRounds: 4,
-    phases: [
-      { name: 'Andas in', duration: 4, instruction: 'Andas in', sub: 'Genom näsan, lugnt och djupt', scale: 1.4 },
-      { name: 'Håll', duration: 7, instruction: 'Håll andan', sub: 'Slappna av i axlarna', scale: 1.4 },
-      { name: 'Andas ut', duration: 8, instruction: 'Andas ut', sub: 'Genom munnen, långsamt', scale: 1.0 }
-    ],
-    complete: 'Du har aktiverat ditt parasympatiska nervsystem. Ångesten och stressen minskar nu naturligt i kroppen.'
-  },
-  'box': {
-    name: 'Box Breathing',
-    desc: 'In 4s → Håll 4s → Ut 4s → Håll 4s. Upprepa.',
-    rounds: 5,
-    totalRounds: 5,
-    phases: [
-      { name: 'Andas in', duration: 4, instruction: 'Andas in', sub: 'Fyller lungorna helt', scale: 1.4 },
-      { name: 'Håll', duration: 4, instruction: 'Håll', sub: 'Lugn och kontrollerad', scale: 1.4 },
-      { name: 'Andas ut', duration: 4, instruction: 'Andas ut', sub: 'Töm lungorna helt', scale: 1.0 },
-      { name: 'Håll', duration: 4, instruction: 'Håll', sub: 'Kroppen stannar', scale: 1.0 }
-    ],
-    complete: 'Box breathing är klart. Ditt nervsystem är nu i balans. Du har full kontroll.'
-  },
-  'activation': {
-    name: 'Aktiveringsandning',
-    desc: 'Snabba, kraftfulla andetag för att öka energin och lyfta humöret.',
-    rounds: 3,
-    totalRounds: 3,
-    phases: [
-      { name: 'Snabb andning', duration: 20, instruction: 'Andas snabbt', sub: '20 snabba andetag — kraft i', scale: 1.2 },
-      { name: 'Andas ut helt', duration: 2, instruction: 'Andas ut', sub: 'Töm lungorna', scale: 1.0 },
-      { name: 'Håll', duration: 10, instruction: 'Håll andan', sub: 'Känn energin', scale: 1.0 }
-    ],
-    complete: 'Syreupptagningen har ökat. Du borde känna en naturlig energikick och ett lyft i humöret nu.'
-  },
-  'grounding': {
-    name: '5-4-3-2-1 Grounding',
-    desc: 'Namnge 5 saker du ser, 4 du kan röra, 3 du hör, 2 du luktar, 1 du smakar.',
-    rounds: 1,
-    totalRounds: 1,
-    phases: [
-      { name: '5 saker du ser', duration: 20, instruction: '5 saker du ser', sub: 'Titta runt dig — namnge dem tyst', scale: 1.1 },
-      { name: '4 saker du kan röra', duration: 20, instruction: '4 saker du kan röra', sub: 'Känn dem med händerna', scale: 1.1 },
-      { name: '3 saker du hör', duration: 20, instruction: '3 saker du hör', sub: 'Lyssna noga', scale: 1.1 },
-      { name: '2 saker du luktar', duration: 15, instruction: '2 saker du luktar', sub: 'Ta ett djupt andetag', scale: 1.1 },
-      { name: '1 sak du smakar', duration: 10, instruction: '1 sak du smakar', sub: 'Vad smakar du just nu?', scale: 1.1 }
-    ],
-    complete: 'Du är tillbaka i nuet. Ångestspiralen är bruten. Kropp och sinne är i samma rum.'
-  },
-  'relaxation': {
-    name: 'Progressiv avslappning',
-    desc: 'Spänna och slappna av muskelgrupper från fötter till huvud.',
-    rounds: 1,
-    totalRounds: 1,
-    phases: [
-      { name: 'Fötter', duration: 8, instruction: 'Spänn fötterna', sub: 'Curl tårna hårt i 5 sekunder', scale: 1.3 },
-      { name: 'Fötter', duration: 8, instruction: 'Slappna av', sub: 'Känn spänningen försvinna', scale: 1.0 },
-      { name: 'Vader', duration: 8, instruction: 'Spänn vaderna', sub: 'Tryck hälar mot golvet', scale: 1.3 },
-      { name: 'Vader', duration: 8, instruction: 'Slappna av', sub: 'Andas ut och släpp', scale: 1.0 },
-      { name: 'Lår', duration: 8, instruction: 'Spänn låren', sub: 'Pressa benen ihop', scale: 1.3 },
-      { name: 'Lår', duration: 8, instruction: 'Slappna av', sub: 'Låt dem sjunka', scale: 1.0 },
-      { name: 'Mage', duration: 8, instruction: 'Spänn magen', sub: 'Som att ta en näve', scale: 1.3 },
-      { name: 'Mage', duration: 8, instruction: 'Slappna av', sub: 'Andas djupt in', scale: 1.0 },
-      { name: 'Axlar', duration: 8, instruction: 'Höj axlarna', sub: 'Upp mot öronen', scale: 1.3 },
-      { name: 'Axlar', duration: 8, instruction: 'Släpp', sub: 'Känn tyngden försvinna', scale: 1.0 },
-      { name: 'Ansikte', duration: 8, instruction: 'Grimasa', sub: 'Krama ihop hela ansiktet', scale: 1.3 },
-      { name: 'Ansikte', duration: 8, instruction: 'Slappna av', sub: 'Mjuk käke, mjuk panna', scale: 1.0 }
-    ],
-    complete: 'Kroppen är nu djupt avslappnad. Perfekt för sömn eller för att återhämta sig efter en tuff dag.'
-  },
-  'anger': {
-    name: 'Snabb nedvarvning',
-    desc: 'Lång utandning aktiverar bromsen i nervsystemet och sänker pulsen snabbt.',
-    rounds: 3,
-    totalRounds: 3,
-    phases: [
-      { name: 'Andas in', duration: 4, instruction: 'Andas in', sub: 'Kort och kraftfullt', scale: 1.3 },
-      { name: 'Andas ut', duration: 8, instruction: 'Andas ut långsamt', sub: 'Dubbelt så lång som inandningen', scale: 1.0 }
-    ],
-    complete: 'Pulsen har sjunkit. Adrenalinpåslaget avtar. Du har nu kontrollen tillbaka — inte ilskan.'
-  }
+  '478': { name:'4-7-8 Andning', desc:'Andas in 4s, håll 7s, ut 8s.', rounds:4, totalRounds:4, phases:[{name:'Andas in',duration:4,instruction:'Andas in',sub:'Genom näsan, lugnt och djupt',scale:1.4},{name:'Håll',duration:7,instruction:'Håll andan',sub:'Slappna av i axlarna',scale:1.4},{name:'Andas ut',duration:8,instruction:'Andas ut',sub:'Genom munnen, långsamt',scale:1.0}], complete:'Du har aktiverat ditt parasympatiska nervsystem. Ångesten och stressen minskar nu naturligt i kroppen.' },
+  'box': { name:'Box Breathing', desc:'In 4s → Håll 4s → Ut 4s → Håll 4s.', rounds:5, totalRounds:5, phases:[{name:'Andas in',duration:4,instruction:'Andas in',sub:'Fyller lungorna helt',scale:1.4},{name:'Håll',duration:4,instruction:'Håll',sub:'Lugn och kontrollerad',scale:1.4},{name:'Andas ut',duration:4,instruction:'Andas ut',sub:'Töm lungorna helt',scale:1.0},{name:'Håll',duration:4,instruction:'Håll',sub:'Kroppen stannar',scale:1.0}], complete:'Box breathing är klart. Ditt nervsystem är nu i balans. Du har full kontroll.' },
+  'activation': { name:'Aktiveringsandning', desc:'Snabba kraftfulla andetag för att öka energin.', rounds:3, totalRounds:3, phases:[{name:'Snabb andning',duration:20,instruction:'Andas snabbt',sub:'20 snabba andetag — kraft i',scale:1.2},{name:'Andas ut helt',duration:2,instruction:'Andas ut',sub:'Töm lungorna',scale:1.0},{name:'Håll',duration:10,instruction:'Håll andan',sub:'Känn energin',scale:1.0}], complete:'Syreupptagningen har ökat. Du borde känna en naturlig energikick nu.' },
+  'grounding': { name:'5-4-3-2-1 Grounding', desc:'Namnge 5 saker du ser, 4 du rör, 3 du hör, 2 du luktar, 1 du smakar.', rounds:1, totalRounds:1, phases:[{name:'5 saker du ser',duration:20,instruction:'5 saker du ser',sub:'Titta runt dig — namnge dem tyst',scale:1.1},{name:'4 saker du kan röra',duration:20,instruction:'4 saker du kan röra',sub:'Känn dem med händerna',scale:1.1},{name:'3 saker du hör',duration:20,instruction:'3 saker du hör',sub:'Lyssna noga',scale:1.1},{name:'2 saker du luktar',duration:15,instruction:'2 saker du luktar',sub:'Ta ett djupt andetag',scale:1.1},{name:'1 sak du smakar',duration:10,instruction:'1 sak du smakar',sub:'Vad smakar du just nu?',scale:1.1}], complete:'Du är tillbaka i nuet. Ångestspiralen är bruten.' },
+  'relaxation': { name:'Progressiv avslappning', desc:'Spänna och slappna av muskelgrupper från fötter till huvud.', rounds:1, totalRounds:1, phases:[{name:'Fötter',duration:8,instruction:'Spänn fötterna',sub:'Curl tårna hårt',scale:1.3},{name:'Fötter',duration:8,instruction:'Slappna av',sub:'Känn spänningen försvinna',scale:1.0},{name:'Vader',duration:8,instruction:'Spänn vaderna',sub:'Tryck hälar mot golvet',scale:1.3},{name:'Vader',duration:8,instruction:'Slappna av',sub:'Andas ut och släpp',scale:1.0},{name:'Lår',duration:8,instruction:'Spänn låren',sub:'Pressa benen ihop',scale:1.3},{name:'Lår',duration:8,instruction:'Slappna av',sub:'Låt dem sjunka',scale:1.0},{name:'Mage',duration:8,instruction:'Spänn magen',sub:'Som att ta en näve',scale:1.3},{name:'Mage',duration:8,instruction:'Slappna av',sub:'Andas djupt in',scale:1.0},{name:'Axlar',duration:8,instruction:'Höj axlarna',sub:'Upp mot öronen',scale:1.3},{name:'Axlar',duration:8,instruction:'Släpp',sub:'Känn tyngden försvinna',scale:1.0},{name:'Ansikte',duration:8,instruction:'Grimasa',sub:'Krama ihop hela ansiktet',scale:1.3},{name:'Ansikte',duration:8,instruction:'Slappna av',sub:'Mjuk käke, mjuk panna',scale:1.0}], complete:'Kroppen är nu djupt avslappnad. Perfekt för sömn eller återhämtning.' },
+  'anger': { name:'Snabb nedvarvning', desc:'Lång utandning sänker pulsen snabbt.', rounds:3, totalRounds:3, phases:[{name:'Andas in',duration:4,instruction:'Andas in',sub:'Kort och kraftfullt',scale:1.3},{name:'Andas ut',duration:8,instruction:'Andas ut långsamt',sub:'Dubbelt så lång som inandningen',scale:1.0}], complete:'Pulsen har sjunkit. Du har kontrollen tillbaka — inte ilskan.' }
 };
 
 let currentEx = null;
@@ -380,13 +309,8 @@ let elapsed = 0;
 
 function startExercise(key) {
   currentEx = JSON.parse(JSON.stringify(exercises[key]));
-  currentPhase = 0;
-  currentRound = 0;
-  elapsed = 0;
-  running = false;
-
+  currentPhase = 0; currentRound = 0; elapsed = 0; running = false;
   totalDuration = currentEx.phases.reduce((s,p) => s + p.duration, 0) * currentEx.totalRounds;
-
   document.getElementById('overlayTitle').textContent = currentEx.name;
   document.getElementById('overlayStatus').textContent = currentEx.desc;
   document.getElementById('exerciseView').style.display = 'flex';
@@ -399,25 +323,13 @@ function startExercise(key) {
   document.getElementById('phaseLabel').textContent = currentEx.phases[0].name;
   document.getElementById('breathCount').textContent = currentEx.phases[0].duration;
   document.getElementById('breathCircle').style.transform = 'scale(1)';
-
   document.getElementById('overlay').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
 function toggleExercise() {
-  if (running) {
-    pauseExercise();
-  } else {
-    running = true;
-    document.getElementById('startBtn').textContent = 'Pausa';
-    runPhase();
-  }
-}
-
-function pauseExercise() {
-  running = false;
-  clearInterval(timer);
-  document.getElementById('startBtn').textContent = 'Fortsätt';
+  if (running) { running = false; clearInterval(timer); document.getElementById('startBtn').textContent = 'Fortsätt'; }
+  else { running = true; document.getElementById('startBtn').textContent = 'Pausa'; runPhase(); }
 }
 
 function runPhase() {
@@ -428,43 +340,31 @@ function runPhase() {
   document.getElementById('exerciseSub').textContent = phase.sub;
   document.getElementById('phaseLabel').textContent = phase.name;
   document.getElementById('breathCount').textContent = countdown;
-
   const circle = document.getElementById('breathCircle');
   circle.style.transition = `transform ${phase.duration}s ease-in-out`;
   circle.style.transform = `scale(${phase.scale})`;
-
   clearInterval(timer);
   timer = setInterval(() => {
     if (!running) return;
-    countdown--;
-    elapsed++;
+    countdown--; elapsed++;
     document.getElementById('breathCount').textContent = Math.max(0, countdown);
     document.getElementById('progressBar').style.width = `${(elapsed / totalDuration) * 100}%`;
-
-    if (countdown <= 0) {
-      clearInterval(timer);
-      nextPhase();
-    }
+    if (countdown <= 0) { clearInterval(timer); nextPhase(); }
   }, 1000);
 }
 
 function nextPhase() {
   currentPhase++;
   if (currentPhase >= currentEx.phases.length) {
-    currentPhase = 0;
-    currentRound++;
-    if (currentRound >= currentEx.totalRounds) {
-      completeExercise();
-      return;
-    }
+    currentPhase = 0; currentRound++;
+    if (currentRound >= currentEx.totalRounds) { completeExercise(); return; }
     document.getElementById('roundLabel').textContent = `Runda ${currentRound + 1} av ${currentEx.totalRounds}`;
   }
   if (running) runPhase();
 }
 
 function completeExercise() {
-  running = false;
-  clearInterval(timer);
+  running = false; clearInterval(timer);
   document.getElementById('progressBar').style.width = '100%';
   document.getElementById('breathCircle').style.transform = 'scale(1)';
   setTimeout(() => {
@@ -480,8 +380,7 @@ function resetExercise() {
 }
 
 function closeOverlay() {
-  running = false;
-  clearInterval(timer);
+  running = false; clearInterval(timer);
   document.getElementById('overlay').classList.remove('active');
   document.body.style.overflow = '';
   document.getElementById('breathCircle').style.transform = 'scale(1)';
