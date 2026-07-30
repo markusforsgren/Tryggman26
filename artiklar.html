@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Artiklar om mäns psykiska hälsa – depression, ångest, utbrändhet, stress och relationer. Skrivet för män, av män som förstår.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<title>Artiklar — Tryggman</title>
+<title>Artiklar om mäns psykiska hälsa — Tryggman</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -29,7 +30,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .nav-menu ul li a:hover,.nav-menu ul li a.active{color:#fff;background:rgba(255,255,255,0.05)}
 .nav-menu ul li a.active{color:#4E9E8D}
 .nav-menu-cta{background:#3A7D6E!important;color:#fff!important;font-weight:500!important;margin-top:0.5rem}
-.nav-menu-cta:hover{background:#4E9E8D!important}
 .nav-menu-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:1.2rem;margin-top:auto}
 .nav-menu-bottom a{display:block;padding:0.5rem 0.8rem;color:rgba(255,255,255,0.3);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
 .nav-menu-bottom a:hover{color:rgba(255,255,255,0.6)}
@@ -72,7 +72,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .article-featured .article-title{font-size:1.8rem}
 .article-featured-label{background:#C0873A;color:#fff;font-size:0.68rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:2px;display:inline-block;margin-bottom:0.8rem;letter-spacing:0.08em;text-transform:uppercase}
 .article-featured-img{background:#1C2B35;display:flex;align-items:center;justify-content:center;min-height:280px}
-.article-featured-img-inner{font-family:'DM Serif Display',serif;font-size:4rem;color:rgba(255,255,255,0.08);padding:2rem;text-align:center;line-height:1.2}
+.article-featured-img-inner{font-family:'DM Serif Display',serif;font-size:3rem;color:rgba(255,255,255,0.08);padding:2rem;text-align:center;line-height:1.3}
 
 .article-overlay{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;background:#FAFAF7;overflow-y:auto}
 .article-overlay.active{display:flex}
@@ -95,7 +95,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .premium-gate{background:#1C2B35;padding:3rem;text-align:center;margin-top:3rem;border-radius:2px}
 .premium-gate h3{font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:0.8rem}
 .premium-gate p{font-size:0.88rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem;line-height:1.75}
-.premium-gate a{background:#3A7D6E;color:#fff;padding:0.85rem 2rem;border-radius:2px;text-decoration:none;font-size:0.9rem;font-weight:500;display:inline-block;transition:background 0.2s}
+.premium-gate a{background:#3A7D6E;color:#fff;padding:0.85rem 2rem;border-radius:2px;text-decoration:none;font-size:0.9rem;font-weight:500;display:inline-block}
 .premium-gate a:hover{background:#4E9E8D}
 
 footer{background:#1C2B35;padding:4.5rem 8% 2rem}
@@ -108,6 +108,9 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
 .footer-col a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.85rem;transition:color 0.2s;font-weight:300}
 .footer-col a:hover{color:#fff}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;color:rgba(255,255,255,0.25);flex-wrap:wrap;gap:0.5rem}
+.footer-legal{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.04)}
+.footer-legal a{color:rgba(255,255,255,0.2);text-decoration:none;font-size:0.75rem;transition:color 0.2s}
+.footer-legal a:hover{color:rgba(255,255,255,0.5)}
 .footer-crisis{color:#4E9E8D;font-weight:500}
 
 @media(max-width:900px){
@@ -118,9 +121,7 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
   .footer-top{grid-template-columns:1fr 1fr}
   .article-content-title{font-size:2rem}
 }
-.footer-legal{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.04)}
-.footer-legal a{color:rgba(255,255,255,0.2);text-decoration:none;font-size:0.75rem;transition:color 0.2s}
-.footer-legal a:hover{color:rgba(255,255,255,0.5)}
+@media(max-width:500px){.footer-top{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -176,6 +177,8 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
   <button class="filter-btn active" onclick="filterArticles('alla', this)">Alla</button>
   <button class="filter-btn" onclick="filterArticles('tystnad', this)">Tystnad & manlighet</button>
   <button class="filter-btn" onclick="filterArticles('utbrändhet', this)">Utbrändhet & stress</button>
+  <button class="filter-btn" onclick="filterArticles('depression', this)">Depression</button>
+  <button class="filter-btn" onclick="filterArticles('ångest', this)">Ångest</button>
   <button class="filter-btn" onclick="filterArticles('relationer', this)">Relationer</button>
   <button class="filter-btn" onclick="filterArticles('föräldraskap', this)">Föräldraskap</button>
   <button class="filter-btn" onclick="filterArticles('återhämtning', this)">Återhämtning</button>
@@ -211,7 +214,11 @@ footer{background:#1C2B35;padding:4.5rem 8% 2rem}
     </ul></div>
   </div>
   <div class="footer-bottom"><div>© 2026 Tryggman</div><div class="footer-crisis">Kris? Ring 90101 eller 112</div></div>
-  <div class="footer-legal"><a href="integritetspolicy.html">Integritetspolicy</a><a href="anvandarvillkor.html">Användarvillkor</a><a href="cookies.html">Cookies</a></div>
+  <div class="footer-legal">
+    <a href="integritetspolicy.html">Integritetspolicy</a>
+    <a href="anvandarvillkor.html">Användarvillkor</a>
+    <a href="cookies.html">Cookies</a>
+  </div>
 </footer>
 
 <script>
@@ -231,12 +238,90 @@ function closeMenu() {
 document.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', closeMenu));
 
 const articles = [
-  { id:1, tag:'Tystnad & manlighet', category:'tystnad', title:'Borsta bort gruset och upp igen — om pojken som lärde sig hålla tyst', excerpt:'Det börjar inte med något dramatiskt. Det börjar istället tyst, omärkligt och sakta — med en röst som med tiden börjar låta som din egen.', readTime:'8 min', premium:false, featured:true, content:`<p>Det börjar inte med något dramatiskt. Det börjar istället som de flesta viktiga saker i livet börjar – tyst, omärkligt och så sakta att man inte ens märker att det pågår.</p><p>Det börjar med en röst. Kanske din pappas röst. Kanske din farfars, din äldre brors, en tränares eller en lärares. En röst som tillhörde någon du såg upp till, vars ord landade djupt.</p><blockquote>Borsta bort gruset. Upp igen.</blockquote><p>Du föll. Det gjorde ont. Men smärtan fick inte ta plats. Den borstades bort tillsammans med gruset på knäet, och du reste dig. Inte för att du inte hade ont. Utan för att det var det enda som var tillåtet.</p><h2>Fasaden som blev ett hem</h2><p>Det är det som är så lurigt med inlärd tystnad — den är fullständigt osynlig inifrån. Du ser den inte på dig själv. Du lär dig le på rätt ställen, svara "bra tack" när folk frågar hur du mår och mena det på ett sätt som känns äkta just i ögonblicket.</p><div class="stat-box"><strong>70%</strong><span>Av män som mår dåligt söker aldrig professionell hjälp. Rädslan för att dömas håller dem tysta — tills det är för sent. (Källa: Mind)</span></div><h2>Det vi inte fick lära oss</h2><p>Det finns en fråga som aldrig ställdes. En fråga som borde ha ställts — av föräldrar, av lärare, av tränare:</p><blockquote>Hur har du det egentligen?</blockquote><p>Det vi egentligen behövde lära oss är att känslor inte är ett tecken på svaghet. Att gråta inte gör en till mindre man. Att be om hjälp inte är ett nederlag utan ett mod som kräver mer av en människa än att hålla tyst någonsin gör.</p>` },
-  { id:2, tag:'Utbrändhet & stress', category:'utbrändhet', title:'Vad utbrändhet faktiskt är — och varför sjukvården missar det hos män', excerpt:'Att gå in i väggen är inte bara att man blir trött. Det är en monumental felaktighet i hur vi som samhälle pratar om utbrändhet.', readTime:'10 min', premium:false, content:`<p>Att gå in i väggen är inte bara att man blir trött. Det handlar om att kroppen bokstavligen håller på att stänga av på ett grundläggande, biologiskt plan.</p><h2>Hjärnan som slutade fungera</h2><p>Logiken försvinner. Den analytiska förmågan — som om den var en del av vem man var — är borta. Minnet sviker i de mest vardagliga situationer.</p><blockquote>Det var som om alla försvarsmurar jag byggt upp under ett helt liv hade vittrat sönder till damm på en sekund. Kroppen sa ifrån. Den vägrade att lyda mer.</blockquote><h2>Varför sjukvården missar det</h2><div class="stat-box"><strong>Underdiagnostiserade</strong><span>Forskning visar att män och kvinnor drabbas ungefär lika ofta av utbrändhet — men att symtombilden ser annorlunda ut. Männens utbrändhet är svårare att känna igen och systematiskt underdiagnostiseras. (Källa: Lunds universitet)</span></div><p>Kvinnor uppvisar oftare emotionell utmattning och öppen nedstämdhet. Män uppvisar oftare cynism, irritabilitet och fysiska symtom. Det gör att männens utbrändhet är svårare att känna igen.</p><h2>Det är inte ditt fel</h2><p>Män går in i väggen. Män drabbas av utmattning. Och när de väl tar steget och söker hjälp — förtjänar de att bli sedda. Inte bortförklarade.</p>` },
-  { id:3, tag:'Föräldraskap', category:'föräldraskap', title:'Pappan som inte räknades — om osynligheten i ett jämställt land', excerpt:'Sverige är ett av världens mest jämställda länder. Men det finns en sida av berättelsen som sällan berättas — pappan som sitter ensam i väntrummet på BVC.', readTime:'9 min', premium:true, content:`<p>Sverige är ett av världens mest jämställda länder. Men det finns en sida av jämställdhetsberättelsen som sällan berättas. Det är berättelsen om pappan som sitter ensam i väntrummet på BVC och känner blickarna falla på honom.</p><blockquote>Inte onda blickar. Inte fientliga. Bara frågande. En tyst undran: Var är mamman? Varför är det han som kom?</blockquote><h2>Det osynliga kontraktet</h2><p>Det finns ett kontrakt som ingen skriver på men som alla förväntas följa. Du ska se till att familjen tar sig från A till B. Du ska jobba. Du ska leverera ekonomisk trygghet.</p><h2>En pappa som är engagerad</h2><p>En pappa som är engagerad kallas ofta för en fantastisk pappa. Som om engagemanget vore något exceptionellt. En mamma som gör exakt samma saker kallas för en mamma.</p><div class="stat-box"><strong>Stark riskfaktor</strong><span>Forskning visar att fäder som förlorar kontakten med sina barn efter en separation löper kraftigt förhöjd risk för psykisk ohälsa och självmord.</span></div>` },
-  { id:4, tag:'Relationer', category:'relationer', title:'Rösten som sa att du är fel — om psykologisk utmattning i nära relationer', excerpt:'Det finns en sorts utmattning som inte syns på ett blodprov. Utmattningen av att leva länge med en röst som talar om för dig vem du är.', readTime:'11 min', premium:true, content:`<p>Det finns en sorts utmattning som inte syns på ett blodprov. Det är utmattningen av att leva länge med en röst som talar om för dig vem du är.</p><h2>Rösten som blev din egen</h2><p>Vad du gör fel. Hur du borde vara annorlunda. Att du aldrig, aldrig riktigt räcker till.</p><blockquote>Man justerar sig. Man försöker bli bättre. Man försöker räcka till — utan att märka att tillräcklighet aldrig var möjlig, för reglerna var konstruerade på ett sätt som garanterade att man alltid misslyckades.</blockquote><div class="stat-box"><strong>Osynligt problem</strong><span>Psykologisk forskning visar att de som lever i kontrollerande relationer sällan identifierar mönstren medan de befinner sig mitt i dem. Det sker en gradvis normalisering av beteenden som utifrån verkar uppenbara. (Källa: Nationellt centrum för kvinnofrid)</span></div><h2>Det som inte var ditt fel</h2><p>Det tar tid att förlåta sig själv. Att se vad som är en reaktion på omständigheter snarare än en sanning om ens karaktär. Det är inte svaghet. Det är ett nervsystem som lärt sig en lektion och inte vet om att lektionen inte längre gäller.</p>` },
-  { id:5, tag:'Återhämtning', category:'återhämtning', title:'Klockan 03 — natten jag förstod hur illa det faktiskt var', excerpt:'Strålkastarna skar som glödande knivar. Musiken på högsta volym var det enda tillförlitliga verktyget jag hade kvar för att hålla ögonlocken uppe.', readTime:'12 min', premium:true, content:`<p>Strålkastarna från de mötande bilarna skar som glödande knivar genom vindrutan. Musiken på absolut högsta volym — det enda tillförlitliga verktyget för att hålla hjärnan vaken.</p><p>Det var en ren säkerhetsåtgärd för att inte somna vid ratten. Det var ett liv på marginalen av vad en kropp klarar.</p><blockquote>Det var som om tankarna malde om samma sak om och om igen. Och de malde hårdast mitt i natten, när allt annat var tyst.</blockquote><h2>Det som höll mig kvar</h2><p>Barnen. Inte som en abstrakt tanke om förpliktelse. Utan deras ansikten — konkreta, verkliga, levande. Hur de luktar när man kramar dem på morgonen.</p><div class="stat-box"><strong>Varje dag</strong><span>Tar i genomsnitt fyra personer sitt liv i Sverige. Tre av dem är män. Men forskning visar att nio av tio som gjort ett självmordsförsök och överlever, inte dör av självmord senare i livet. Det finns en väg framåt. (Källa: Mind)</span></div><p>Rädslan för sig själv är ett tecken. Inte på att du är trasig bortom räddning. Utan på att du har burit för mycket, för länge, utan tillräcklig hjälp.</p>` },
-  { id:6, tag:'Återhämtning', category:'återhämtning', title:'Altanen — ur mörkret, en gnista', excerpt:'Det var de tankarna som malde i mig den kvällen. Ensam under plasttaket medan regnet smattrade. Och mitt i det mörkret hände något.', readTime:'8 min', premium:true, content:`<p>Det finns en särskild sorts trötthet i att veta att man bygger på lösan sand. Varje vecka startar samma Sisyfosarbete.</p><h2>Altanen i regnet</h2><p>Jag satt under plasttaket medan regnet smattrade och stänkte in. Jag tittade på mina egna händer. De darrade lätt — av den kroniska spänning som blivit min kropps normaltillstånd.</p><p>Och ändå — mitt i det där mörkret — hände något. Trots allt det svåra var det så otroligt fint ute. Luften doftade av våt asfalt och jord. Och plötsligt slog det mig:</p><blockquote>Det kan inte bara vara jag. Det måste finnas tusentals män som sitter på exakt likadana altaner just nu, i exakt samma ensamhet, och brottas med exakt samma tankar.</blockquote><h2>Gnistan</h2><p>Ur den insikten föddes något. En vägran att låta tystnaden vinna. Det var där, under det smattrande plasttaket — som idén till Tryggman.se tog form.</p><p>Tystnaden vann i för många år. Den vinner fortfarande för för många män. Det var dags att börja bryta den.</p>` }
+  {
+    id:1, tag:'Tystnad & manlighet', category:'tystnad',
+    title:'Borsta bort gruset och upp igen — om pojken som lärde sig hålla tyst',
+    excerpt:'Det börjar inte med något dramatiskt. Det börjar istället tyst, omärkligt och sakta — med en röst som med tiden börjar låta som din egen.',
+    readTime:'8 min', premium:false, featured:true,
+    content:`<p>Det börjar inte med något dramatiskt. Det börjar istället som de flesta viktiga saker i livet börjar — tyst, omärkligt och så sakta att man inte ens märker att det pågår.</p><p>Det börjar med en röst. Kanske din pappas röst. Kanske din farfars, din äldre brors, en tränares eller en lärares. En röst som tillhörde någon du såg upp till, vars ord landade djupt.</p><blockquote>Borsta bort gruset. Upp igen.</blockquote><p>Du föll. Det gjorde ont. Men smärtan fick inte ta plats. Den borstades bort tillsammans med gruset på knäet, och du reste dig. Inte för att du inte hade ont. Utan för att det var det enda som var tillåtet.</p><h2>Fasaden som blev ett hem</h2><p>Det är det som är så lurigt med inlärd tystnad — den är fullständigt osynlig inifrån. Du lär dig le på rätt ställen, svara "bra tack" när folk frågar hur du mår.</p><div class="stat-box"><strong>70%</strong><span>Av män som mår dåligt söker aldrig professionell hjälp. Rädslan för att dömas håller dem tysta. (Källa: Mind)</span></div><h2>Det vi inte fick lära oss</h2><p>Det vi egentligen behövde lära oss är att känslor inte är ett tecken på svaghet. Att gråta inte gör en till mindre man. Att be om hjälp inte är ett nederlag utan ett mod som kräver mer av en människa än att hålla tyst någonsin gör.</p>`
+  },
+  {
+    id:2, tag:'Utbrändhet & stress', category:'utbrändhet',
+    title:'Vad utbrändhet faktiskt är — och varför sjukvården missar det hos män',
+    excerpt:'Att gå in i väggen är inte bara att man blir trött. Det är en monumental felaktighet i hur vi som samhälle pratar om utbrändhet.',
+    readTime:'10 min', premium:false,
+    content:`<p>Att gå in i väggen är inte bara att man blir trött. Det handlar om att kroppen bokstavligen håller på att stänga av på ett grundläggande, biologiskt plan.</p><h2>Hjärnan som slutade fungera</h2><p>Logiken försvinner. Den analytiska förmågan är borta. Minnet sviker i de mest vardagliga situationer. Man kan gå ut från en affär och inte ha en aning om var man parkerat bilen.</p><blockquote>Det var som om alla försvarsmurar jag byggt upp under ett helt liv hade vittrat sönder till damm på en sekund. Kroppen sa ifrån.</blockquote><div class="stat-box"><strong>Underdiagnostiserade</strong><span>Forskning visar att män och kvinnor drabbas ungefär lika ofta av utbrändhet — men männens symtom är svårare att känna igen. (Källa: Lunds universitet)</span></div><h2>Det är inte ditt fel</h2><p>Män går in i väggen. Män drabbas av utmattning. Och när de väl tar steget och söker hjälp — förtjänar de att bli sedda. Inte bortförklarade.</p>`
+  },
+  {
+    id:3, tag:'Depression', category:'depression',
+    title:'Depression hos män — så ser symtomen ut när de inte ser ut som du tror',
+    excerpt:'Depression hos män ser ofta inte ut som tårar och sängliggande. Den ser ut som ilska, distans, alkohol och överarbete. Och det är därför den missas.',
+    readTime:'9 min', premium:false,
+    content:`<p>När de flesta tänker på depression föreställer de sig en person som ligger i sängen och gråter. Men det är sällan så det ser ut hos män. Och det är just därför så många faller igenom sprickorna.</p><h2>Hur depression faktiskt ser ut hos män</h2><p>Irritabilitet snarare än sorg. Ilska som exploderar vid fel tidpunkt. En känsla av tomhet — inte av djup smärta, utan av ingenting alls. Att jobba mer än någonsin för att slippa vara inne i sig själv.</p><blockquote>Jag var inte ledsen. Jag var bara inte något alls. Det är svårare att förklara för någon som inte känt det.</blockquote><div class="stat-box"><strong>3 av 4</strong><span>Självmord i Sverige begås av män. Depression är den vanligaste orsaken — men bara hälften söker hjälp. (Källa: Folkhälsomyndigheten)</span></div><h2>Varför männen inte söker hjälp</h2><p>Dels för att de inte känner igen sina egna symtom som depression. Dels för att det fortfarande känns som ett misslyckande att erkänna att man inte mår bra. Och dels för att vården ofta inte ställer rätt frågor.</p><h2>Vad du kan göra</h2><p>Det första steget är att känna igen det. Om du känner igen dig i beskrivningen ovan — ilskan, tomheten, distansen — är det värt att prata med någon. Inte för att du är svag. Utan för att du förtjänar att må bättre.</p>`
+  },
+  {
+    id:4, tag:'Ångest', category:'ångest',
+    title:'Ångest hos män — vad det är, varför det uppstår och vad som faktiskt hjälper',
+    excerpt:'Ångest är inte bara oro. Det är en fysisk, överväldigande upplevelse som kan lamslå en människa mitt i vardagen. Och den är vanligare hos män än du tror.',
+    readTime:'11 min', premium:false,
+    content:`<p>Ångest är en av de vanligaste psykiska besvären — men bland männen pratas det sällan om det. Delvis för att ångest upplevs som ett tecken på svaghet. Delvis för att den tar sig uttryck på sätt som inte alltid identifieras som ångest.</p><h2>Vad ångest faktiskt är</h2><p>Ångest är kroppens larmsystem som gått i överdrift. Det är evolutionärt programmerat för att skydda oss från fara — men hos en person med ångest aktiveras systemet utan att det finns ett reellt hot. Resultatet är en fysisk upplevelse: hjärtat slår snabbare, andningen blir ytlig, musklerna spänner sig.</p><blockquote>Det kändes som att sitta i en bil med en motor som aldrig stängs av. Konstant brus. Konstant beredskap för något som aldrig kom.</blockquote><div class="stat-box"><strong>1 av 4</strong><span>Män upplever kliniskt signifikant ångest någon gång i livet — men majoriteten söker aldrig hjälp. (Källa: WHO)</span></div><h2>Vad som faktiskt hjälper</h2><p>KBT (kognitiv beteendeterapi) är den mest evidensbaserade behandlingen för ångest. Andningsövningar kan ge snabb lindring i akuta situationer. Regelbunden fysisk aktivitet minskar grundnivån av ångest över tid. Och att prata med någon — en terapeut, en vän, en AI — kan bryta isolationen som ofta förvärrar ångest.</p><p>Det viktigaste: ångesten ljuger. Den säger att hotet är verkligt. Det är det inte.</p>`
+  },
+  {
+    id:5, tag:'Utbrändhet & stress', category:'utbrändhet',
+    title:'Sömnproblem och stress — sambandet ingen pratar om',
+    excerpt:'Dålig sömn skapar mer stress. Mer stress skapar sämre sömn. Det är en spiral som kan ta år att ta sig ur — men det finns en väg ut.',
+    readTime:'8 min', premium:true,
+    content:`<p>Det börjar ofta med en period av ökad stress. Jobbet, ekonomin, relationen — något tar mer plats än vanligt. Och sömnen påverkas. Man somnar inte lika lätt. Man vaknar mitt i natten med tankarna igång.</p><h2>Spiralen</h2><p>Problemet är att sömnbrist i sig skapar stress. Kortisol — stresshormonet — stiger när kroppen inte fått tillräcklig återhämtning. Det gör det svårare att hantera vardagsutmaningar, vilket skapar mer stress, vilket gör det svårare att sova.</p><blockquote>Efter tre veckor av dålig sömn var det som att världen hade bytt färg. Allt var lite mer hotfullt. Lite mer överväldigande. Lite mer omöjligt.</blockquote><div class="stat-box"><strong>6 timmar</strong><span>Forskning visar att personer som sover under 6 timmar per natt löper dubbelt så hög risk för hjärt-kärlsjukdom och har kraftigt förhöjd risk för depression. (Källa: Karolinska Institutet)</span></div><h2>Vägen ut</h2><p>Sömnhygien är grunden: samma tid varje dag, svalt och mörkt rum, ingen skärm en timme innan. Men viktigare är att adressera stressnivån — inte bara symtomen. Det kan handla om att prioritera bort, sätta gränser, eller söka professionell hjälp om spiralen pågått länge.</p>`
+  },
+  {
+    id:6, tag:'Föräldraskap', category:'föräldraskap',
+    title:'Pappan som inte räknades — om osynligheten i ett jämställt land',
+    excerpt:'Sverige är ett av världens mest jämställda länder. Men det finns en sida av berättelsen som sällan berättas — pappan som sitter ensam i väntrummet.',
+    readTime:'9 min', premium:true,
+    content:`<p>Sverige är ett av världens mest jämställda länder. Men det finns en sida av jämställdhetsberättelsen som sällan berättas.</p><blockquote>Inte onda blickar. Inte fientliga. Bara frågande. En tyst undran: Var är mamman?</blockquote><h2>Det osynliga kontraktet</h2><p>Det finns ett kontrakt som ingen skriver på men som alla förväntas följa. Du ska se till att familjen tar sig från A till B. Du ska jobba. Du ska leverera ekonomisk trygghet. Och när du är hemma ska du inte ta för mycket plats.</p><div class="stat-box"><strong>Stark riskfaktor</strong><span>Forskning visar att fäder som förlorar kontakten med sina barn efter en separation löper kraftigt förhöjd risk för psykisk ohälsa och självmord.</span></div><h2>Jämställdhet på riktigt</h2><p>Jämställdhet på riktigt betyder att vi ser alla föräldrar som föräldrar. Att en pappa på BVC är lika självklar som en mamma. Att familjerätten väger lika tungt på båda sidor av bordet.</p>`
+  },
+  {
+    id:7, tag:'Relationer', category:'relationer',
+    title:'Rösten som sa att du är fel — om psykologisk utmattning i nära relationer',
+    excerpt:'Det finns en sorts utmattning som inte syns på ett blodprov. Utmattningen av att leva länge med en röst som talar om för dig vem du är.',
+    readTime:'11 min', premium:true,
+    content:`<p>Det finns en sorts utmattning som inte syns på ett blodprov och som inte mäts på en våg. Det är utmattningen av att leva länge med en röst som talar om för dig vem du är.</p><blockquote>Man justerar sig. Man försöker bli bättre. Man försöker räcka till — utan att märka att tillräcklighet aldrig var möjlig.</blockquote><div class="stat-box"><strong>Osynligt problem</strong><span>Psykologisk forskning visar att de som lever i kontrollerande relationer sällan identifierar mönstren medan de befinner sig mitt i dem. (Källa: Nationellt centrum för kvinnofrid)</span></div><h2>Det som inte var ditt fel</h2><p>Det tar tid att förlåta sig själv. Att se vad som är en reaktion på omständigheter snarare än en sanning om ens karaktär. Det är inte svaghet. Det är ett nervsystem som lärt sig en lektion och inte vet om att lektionen inte längre gäller.</p>`
+  },
+  {
+    id:8, tag:'Återhämtning', category:'återhämtning',
+    title:'Klockan 03 — natten jag förstod hur illa det faktiskt var',
+    excerpt:'Strålkastarna skar som glödande knivar. Musiken på högsta volym var det enda tillförlitliga verktyget för att hålla ögonlocken uppe.',
+    readTime:'12 min', premium:true,
+    content:`<p>Strålkastarna från de mötande bilarna skar som glödande knivar genom vindrutan. Musiken på absolut högsta volym — det enda tillförlitliga verktyget för att hålla hjärnan vaken.</p><p>Det var en ren säkerhetsåtgärd för att inte somna vid ratten. Det var ett liv på marginalen av vad en kropp klarar.</p><blockquote>Tankarna malde om samma sak om och om igen. Och de malde hårdast mitt i natten, när allt annat var tyst.</blockquote><h2>Det som höll mig kvar</h2><p>Barnen. Inte som en abstrakt tanke om förpliktelse. Utan deras ansikten — konkreta, verkliga, levande.</p><div class="stat-box"><strong>Varje dag</strong><span>Tar i genomsnitt fyra personer sitt liv i Sverige. Tre av dem är män. Men nio av tio som gjort ett försök och överlever, dör inte av självmord senare. Det finns en väg framåt. (Källa: Mind)</span></div>`
+  },
+  {
+    id:9, tag:'Återhämtning', category:'återhämtning',
+    title:'Altanen — ur mörkret, en gnista',
+    excerpt:'Det var de tankarna som malde i mig den kvällen. Ensam under plasttaket medan regnet smattrade. Och mitt i det mörkret hände något.',
+    readTime:'8 min', premium:true,
+    content:`<p>Jag satt under plasttaket medan regnet smattrade och stänkte in. Jag tittade på mina egna händer.</p><blockquote>Det kan inte bara vara jag. Det måste finnas tusentals män som sitter på exakt likadana altaner just nu, i exakt samma ensamhet.</blockquote><h2>Gnistan</h2><p>Ur den insikten föddes något. En vägran att låta tystnaden vinna. Det var där, under det smattrande plasttaket — som idén till Tryggman.se tog form.</p><p>Tystnaden vann i för många år. Den vinner fortfarande för för många män. Det var dags att börja bryta den.</p>`
+  },
+  {
+    id:10, tag:'Depression', category:'depression',
+    title:'Hur pratar man med en vän som mår dåligt — en guide för män',
+    excerpt:'Du märker att din vän inte är sig själv. Han verkar borta, trött, eller arg av okänd anledning. Du vill säga något — men vet inte hur.',
+    readTime:'7 min', premium:false,
+    content:`<p>Du märker att din vän inte är sig själv. Han verkar borta, trött, eller arg av okänd anledning. Du vill säga något — men vet inte hur. Och du är rädd för att göra det värre.</p><h2>Det vanligaste misstaget</h2><p>De flesta gör ett av två misstag: antingen säger de ingenting alls — för att det känns obekvämt, för att de inte vet vad de ska säga, för att de hoppas att det löser sig självt. Eller så försöker de genast lösa problemet — kommer med råd, förslag och lösningar.</p><p>Ingen av dem hjälper. Det din vän behöver är att bli hörd, inte fixad.</p><blockquote>Fråga rakt ut: Mår du bra? Inte som ett artighetsfrågande — utan som en riktig fråga som förtjänar ett riktigt svar.</blockquote><h2>Vad du faktiskt ska säga</h2><p>Börja enkelt: "Jag har märkt att du verkar ha det tungt. Vill du prata?" Och sen — lyssna. Avbryt inte. Kom inte med råd om han inte ber om det. Bekräfta det han berättar: "Det låter tungt. Det förstår jag."</p><div class="stat-box"><strong>Det viktigaste</strong><span>Forskning visar att det att någon frågar direkt om en person mår dåligt — även om ämnet är känsligt — minskar risken för självmord. Att fråga skapar inte problemet. Att inte fråga kan förvärra det.</span></div><h2>Om du är orolig på riktigt</h2><p>Om du tror att din vän har tankar på att skada sig — fråga direkt. "Har du tankar på att ta livet av dig?" Det är en svår fråga att ställa. Men det är rätt fråga. Och om svaret är ja — hjälp honom att kontakta vården eller ring 90101 tillsammans med honom.</p>`
+  },
+  {
+    id:11, tag:'Föräldraskap', category:'föräldraskap',
+    title:'Att vara pappa och må dåligt — du är inte ensam',
+    excerpt:'Pappor mår dåligt också. Men det pratas sällan om. För vem ska ta hand om familjen om pappa inte håller ihop? Den frågan är en fälla.',
+    readTime:'8 min', premium:false,
+    content:`<p>Det finns en föreställning om att pappor är de som håller ihop. De som är starka när det behövs. De som inte rasar ihop — för om de gör det, vad händer då med resten?</p><p>Den föreställningen är en fälla. Och den håller många pappor kvar i ett mönster av tystnad som kostar enormt mycket.</p><h2>Att vara pappa är att vara människa</h2><p>Pappor upplever depression. Pappor upplever ångest. Pappor kan gå in i väggen. Pappor kan ha perioder när de inte orkar — inte med jobbet, inte med relationen, och ibland inte ens med det de älskar mest: sina barn.</p><blockquote>Jag älskade dem mer än allt. Och ändå räckte jag inte till. Jag förstod inte att de två sakerna kunde vara sanna samtidigt.</blockquote><div class="stat-box"><strong>10%</strong><span>Av nyblivna pappor upplever postpartumdepression — en siffra som är kraftigt underrapporterad eftersom symtomen sällan identifieras. (Källa: Karolinska Institutet)</span></div><h2>Det du behöver höra</h2><p>Att må dåligt som pappa gör dig inte till en dålig pappa. Det gör dig till en människa som behöver hjälp. Och att söka den hjälpen — att visa dina barn att det är okej att inte vara okej, och att man kan ta tag i det — är ett av de bästa föredömen du kan ge dem.</p>`
+  },
+  {
+    id:12, tag:'Utbrändhet & stress', category:'utbrändhet',
+    title:'Stressens fysiologi — vad som faktiskt händer i kroppen när du kör för hårt',
+    excerpt:'Stress är inte bara en känsla. Det är en biologisk reaktion som förändrar din kropp på cellnivå. Och kronisk stress gör skador som tar lång tid att läka.',
+    readTime:'9 min', premium:true,
+    content:`<p>Vi pratar om stress som om det vore en känsla. Som om det handlade om att "ta det lugnt" eller "inte ta det så hårt". Men stress är i grunden en biologisk reaktion — och kronisk stress gör fysiska skador på din kropp.</p><h2>Fight or flight</h2><p>När hjärnan uppfattar ett hot — ett verkligt hot eller ett upplevt hot som en deadline eller ett svårt samtal — aktiveras det sympatiska nervsystemet. Adrenalin och kortisol pumpas ut. Pulsen ökar. Blodtrycket stiger. Musklerna spänner sig.</p><p>Det är ett system designat för kortsiktiga hot. Problemet uppstår när det aktiveras konstant — dag efter dag, vecka efter vecka.</p><div class="stat-box"><strong>Kronisk stress</strong><span>Förkortar telomererna — skyddskapslar på DNA-kedjorna som är kopplade till åldrande och sjukdom. Kronisk stress åldrar kroppen på cellnivå. (Källa: Nobelinstitutet)</span></div><h2>Vad som behöver hända</h2><p>Det parasympatiska nervsystemet — "vila och smälta"-systemet — måste få utrymme. Det aktiveras av djup andning, rörelse, sömn och socialt stöd. Inte av Netflix och alkohol, som känns återhämtande men som i praktiken håller nervsystemet i ett aktiverat tillstånd.</p><p>Återhämtning är inte passivitet. Det är aktivt underhåll av kroppen som ska bära dig resten av livet.</p>`
+  }
 ];
 
 let currentFilter = 'alla';
@@ -279,7 +364,7 @@ function renderArticles() {
 function openArticle(article) {
   const locked = article.premium && userPlan !== 'premium';
   document.getElementById('overlayPremiumLabel').textContent = article.premium ? 'PREMIUM' : 'Gratis';
-  document.getElementById('articleContent').innerHTML = `<div class="article-content-tag">${article.tag}</div><h1 class="article-content-title">${article.title}</h1><div class="article-content-meta">${article.readTime} läsning · Tryggman</div><div class="article-content-body">${locked ? article.content.split('</p>').slice(0,2).join('</p>') + '</p>' : article.content}${locked ? `<div class="premium-gate"><h3>Fortsätt läsa med PREMIUM</h3><p>Den här artikeln är exklusiv för PREMIUM-medlemmar. Uppgradera för att läsa alla fördjupningsartiklar.</p><a href="priser.html">Uppgradera till PREMIUM — 349 kr/mån</a></div>` : ''}</div>`;
+  document.getElementById('articleContent').innerHTML = `<div class="article-content-tag">${article.tag}</div><h1 class="article-content-title">${article.title}</h1><div class="article-content-meta">${article.readTime} läsning · Tryggman</div><div class="article-content-body">${locked ? article.content.split('</p>').slice(0,2).join('</p>') + '</p>' : article.content}${locked ? `<div class="premium-gate"><h3>Fortsätt läsa med PREMIUM</h3><p>Den här artikeln är exklusiv för PREMIUM-medlemmar.</p><a href="priser.html">Uppgradera till PREMIUM — 349 kr/mån</a></div>` : ''}</div>`;
   document.getElementById('articleOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
   document.getElementById('articleOverlay').scrollTop = 0;
