@@ -362,7 +362,39 @@ if (localStorage.getItem('tryggman_terapeut_disclaimer') === 'accepted') {
   document.getElementById('disclaimerPopup').classList.add('hidden');
 }
 
-window.openOverlay = function() {
+window.openOverlay = async function() {
+  // Auth check
+  const user = auth.currentUser;
+  if (!user) {
+    window.location.href = 'login.html?redirect=terapeut.html';
+    return;
+  }
+  // Plan check
+  try {
+    const { getFirestore, doc, getDoc } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    const db = getFirestore(app);
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    const plan = snap.exists() ? snap.data().plan : 'free';
+    if (plan !== 'premium') {
+      document.getElementById('overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('chatView').classList.remove('active');
+      document.getElementById('limitReached').classList.remove('active');
+      document.querySelector('.overlay-body').innerHTML = `
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;background:#FAFAF7">
+          <div style="background:#fff;padding:2.5rem;max-width:460px;width:100%;border-radius:2px;border-top:3px solid #3A7D6E;text-align:center;box-shadow:0 4px 24px rgba(28,43,53,0.08)">
+            <div style="font-size:2rem;margin-bottom:1rem">🔒</div>
+            <h2 style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:#1C2B35;margin-bottom:0.8rem">Terapeut-chatt kräver PREMIUM</h2>
+            <p style="font-size:0.88rem;color:#6B7A85;line-height:1.75;margin-bottom:1.5rem">Uppgradera till PREMIUM för att chatta med en certifierad terapeut. Svar inom 24 timmar, max 10 meddelanden per månad.</p>
+            <a href="priser.html" style="background:#3A7D6E;color:#fff;padding:0.9rem 2rem;border-radius:2px;text-decoration:none;font-size:0.9rem;font-weight:500;display:inline-block;margin-bottom:0.8rem">Uppgradera till PREMIUM — 349 kr/mån</a>
+            <br><button onclick="closeOverlay()" style="background:none;border:none;color:#6B7A85;font-size:0.82rem;cursor:pointer;margin-top:0.5rem;font-family:'DM Sans',sans-serif">Stäng</button>
+          </div>
+        </div>`;
+      return;
+    }
+  } catch(e) { console.error(e); }
+
   document.getElementById('overlay').classList.add('active');
   document.body.style.overflow = 'hidden';
   const savedId = localStorage.getItem('tryggman_conv_id');
